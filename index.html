@@ -272,7 +272,8 @@
                         <input type="text" id="admin-img" placeholder="https://i.postimg.cc/..." class="w-full p-4 rounded-xl border bg-slate-50 outline-none focus:ring-2 focus:ring-red-500">
                     </div>
 
-                    <button type="button" onclick="window.addProductToCloud()" class="w-full bg-red-600 text-white py-4 rounded-xl font-bold shadow-xl outline-none hover:bg-red-700 active:scale-95 transition-all">
+                    <!-- Kirim 'this' agar referensi tombol jelas -->
+                    <button type="button" onclick="window.addProductToCloud(this)" class="w-full bg-red-600 text-white py-4 rounded-xl font-bold shadow-xl outline-none hover:bg-red-700 active:scale-95 transition-all">
                         SIMPAN KE CLOUD <i class="fa-solid fa-cloud-arrow-up ml-2"></i>
                     </button>
                     <p id="auth-status" class="text-[10px] text-center text-slate-400 italic">Mengecek koneksi database...</p>
@@ -314,18 +315,23 @@
         window.currentFilter = 'all';
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'yusuf-store-25';
 
-        // Helper untuk memastikan Auth siap
+        // Fungsi pembantu untuk memastikan autentikasi siap sebelum operasi database
         const ensureAuth = async () => {
-            if (auth.currentUser) return auth.currentUser;
+            if (auth && auth.currentUser) return auth.currentUser;
             const statusElem = document.getElementById('auth-status');
-            if(statusElem) statusElem.innerText = "Menyiapkan koneksi aman...";
+            if(statusElem) statusElem.innerText = "Menghubungkan ke database...";
             
-            if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                await signInWithCustomToken(auth, __initial_auth_token);
-            } else {
-                await signInAnonymously(auth);
+            try {
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    await signInWithCustomToken(auth, __initial_auth_token);
+                } else {
+                    await signInAnonymously(auth);
+                }
+                return auth.currentUser;
+            } catch (e) {
+                console.error("Auth error:", e);
+                return null;
             }
-            return auth.currentUser;
         };
 
         // --- GLOBAL FUNCTIONS ---
@@ -366,12 +372,13 @@
             }
         };
 
-        window.addProductToCloud = async function() {
-            if(!window.isAdmin) return alert("⚠️ Silahkan Login Admin (PIN 2525) terlebih dahulu.");
+        // Memperbaiki parameter 'btn' untuk menangkap elemen tombol
+        window.addProductToCloud = async function(btn) {
+            if(!window.isAdmin) return alert("⚠️ Anda harus masuk sebagai Admin terlebih dahulu!");
             
-            // Re-check Auth
+            // Mencoba autentikasi ulang jika belum siap
             const activeUser = await ensureAuth();
-            if(!activeUser) return alert("⚠️ Database sedang sibuk, silahkan muat ulang (Refresh) halaman.");
+            if(!activeUser) return alert("⚠️ Koneksi database gagal. Silahkan muat ulang (Refresh) halaman Anda.");
 
             const name = document.getElementById('admin-name').value.trim();
             const priceVal = document.getElementById('admin-price').value;
@@ -382,24 +389,33 @@
             if(!name || !priceVal || !img) return alert("⚠️ Harap isi Nama, Harga, dan Link Foto!");
 
             try {
-                const btn = event.currentTarget;
-                btn.disabled = true;
-                btn.innerText = "SEDANG MENYIMPAN...";
+                if(btn) {
+                    btn.disabled = true;
+                    btn.innerText = "SEDANG MENYIMPAN...";
+                }
 
                 await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'products'), {
-                    name, price: parseInt(priceVal), category: cat,
-                    isOriginal, img, sold: false, timestamp: Date.now()
+                    name, 
+                    price: parseInt(priceVal), 
+                    category: cat,
+                    isOriginal, 
+                    img, 
+                    sold: false, 
+                    timestamp: Date.now()
                 });
 
-                alert("✅ Produk Berhasil Disimpan!");
+                alert("✅ Produk Berhasil Disimpan ke Katalog!");
+                
+                // Reset form
                 document.getElementById('admin-name').value = '';
                 document.getElementById('admin-price').value = '';
                 document.getElementById('admin-img').value = '';
+                
                 window.showPage('catalog');
             } catch (e) { 
-                alert("❌ Gagal simpan: " + e.message); 
+                alert("❌ Gagal menyimpan: " + e.message); 
+                console.error("Firestore error:", e);
             } finally {
-                const btn = document.querySelector('#page-admin button');
                 if(btn) {
                     btn.disabled = false;
                     btn.innerText = "SIMPAN KE CLOUD";
@@ -409,7 +425,7 @@
 
         window.deleteProduct = async function(id) {
             if(!window.isAdmin) return;
-            if(confirm("Hapus barang ini?")) {
+            if(confirm("Hapus barang ini secara permanen?")) {
                 await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'products', id));
             }
         };
@@ -488,7 +504,7 @@
                                 ${p.sold ? 'HABIS' : 'ORDER WA'}
                         </a>
                     </div>
-                </div>`}).join('') : '<div class="col-span-full py-10 text-center text-slate-400 text-sm italic">Produk belum ada...</div>';
+                </div>`}).join('') : '<div class="col-span-full py-10 text-center text-slate-400 text-sm italic">Belum ada koleksi di kategori ini...</div>';
         };
 
         // --- INIT ---
@@ -514,13 +530,15 @@
                         const loader = document.getElementById('loadingKatalog');
                         if(loader) loader.style.display = 'none';
                         window.renderProducts(window.productsCloud);
+                    }, (err) => {
+                        console.error("Snapshot error:", err);
                     });
                 }
             });
 
             initAuth();
         } catch (error) {
-            console.error(error);
+            console.error("Initialization Error:", error);
         }
     </script>
 </body>
