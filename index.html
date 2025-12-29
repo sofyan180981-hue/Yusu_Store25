@@ -65,7 +65,6 @@
         nav { pointer-events: auto !important; }
         .page-view { pointer-events: auto !important; }
 
-        /* Admin Styling */
         .admin-label {
             display: block;
             font-size: 0.75rem;
@@ -81,7 +80,7 @@
     <!-- Top Bar -->
     <div class="bg-[#1D3557] text-white py-2 px-6 text-[10px] md:text-xs flex justify-between items-center sticky top-0 z-[100]">
         <span><i class="fa-regular fa-clock mr-1"></i> 11.00 - 22.30 WIB</span>
-        <span class="hidden sm:inline"><i class="fa-solid fa-truck-fast mr-1"></i> Melayani Seluruh Indonesia</span>
+        <span class="hidden sm:inline"><i class="fa-solid fa-truck-fast mr-1"></i> Melayani Pengiriman Seluruh Indonesia</span>
         <div class="flex gap-4">
             <a href="https://instagram.com/yusufstore_25" target="_blank" class="hover:text-red-400"><i class="fa-brands fa-instagram"></i></a>
             <a href="https://wa.me/6281375861195" target="_blank" class="hover:text-green-400"><i class="fa-brands fa-whatsapp"></i></a>
@@ -104,7 +103,6 @@
                 <li><button type="button" onclick="window.showPage('info')" id="link-info" class="nav-link pb-1 outline-none">Size Guide</button></li>
             </ul>
 
-            <!-- Mobile Hamburger Toggle -->
             <button type="button" class="md:hidden text-2xl outline-none" onclick="window.toggleMobileMenu()">
                 <i id="menu-icon" class="fa-solid fa-bars"></i>
             </button>
@@ -128,25 +126,26 @@
                     <h1 class="text-4xl md:text-6xl font-black mb-2 uppercase">Yusuf Store 25</h1>
                     <p class="text-red-400 font-medium mb-12 italic text-lg">"Langkah Nyaman, Gaya Terkini"</p>
                     
+                    <!-- 18 BRAND GRID -->
                     <div class="grid grid-cols-3 md:grid-cols-6 gap-3 md:gap-5 mb-16">
-                        <button type="button" onclick="window.goToBrand('Nike')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none uppercase tracking-wider">NIKE</button>
-                        <button type="button" onclick="window.goToBrand('Adidas')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none uppercase tracking-wider">ADIDAS</button>
-                        <button type="button" onclick="window.goToBrand('Puma')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none uppercase tracking-wider">PUMA</button>
-                        <button type="button" onclick="window.goToBrand('NB')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none uppercase tracking-wider">NB</button>
-                        <button type="button" onclick="window.goToBrand('Asics')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none uppercase tracking-wider">ASICS</button>
-                        <button type="button" onclick="window.goToBrand('Converse')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none uppercase tracking-wider">CONVERSE</button>
-                        <button type="button" onclick="window.goToBrand('Onitsuka')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none uppercase tracking-wider">ONITSUKA</button>
-                        <button type="button" onclick="window.goToBrand('On Cloud')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none uppercase tracking-wider">ON CLOUD</button>
-                        <button type="button" onclick="window.goToBrand('Hoka')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none uppercase tracking-wider">HOKA</button>
-                        <button type="button" onclick="window.goToBrand('Salomon')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none uppercase tracking-wider">SALOMON</button>
-                        <button type="button" onclick="window.goToBrand('Ortus')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none uppercase tracking-wider">ORTUS</button>
-                        <button type="button" onclick="window.goToBrand('910')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none uppercase tracking-wider">910</button>
-                        <button type="button" onclick="window.goToBrand('Skechers')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none uppercase tracking-wider">SKECHERS</button>
-                        <button type="button" onclick="window.goToBrand('Specs')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none uppercase tracking-wider">SPECS</button>
-                        <button type="button" onclick="window.goToBrand('Le Coq')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none uppercase tracking-wider">LE COQ</button>
-                        <button type="button" onclick="window.goToBrand('Saucony')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none uppercase tracking-wider">SAUCONY</button>
-                        <button type="button" onclick="window.goToBrand('UA')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none uppercase tracking-wider">UA</button>
-                        <button type="button" onclick="window.goToBrand('Lainnya')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none uppercase tracking-wider">LAINNYA</button>
+                        <button type="button" onclick="window.goToBrand('Nike')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none">NIKE</button>
+                        <button type="button" onclick="window.goToBrand('Adidas')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none">ADIDAS</button>
+                        <button type="button" onclick="window.goToBrand('Puma')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none">PUMA</button>
+                        <button type="button" onclick="window.goToBrand('NB')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none">NB</button>
+                        <button type="button" onclick="window.goToBrand('Asics')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none">ASICS</button>
+                        <button type="button" onclick="window.goToBrand('Converse')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none">CONVERSE</button>
+                        <button type="button" onclick="window.goToBrand('Onitsuka')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none">ONITSUKA</button>
+                        <button type="button" onclick="window.goToBrand('On Cloud')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none">ON CLOUD</button>
+                        <button type="button" onclick="window.goToBrand('Hoka')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none">HOKA</button>
+                        <button type="button" onclick="window.goToBrand('Salomon')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none">SALOMON</button>
+                        <button type="button" onclick="window.goToBrand('Ortus')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none">ORTUS</button>
+                        <button type="button" onclick="window.goToBrand('910')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none">910</button>
+                        <button type="button" onclick="window.goToBrand('Skechers')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none">SKECHERS</button>
+                        <button type="button" onclick="window.goToBrand('Specs')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none">SPECS</button>
+                        <button type="button" onclick="window.goToBrand('Le Coq')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none">LE COQ</button>
+                        <button type="button" onclick="window.goToBrand('Saucony')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none">SAUCONY</button>
+                        <button type="button" onclick="window.goToBrand('UA')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none">UA</button>
+                        <button type="button" onclick="window.goToBrand('Lainnya')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none">LAINNYA</button>
                     </div>
                     
                     <button type="button" onclick="window.showPage('catalog')" class="bg-red-600 hover:bg-red-700 text-white px-10 py-4 rounded-full font-bold text-lg shadow-xl transition-all active:scale-95 outline-none">
@@ -174,7 +173,7 @@
             <div class="flex flex-col md:flex-row gap-4 mb-8 items-center">
                 <div class="relative w-full md:w-80">
                     <i class="fa-solid fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                    <input type="text" id="searchInput" onkeyup="window.searchProducts()" placeholder="Cari brand atau tipe..." class="w-full pl-12 pr-4 py-3 rounded-2xl border border-slate-200 outline-none focus:ring-2 focus:ring-red-400">
+                    <input type="text" id="searchInput" onkeyup="window.searchProducts()" placeholder="Cari barang..." class="w-full pl-12 pr-4 py-3 rounded-2xl border border-slate-200 outline-none focus:ring-2 focus:ring-red-400">
                 </div>
                 <div class="flex gap-2 overflow-x-auto w-full md:w-auto pb-2 no-scrollbar">
                     <button type="button" onclick="window.setFilter('all')" class="filter-btn active bg-blue-900 text-white px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap outline-none">SEMUA</button>
@@ -192,14 +191,14 @@
             </div>
 
             <div id="productGrid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
-                <!-- Products dynamically injected -->
+                <!-- Products -->
             </div>
         </section>
 
         <!-- ONGKIR PAGE -->
         <section id="page-ongkir" class="page-view py-20 px-6 max-w-xl mx-auto">
             <div class="bg-white rounded-3xl p-8 shadow-2xl border">
-                <h2 class="text-2xl font-black text-center mb-8 uppercase tracking-tighter text-[#1D3557]">Cek Ongkos Kirim</h2>
+                <h2 class="text-2xl font-black text-center mb-8 uppercase text-[#1D3557]">Cek Ongkos Kirim</h2>
                 <div class="space-y-4">
                     <input type="text" id="dest-city" placeholder="Kota Tujuan" class="w-full p-4 rounded-xl border outline-none">
                     <select id="courier-type" class="w-full p-4 rounded-xl border bg-white outline-none">
@@ -207,7 +206,7 @@
                         <option value="J&T">J&T</option>
                         <option value="Sicepat">Sicepat</option>
                     </select>
-                    <button type="button" onclick="window.handleCekOngkir()" class="w-full bg-green-500 text-white py-4 rounded-xl font-bold shadow-lg hover:bg-green-600 outline-none">
+                    <button type="button" onclick="window.handleCekOngkir()" class="w-full bg-green-500 text-white py-4 rounded-xl font-bold shadow-lg hover:bg-green-600">
                         <i class="fa-brands fa-whatsapp mr-2"></i> TANYA ADMIN VIA WA
                     </button>
                 </div>
@@ -219,13 +218,13 @@
             <div class="bg-white rounded-3xl p-8 shadow-2xl overflow-hidden border">
                 <h2 class="text-2xl font-bold mb-6 text-center text-[#1D3557]">Panduan Ukuran (EU / CM)</h2>
                 <div class="overflow-x-auto">
-                    <table class="w-full text-left">
+                    <table class="w-full text-left border-collapse">
                         <thead><tr class="bg-slate-100"><th class="p-4">EU</th><th class="p-4">UK</th><th class="p-4">US</th><th class="p-4">CM</th></tr></thead>
                         <tbody>
-                            <tr class="border-b"><td class="p-4 font-bold">39</td><td class="p-4">6</td><td class="p-4">7</td><td class="p-4">24.5</td></tr>
-                            <tr class="border-b"><td class="p-4 font-bold">40</td><td class="p-4">6.5</td><td class="p-4">7.5</td><td class="p-4">25.0</td></tr>
-                            <tr class="border-b"><td class="p-4 font-bold">41</td><td class="p-4">7</td><td class="p-4">8</td><td class="p-4">25.5</td></tr>
-                            <tr class="border-b"><td class="p-4 font-bold">42</td><td class="p-4">8</td><td class="p-4">9</td><td class="p-4">26.5</td></tr>
+                            <tr class="border-b"><td class="p-4 font-bold text-red-600">39</td><td class="p-4">6</td><td class="p-4">7</td><td class="p-4">24.5</td></tr>
+                            <tr class="border-b"><td class="p-4 font-bold text-red-600">40</td><td class="p-4">6.5</td><td class="p-4">7.5</td><td class="p-4">25.0</td></tr>
+                            <tr class="border-b"><td class="p-4 font-bold text-red-600">41</td><td class="p-4">7</td><td class="p-4">8</td><td class="p-4">25.5</td></tr>
+                            <tr class="border-b"><td class="p-4 font-bold text-red-600">42</td><td class="p-4">8</td><td class="p-4">9</td><td class="p-4">26.5</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -240,7 +239,7 @@
                 <div class="space-y-6">
                     <div>
                         <label class="admin-label">Nama Barang</label>
-                        <input type="text" id="admin-name" placeholder="Contoh: Adidas Ultra Boost 2024" class="w-full p-4 rounded-xl border bg-slate-50 outline-none focus:ring-2 focus:ring-red-500">
+                        <input type="text" id="admin-name" placeholder="Contoh: Adidas Ultra Boost" class="w-full p-4 rounded-xl border bg-slate-50 outline-none focus:ring-2 focus:ring-red-500">
                     </div>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -261,29 +260,27 @@
                     </div>
 
                     <div>
-                        <label class="admin-label">Tipe Harga (Status Nego)</label>
+                        <label class="admin-label">Tipe Harga</label>
                         <select id="admin-original" class="w-full p-4 rounded-xl border bg-slate-50 outline-none focus:ring-2 focus:ring-red-500">
-                            <option value="true">Harga Fix (Sesuai Web Resmi)</option>
+                            <option value="true">Harga Fix (Web Resmi)</option>
                             <option value="false">Bisa Nego (Harga Promo)</option>
                         </select>
                     </div>
 
                     <div>
-                        <label class="admin-label">Link Foto Barang</label>
-                        <input type="text" id="admin-img" placeholder="Tempel link foto di sini..." class="w-full p-4 rounded-xl border bg-slate-50 outline-none focus:ring-2 focus:ring-red-500">
+                        <label class="admin-label">Link Foto Barang (.jpg/.png)</label>
+                        <input type="text" id="admin-img" placeholder="https://i.postimg.cc/..." class="w-full p-4 rounded-xl border bg-slate-50 outline-none focus:ring-2 focus:ring-red-500">
                     </div>
 
                     <button type="button" onclick="window.addProductToCloud()" class="w-full bg-red-600 text-white py-4 rounded-xl font-bold shadow-xl outline-none hover:bg-red-700 active:scale-95 transition-all">
                         SIMPAN KE CLOUD <i class="fa-solid fa-cloud-arrow-up ml-2"></i>
                     </button>
-                    
-                    <p class="text-[10px] text-center text-slate-400 italic">Pastikan Anda sudah masuk (Login) sebagai Admin sebelum menyimpan.</p>
+                    <p id="auth-status" class="text-[10px] text-center text-slate-400 italic">Mengecek koneksi database...</p>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="bg-[#1D3557] text-white pt-16 pb-8 px-6 text-center relative z-20">
         <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-10 text-left">
             <div>
@@ -293,9 +290,9 @@
             <div>
                 <h4 class="font-bold text-lg mb-4 text-white">Quick Links</h4>
                 <ul class="text-slate-400 space-y-2 text-sm">
-                    <li><button type="button" onclick="window.showPage('home')" class="outline-none hover:text-white">Beranda</button></li>
-                    <li><button type="button" onclick="window.showPage('catalog')" class="outline-none hover:text-white">Katalog</button></li>
-                    <li><button type="button" onclick="window.showPage('ongkir')" class="outline-none hover:text-white">Ongkir</button></li>
+                    <li><button type="button" onclick="window.showPage('home')" class="hover:text-white">Beranda</button></li>
+                    <li><button type="button" onclick="window.showPage('catalog')" class="hover:text-white">Katalog</button></li>
+                    <li><button type="button" onclick="window.showPage('ongkir')" class="hover:text-white">Ongkir</button></li>
                 </ul>
             </div>
             <div>
@@ -306,20 +303,32 @@
         <p class="mt-16 text-[10px] text-slate-500 border-t border-slate-800 pt-8">&copy; 2025 Yusuf Store 25. All Rights Reserved.</p>
     </footer>
 
-    <!-- Firebase System -->
     <script type="module">
         import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js';
         import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js';
         import { getFirestore, collection, addDoc, onSnapshot, deleteDoc, doc, setDoc } from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js';
 
-        // Variabel Global dalam Modul
         let auth, db, user;
         window.isAdmin = false;
         window.productsCloud = [];
         window.currentFilter = 'all';
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'yusuf-store-25';
 
-        // --- DEFINISI FUNGSI GLOBAL ---
+        // Helper untuk memastikan Auth siap
+        const ensureAuth = async () => {
+            if (auth.currentUser) return auth.currentUser;
+            const statusElem = document.getElementById('auth-status');
+            if(statusElem) statusElem.innerText = "Menyiapkan koneksi aman...";
+            
+            if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                await signInWithCustomToken(auth, __initial_auth_token);
+            } else {
+                await signInAnonymously(auth);
+            }
+            return auth.currentUser;
+        };
+
+        // --- GLOBAL FUNCTIONS ---
         window.showPage = function(pageId) {
             document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
             document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
@@ -349,7 +358,7 @@
             const pin = prompt("Masukan PIN Admin:");
             if(pin === "2525") {
                 window.isAdmin = true;
-                alert("🔓 Mode Admin Aktif! Anda sekarang bisa menambah/menghapus barang.");
+                alert("🔓 Mode Admin Aktif!");
                 window.showPage('admin');
                 window.renderProducts(window.productsCloud);
             } else {
@@ -358,8 +367,11 @@
         };
 
         window.addProductToCloud = async function() {
-            if(!window.isAdmin) return alert("⚠️ Anda harus login sebagai Admin terlebih dahulu!");
-            if(!user) return alert("⚠️ Sistem belum siap. Mohon tunggu sebentar atau muat ulang halaman.");
+            if(!window.isAdmin) return alert("⚠️ Silahkan Login Admin (PIN 2525) terlebih dahulu.");
+            
+            // Re-check Auth
+            const activeUser = await ensureAuth();
+            if(!activeUser) return alert("⚠️ Database sedang sibuk, silahkan muat ulang (Refresh) halaman.");
 
             const name = document.getElementById('admin-name').value.trim();
             const priceVal = document.getElementById('admin-price').value;
@@ -367,56 +379,50 @@
             const isOriginal = document.getElementById('admin-original').value === "true";
             const img = document.getElementById('admin-img').value.trim();
 
-            if(!name || !priceVal || !img) return alert("⚠️ Harap isi semua kolom (Nama, Harga, dan Foto)!");
+            if(!name || !priceVal || !img) return alert("⚠️ Harap isi Nama, Harga, dan Link Foto!");
 
             try {
                 const btn = event.currentTarget;
                 btn.disabled = true;
-                btn.innerText = "MENYIMPAN...";
+                btn.innerText = "SEDANG MENYIMPAN...";
 
                 await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'products'), {
-                    name: name,
-                    price: parseInt(priceVal),
-                    category: cat,
-                    isOriginal: isOriginal,
-                    img: img,
-                    sold: false,
-                    timestamp: Date.now()
+                    name, price: parseInt(priceVal), category: cat,
+                    isOriginal, img, sold: false, timestamp: Date.now()
                 });
 
-                alert("✅ Berhasil! Barang sudah masuk ke katalog.");
-                
-                // Reset Form
+                alert("✅ Produk Berhasil Disimpan!");
                 document.getElementById('admin-name').value = '';
                 document.getElementById('admin-price').value = '';
                 document.getElementById('admin-img').value = '';
-                
                 window.showPage('catalog');
             } catch (e) { 
-                alert("❌ Gagal menyimpan ke cloud: " + e.message); 
+                alert("❌ Gagal simpan: " + e.message); 
             } finally {
                 const btn = document.querySelector('#page-admin button');
-                btn.disabled = false;
-                btn.innerText = "SIMPAN KE CLOUD";
+                if(btn) {
+                    btn.disabled = false;
+                    btn.innerText = "SIMPAN KE CLOUD";
+                }
             }
         };
 
         window.deleteProduct = async function(id) {
-            if(!window.isAdmin || !user) return;
-            if(confirm("Apakah Anda yakin ingin menghapus permanen barang ini?")) {
+            if(!window.isAdmin) return;
+            if(confirm("Hapus barang ini?")) {
                 await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'products', id));
             }
         };
 
         window.toggleSold = async function(id, status) {
-            if(!window.isAdmin || !user) return;
+            if(!window.isAdmin) return;
             await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'products', id), { sold: !status }, { merge: true });
         };
 
         window.setFilter = function(cat) {
             window.currentFilter = cat;
             document.querySelectorAll('.filter-btn').forEach(b => {
-                const text = b.innerText.toLowerCase().replace(/\s/g, ''); // Normalisasi pencocokan
+                const text = b.innerText.toLowerCase().replace(/\s/g, '');
                 if(text === cat || (cat === 'all' && text === 'semua')) {
                     b.className = 'filter-btn active bg-blue-900 text-white px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap outline-none';
                 } else {
@@ -450,10 +456,8 @@
         window.renderProducts = function(data) {
             const grid = document.getElementById('productGrid');
             if(!grid) return;
-
             const search = (document.getElementById('searchInput')?.value || "").toLowerCase();
             const filter = window.currentFilter;
-
             const filtered = data.filter(p => {
                 const mCat = filter === 'all' || p.category === filter;
                 const mSearch = p.name.toLowerCase().includes(search);
@@ -462,74 +466,61 @@
 
             grid.innerHTML = filtered.length > 0 ? filtered.map(p => {
                 const priceInfo = p.isOriginal ? 
-                    '<span class="text-[8px] text-blue-600 font-bold tracking-tighter uppercase leading-none"><i class="fa-solid fa-check-double mr-1"></i>Harga Fix</span>' : 
-                    '<span class="text-[8px] text-green-600 font-bold tracking-tighter uppercase leading-none"><i class="fa-solid fa-tags mr-1"></i>Bisa Nego</span>';
+                    '<span class="text-[8px] text-blue-600 font-bold uppercase"><i class="fa-solid fa-check-double mr-1"></i>Harga Fix</span>' : 
+                    '<span class="text-[8px] text-green-600 font-bold uppercase"><i class="fa-solid fa-tags mr-1"></i>Bisa Nego</span>';
                 
                 return `
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 flex flex-col relative pointer-events-auto">
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 flex flex-col relative">
                     ${window.isAdmin ? `<div class="absolute top-2 left-2 z-50 flex gap-1">
-                        <button onclick="window.deleteProduct('${p.id}')" class="bg-black/60 text-white p-1 rounded text-[10px] w-6 h-6 flex items-center justify-center"><i class="fa-solid fa-trash"></i></button>
-                        <button onclick="window.toggleSold('${p.id}', ${p.sold})" class="bg-orange-500 text-white p-1 rounded text-[10px] w-6 h-6 flex items-center justify-center"><i class="fa-solid fa-tag"></i></button>
+                        <button onclick="window.deleteProduct('${p.id}')" class="bg-black/60 text-white w-6 h-6 rounded flex items-center justify-center"><i class="fa-solid fa-trash text-[10px]"></i></button>
+                        <button onclick="window.toggleSold('${p.id}', ${p.sold})" class="bg-orange-500 text-white w-6 h-6 rounded flex items-center justify-center"><i class="fa-solid fa-tag text-[10px]"></i></button>
                     </div>` : ''}
-                    
                     <div class="aspect-square bg-slate-50 relative overflow-hidden">
                         <img src="${p.img}" class="w-full h-full object-cover ${p.sold ? 'grayscale opacity-50' : ''}" onerror="this.src='https://placehold.co/400x400?text=Produk'">
                         ${p.sold ? '<div class="absolute inset-0 flex items-center justify-center font-black text-red-600 bg-white/30 backdrop-blur-[2px] text-xs">SOLD OUT</div>' : ''}
                     </div>
-                    
                     <div class="p-3 flex flex-col flex-grow">
                         <h3 class="font-bold text-[10px] md:text-xs line-clamp-2 h-8 leading-tight mb-1 uppercase">${p.name}</h3>
                         <p class="text-red-600 font-black text-xs md:text-sm">Rp ${p.price.toLocaleString('id-ID')}</p>
-                        <div class="mb-3 h-3 flex items-center">
-                            ${!p.sold ? priceInfo : ''}
-                        </div>
-                        
+                        <div class="mb-3 h-3 flex items-center">${!p.sold ? priceInfo : ''}</div>
                         <a href="${p.sold ? '#' : 'https://wa.me/6281375861195?text=Min, beli ' + encodeURIComponent(p.name)}" target="_blank" 
                            class="mt-auto w-full py-2 rounded-lg text-[10px] font-bold text-center ${p.sold ? 'bg-slate-100 text-slate-400 pointer-events-none' : 'bg-green-500 text-white shadow-md active:scale-95 transition-all'}">
-                            ${p.sold ? 'HABIS' : 'ORDER WA'}
+                                ${p.sold ? 'HABIS' : 'ORDER WA'}
                         </a>
                     </div>
-                </div>
-            `}).join('') : '<div class="col-span-full py-10 text-center text-slate-400 text-sm italic">Produk belum ada atau tidak ditemukan...</div>';
+                </div>`}).join('') : '<div class="col-span-full py-10 text-center text-slate-400 text-sm italic">Produk belum ada...</div>';
         };
 
-        // --- INISIALISASI FIREBASE ---
+        // --- INIT ---
         try {
-            const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
-            if(!firebaseConfig) throw new Error("Konfigurasi Firebase tidak ditemukan.");
-            
+            const firebaseConfig = JSON.parse(__firebase_config);
             const app = initializeApp(firebaseConfig);
             auth = getAuth(app);
             db = getFirestore(app);
 
             const initAuth = async () => {
-                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                    await signInWithCustomToken(auth, __initial_auth_token);
-                } else {
-                    await signInAnonymously(auth);
-                }
+                await ensureAuth();
             };
 
             onAuthStateChanged(auth, (u) => {
                 user = u;
-                if(user) {
-                    const prodColl = collection(db, 'artifacts', appId, 'public', 'data', 'products');
-                    onSnapshot(prodColl, (snap) => {
+                const statusElem = document.getElementById('auth-status');
+                if(statusElem) statusElem.innerText = u ? "✅ Database Terkoneksi" : "❌ Gagal Terkoneksi";
+                
+                if(u) {
+                    onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'products'), (snap) => {
                         window.productsCloud = snap.docs.map(d => ({ id: d.id, ...d.data() }));
                         window.productsCloud.sort((a,b) => (b.timestamp || 0) - (a.timestamp || 0));
-                        
                         const loader = document.getElementById('loadingKatalog');
                         if(loader) loader.style.display = 'none';
                         window.renderProducts(window.productsCloud);
-                    }, (err) => console.error("Firestore error:", err));
+                    });
                 }
             });
 
             initAuth();
         } catch (error) {
-            console.error("System Error:", error);
-            const loader = document.getElementById('loadingKatalog');
-            if(loader) loader.innerHTML = "<p class='text-red-500 text-xs italic'>Database offline. Pastikan konfigurasi benar.</p>";
+            console.error(error);
         }
     </script>
 </body>
