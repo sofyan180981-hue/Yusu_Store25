@@ -7,450 +7,419 @@
     
     <!-- SEO Meta Tags -->
     <meta name="description" content="Pusat sepatu running, casual, dan apparel original lengkap di Padang Sidimpuan. Berlokasi di depan Tugu Salak.">
-    <meta name="keywords" content="Sepatu Original, Toko Sepatu Padang Sidimpuan, Yusuf Store 25, Running, Hoka, Nike, Adidas, Tugu Salak">
     
-    <!-- Fonts -->
+    <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
-        /* --- 1. RESET & VARIABLE --- */
         :root {
             --primary: #E63946;
-            --primary-dark: #C92A37;
             --secondary: #1D3557;
-            --accent: #457B9D;
-            --bg-light: #F1FAEE;
+            --bg-light: #F8FAFC;
             --white: #FFFFFF;
-            --text-dark: #1F2937;
-            --text-gray: #6B7280;
-            --success: #2d6a4f;
-            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            --radius: 12px;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #f3f4f6;
-            color: var(--text-dark);
-            line-height: 1.6;
-            overflow-x: hidden;
+            background-color: var(--bg-light);
+            scroll-behavior: smooth;
         }
 
-        a { text-decoration: none; color: inherit; cursor: pointer; }
-        ul { list-style: none; }
-        img { max-width: 100%; display: block; }
-
-        /* --- 2. HEADER & NAV --- */
-        .top-bar {
-            background: var(--secondary);
-            color: var(--white);
-            padding: 8px 5%;
-            font-size: 0.75rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .nav-link.active {
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
         }
 
-        .navbar {
-            background: rgba(255, 255, 255, 0.98);
-            padding: 15px 5%;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow-sm);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        /* Hero Animation */
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: var(--secondary);
+        /* Product Card Effects */
+        .product-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .logo img { height: 35px; border-radius: 50%; }
-
-        .nav-menu { display: flex; gap: 15px; }
-        .nav-link { font-weight: 500; padding: 5px 0; transition: 0.3s; position: relative; font-size: 0.9rem; }
-        .nav-link.active { color: var(--primary); }
-        .nav-link.active::after {
-            content: ''; position: absolute; width: 100%; height: 3px;
-            bottom: -5px; left: 0; background: var(--primary);
-            border-radius: 10px;
-        }
-        .nav-link:hover { color: var(--primary); }
-
-        /* --- 3. PAGE WRAPPER --- */
-        .page-view { display: none; min-height: 70vh; animation: fadeIn 0.4s ease-out; }
-        .page-view.active { display: block; }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* --- 4. BERANDA VIEW --- */
-        .hero {
-            position: relative;
-            background: linear-gradient(rgba(29, 53, 87, 0.92), rgba(29, 53, 87, 0.8)), 
-                        url('https://images.unsplash.com/photo-1556906781-9a412961d289?auto=format&fit=crop&w=1500&q=80');
-            background-size: cover;
-            background-position: center;
-            padding: 40px 5% 50px;
-            color: white;
-            text-align: center;
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px -5px rgba(0,0,0,0.1);
         }
 
-        .hero-logo-container {
-            margin-bottom: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .is-sold img {
+            filter: grayscale(1);
+            opacity: 0.7;
         }
 
-        .hero-main-logo {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 5px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 0 30px rgba(230, 57, 70, 0.4);
-            object-fit: cover;
-            background: white;
-            animation: floating 4s ease-in-out infinite;
-            margin-bottom: 10px;
+        /* Modal Backdrop */
+        .modal-active {
+            display: flex !important;
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; } to { opacity: 1; }
         }
 
-        .hero-store-name { font-size: 1.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
-        .hero-tagline { font-size: 0.85rem; font-weight: 300; opacity: 0.8; margin-bottom: 25px; }
-
-        @keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-
-        .brand-grid {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 10px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .brand-card {
+        /* Hide scrollbar for filter group */
+        .filter-group::-webkit-scrollbar { display: none; }
+        
+        /* Glassmorphism for brand cards */
+        .brand-btn {
             background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(8px);
-            padding: 10px;
-            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: 1px solid rgba(255, 255, 255, 0.05);
             min-height: 60px;
         }
-
-        .brand-card:hover { background: white; transform: translateY(-3px); box-shadow: 0 5px 10px rgba(230, 57, 70, 0.3); }
-        .brand-card img { max-height: 25px; filter: brightness(0) invert(1); transition: 0.3s; }
-        .brand-card:hover img { filter: grayscale(0) brightness(1) invert(0); }
-        .brand-card span { color: white; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; }
-        .brand-card:hover span { color: var(--secondary); }
-
-        /* --- 5. KATALOG VIEW --- */
-        .catalog-container { padding: 20px 3%; }
-        .controls {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-bottom: 25px;
+        .brand-btn:hover {
             background: white;
-            padding: 15px;
-            border-radius: 15px;
-            box-shadow: var(--shadow-sm);
-            align-items: center;
+            color: var(--secondary);
+            transform: scale(1.05);
+            box-shadow: 0 10px 15px -3px rgba(230, 57, 70, 0.3);
         }
-
-        .search-container { width: 100%; max-width: 300px; position: relative; }
-        .search-input { width: 100%; padding: 10px 15px 10px 40px; border: 2px solid #f3f4f6; border-radius: 50px; outline: none; font-size: 0.85rem; }
-        .search-container i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #9ca3af; font-size: 0.9rem; }
-
-        .filter-group { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 5px; width: 100%; justify-content: flex-start; -webkit-overflow-scrolling: touch; }
-        .filter-group::-webkit-scrollbar { display: none; }
-        .btn-filter { padding: 6px 15px; border-radius: 50px; border: 1px solid var(--secondary); background: transparent; cursor: pointer; white-space: nowrap; font-size: 0.75rem; font-weight: 600; transition: 0.3s; }
-        .btn-filter.active { background: var(--secondary); color: white; }
-
-        .products-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-        .product-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; height: 100%; transition: 0.3s; position: relative; }
-        
-        .product-card.is-sold .img-box img { filter: grayscale(1); opacity: 0.6; }
-        .product-card.is-sold .p-info { opacity: 0.8; }
-
-        .img-box { width: 100%; aspect-ratio: 1/1; background: #f9f9f9; overflow: hidden; position: relative; cursor: zoom-in; }
-        .img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
-        
-        .p-info { padding: 12px 10px; text-align: left; flex-grow: 1; display: flex; flex-direction: column; }
-        .p-name { font-weight: 600; font-size: 0.85rem; margin-bottom: 4px; line-height: 1.2; height: 2.4em; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
-        .p-price { color: var(--primary); font-weight: 700; font-size: 0.9rem; margin-bottom: 4px; }
-        .p-pricing-info { font-size: 0.6rem; color: var(--success); font-weight: 600; margin-bottom: 12px; }
-        
-        .btn-wa { width: 100%; margin-top: auto; background: #25D366; color: white; padding: 8px; border-radius: 6px; font-weight: 600; font-size: 0.75rem; text-align: center; }
-        .btn-wa.disabled { background: var(--primary) !important; color: white !important; pointer-events: none; opacity: 1; }
-        .badge-sold { position: absolute; top: 8px; right: 8px; background: #E63946; color: #FFFFFF; padding: 4px 10px; border-radius: 4px; font-size: 0.65rem; font-weight: 800; z-index: 10; box-shadow: 0 2px 8px rgba(230, 57, 70, 0.4); }
-
-        /* --- 6. ADMIN PANEL STYLES --- */
-        .admin-view { padding: 40px 5%; max-width: 800px; margin: 0 auto; }
-        .admin-card { background: white; padding: 25px; border-radius: 20px; box-shadow: var(--shadow-md); margin-bottom: 30px; }
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px; }
-        .form-group { display: flex; flex-direction: column; gap: 5px; }
-        .form-group label { font-size: 0.85rem; font-weight: 600; color: var(--secondary); }
-        .form-group input, .form-group select { padding: 10px; border: 1px solid #ddd; border-radius: 8px; outline: none; }
-        .btn-add { background: var(--success); color: white; border: none; padding: 12px; border-radius: 8px; font-weight: 700; cursor: pointer; width: 100%; }
-        .btn-delete { position: absolute; top: 5px; left: 5px; background: rgba(0,0,0,0.6); color: white; border: none; padding: 5px 8px; border-radius: 4px; font-size: 0.7rem; z-index: 10; cursor: pointer; }
-        .btn-ms { position: absolute; top: 5px; right: 5px; background: #f39c12; color: white; border: none; padding: 5px 8px; border-radius: 4px; font-size: 0.7rem; z-index: 10; cursor: pointer; }
-
-        /* --- 7. FOOTER & LOC --- */
-        .location-section { padding: 40px 5%; background: var(--white); text-align: center; }
-        .map-container { width: 100%; height: 300px; border-radius: 15px; overflow: hidden; margin-top: 20px; box-shadow: var(--shadow-sm); }
-        .footer { background: var(--secondary); color: white; padding: 60px 5% 20px; text-align: center; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; text-align: left; }
-        .footer-col h4 { font-size: 1.1rem; margin-bottom: 20px; position: relative; padding-bottom: 10px; }
-        .footer-col h4::after { content: ''; position: absolute; bottom: 0; left: 0; width: 40px; height: 2px; background: var(--primary); }
-        .footer-col p, .footer-col li { font-size: 0.85rem; color: #ccc; margin-bottom: 10px; }
-        .payment-methods { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
-        .pay-badge { background: white; color: var(--secondary); padding: 3px 8px; border-radius: 4px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; }
-        .copyright { font-size: 0.75rem; opacity: 0.6; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
-
-        /* Size Table Styles */
-        .size-table-wrapper { background: var(--white); padding: 10px; border-radius: 20px; box-shadow: var(--shadow-md); overflow-x: auto; }
-        .size-table { width: 100%; border-collapse: collapse; min-width: 500px; }
-        .size-table thead tr { background: var(--secondary); color: var(--white); text-align: left; }
-        .size-table th, .size-table td { padding: 15px 20px; font-size: 0.9rem; border-bottom: 1px solid #f1f1f1; }
-        .size-table td:first-child { color: var(--primary); font-weight: 700; }
-
-        /* Modal */
-        .modal { display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); align-items: center; justify-content: center; backdrop-filter: blur(5px); }
-        .modal-content { max-width: 90%; max-height: 85%; border-radius: 10px; animation: zoomIn 0.3s ease; }
-        .close-modal { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; cursor: pointer; }
-        @keyframes zoomIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
-
-        @media (min-width: 769px) {
-            .products-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
-            .brand-grid { grid-template-columns: repeat(6, 1fr); gap: 12px; }
-            .controls { flex-direction: row; justify-content: space-between; padding: 15px 30px; }
+        .brand-btn img {
+            max-height: 24px;
+            width: auto;
+            transition: all 0.3s ease;
         }
-        @media (max-width: 768px) {
-            .nav-menu { display: none; }
-            .brand-grid { grid-template-columns: repeat(3, 1fr); }
-            .logo span { display: none; }
-            .footer-grid { text-align: center; }
-            .footer-col h4::after { left: 50%; transform: translateX(-50%); }
-            .payment-methods { justify-content: center; }
-            .form-row { grid-template-columns: 1fr; }
+        .brand-btn:hover img {
+            filter: none !important;
         }
     </style>
 </head>
-<body>
+<body class="text-slate-800 overflow-x-hidden">
 
-    <!-- Bar Atas -->
-    <div class="top-bar">
-        <span><i class="fa-regular fa-clock"></i> 11.00 - 22.30 WIB</span>
-        <span><i class="fa-solid fa-truck-fast"></i> Melayani Pengiriman Seluruh Indonesia</span>
+    <!-- Top Bar -->
+    <div class="bg-[#1D3557] text-white py-2 px-6 text-[10px] md:text-xs flex justify-between items-center sticky top-0 z-[60]">
+        <span><i class="fa-regular fa-clock mr-1"></i> 11.00 - 22.30 WIB</span>
+        <span class="hidden md:inline"><i class="fa-solid fa-truck-fast mr-1"></i> Melayani Pengiriman Seluruh Indonesia</span>
+        <div class="flex gap-3">
+            <a href="https://instagram.com/yusufstore_25" target="_blank" class="hover:text-red-400"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://wa.me/6281375861195" target="_blank" class="hover:text-green-400"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
     </div>
 
-    <!-- Navigasi -->
-    <nav class="navbar">
-        <div class="logo">
-            <img src="https://z-cdn-media.chatglm.cn/files/8ec0f45f-aac5-4ba4-892b-e32fc8f76ed2.jpg?auth_key=1866751818-2ee6d09ca25a4f69a7f451317a337325-0-f54c5ad6428b8cd184d7f86e07cb76cf" onerror="this.src='https://placehold.co/40x40?text=YS'" alt="YS">
-            <span>Yusuf Store 25</span>
+    <!-- Navigation -->
+    <nav class="bg-white/95 backdrop-blur-md shadow-sm sticky top-[32px] md:top-[36px] z-50 py-3 px-6">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="window.showPage('home')">
+                <img src="https://placehold.co/100x100/E63946/FFFFFF?text=YS25" 
+                     onerror="this.src='https://placehold.co/40x40?text=YS'" 
+                     class="w-10 h-10 rounded-full border-2 border-red-500 shadow-sm object-cover" alt="Logo Store">
+                <span class="font-bold text-lg text-[#1D3557] tracking-tight hidden sm:inline">Yusuf Store 25</span>
+            </div>
+
+            <!-- Desktop Menu -->
+            <ul class="hidden md:flex gap-8 font-semibold text-sm">
+                <li><button onclick="window.showPage('home')" id="link-home" class="nav-link active py-1">Beranda</button></li>
+                <li><button onclick="window.showPage('catalog')" id="link-catalog" class="nav-link py-1">Katalog</button></li>
+                <li><button onclick="window.showPage('ongkir')" id="link-ongkir" class="nav-link py-1">Cek Ongkir</button></li>
+                <li><button onclick="window.showPage('info')" id="link-info" class="nav-link py-1">Size Guide</button></li>
+            </ul>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="md:hidden text-2xl p-2" onclick="window.toggleMobileMenu()">
+                <i id="menu-icon" class="fa-solid fa-bars"></i>
+            </button>
         </div>
-        <ul class="nav-menu">
-            <li><a onclick="showPage('home')" id="link-home" class="nav-link active">Beranda</a></li>
-            <li><a onclick="showPage('catalog')" id="link-catalog" class="nav-link">Katalog</a></li>
-            <li><a onclick="showPage('ongkir')" id="link-ongkir" class="nav-link">Ongkir</a></li>
-            <li><a onclick="showPage('info')" id="link-info" class="nav-link">Info Size</a></li>
-        </ul>
-        <a href="https://wa.me/6281375861195" target="_blank" style="color: var(--primary);"><i class="fa-brands fa-whatsapp fa-xl"></i></a>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-overlay" class="hidden absolute top-full left-0 w-full bg-white border-t shadow-xl flex-col p-6 gap-4 font-bold md:hidden">
+            <button onclick="window.showPage('home'); window.toggleMobileMenu()" class="text-left py-2 border-b">Beranda</button>
+            <button onclick="window.showPage('catalog'); window.toggleMobileMenu()" class="text-left py-2 border-b">Katalog</button>
+            <button onclick="window.showPage('ongkir'); window.toggleMobileMenu()" class="text-left py-2 border-b">Cek Ongkir</button>
+            <button onclick="window.showPage('info'); window.toggleMobileMenu()" class="text-left py-2">Size Guide</button>
+        </div>
     </nav>
 
     <main id="main-content">
-        <!-- BERANDA -->
-        <section id="page-home" class="page-view active">
-            <div class="hero">
-                <div class="hero-logo-container">
-                    <img src="https://z-cdn-media.chatglm.cn/files/8ec0f45f-aac5-4ba4-892b-e32fc8f76ed2.jpg?auth_key=1866751818-2ee6d09ca25a4f69a7f451317a337325-0-f54c5ad6428b8cd184d7f86e07cb76cf" class="hero-main-logo" alt="Logo">
-                    <h1 class="hero-store-name">Yusuf_Store 25</h1>
-                    <p class="hero-tagline">"Langkah Nyaman, Gaya Terkini"</p>
-                </div>
-                
-                <div class="brand-grid">
-                    <div class="brand-card" onclick="goToBrand('Nike')"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" alt="Nike"></div>
-                    <div class="brand-card" onclick="goToBrand('Adidas')"><img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" alt="Adidas"></div>
-                    <div class="brand-card" onclick="goToBrand('Puma')"><img src="https://upload.wikimedia.org/wikipedia/commons/8/88/Puma_Logo.png" alt="Puma"></div>
-                    <div class="brand-card" onclick="goToBrand('NB')"><img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/New_Balance_logo.svg" alt="NB"></div>
-                    <div class="brand-card" onclick="goToBrand('Asics')"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Asics_Logo.svg" alt="Asics"></div>
-                    <div class="brand-card" onclick="goToBrand('Converse')"><img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Converse_logo.svg" alt="Converse"></div>
-                    <div class="brand-card" onclick="goToBrand('Onitsuka')"><span>Onitsuka</span></div>
-                    <div class="brand-card" onclick="goToBrand('On Cloud')"><span>On Cloud</span></div>
-                    <div class="brand-card" onclick="goToBrand('Hoka')"><span>Hoka</span></div>
-                    <div class="brand-card" onclick="goToBrand('Salomon')"><span>Salomon</span></div>
-                    <div class="brand-card" onclick="goToBrand('Ortus')"><span>Ortus</span></div>
-                    <div class="brand-card" onclick="goToBrand('910')"><span>910</span></div>
-                    <div class="brand-card" onclick="goToBrand('Skechers')"><span>Skechers</span></div>
-                    <div class="brand-card" onclick="goToBrand('Specs')"><span>Specs</span></div>
-                    <div class="brand-card" onclick="goToBrand('Le Coq')"><span>Le Coq</span></div>
-                    <div class="brand-card" onclick="goToBrand('Saucony')"><span>Saucony</span></div>
-                    <div class="brand-card" onclick="goToBrand('Under Armor')"><span>UA</span></div>
-                    <div class="brand-card" onclick="goToBrand('No Brand')"><span>No Brand</span></div>
-                </div>
-                
-                <div style="margin-top: 30px;">
-                    <button onclick="showPage('catalog')" style="padding: 12px 30px; border:none; background:var(--primary); color:white; border-radius:50px; font-weight:700; cursor:pointer;">LIHAT SEMUA PRODUK</button>
-                </div>
-            </div>
+        <!-- HOME PAGE -->
+        <section id="page-home" class="page-view block animate-in fade-in duration-500">
+            <div class="relative bg-[#1D3557] text-white pt-16 pb-24 px-6 overflow-hidden">
+                <div class="absolute top-0 right-0 w-1/2 h-full bg-red-600/10 skew-x-12 translate-x-1/2"></div>
+                <div class="max-w-6xl mx-auto text-center relative z-10">
+                    <img src="https://placehold.co/200x200/E63946/FFFFFF?text=YS25" 
+                         class="w-28 h-28 rounded-full mx-auto border-4 border-white/20 shadow-2xl mb-4 floating object-cover" alt="Main Logo">
+                    <h1 class="text-3xl md:text-5xl font-black mb-1 uppercase tracking-tighter">Yusuf Store 25</h1>
+                    <p class="text-red-400 font-medium text-base italic mb-8">"Langkah Nyaman, Gaya Terkini"</p>
+                    
+                    <!-- 18 BRAND LOGOS GRID -->
+                    <div class="grid grid-cols-3 md:grid-cols-6 gap-2 md:gap-3 mb-12 max-w-5xl mx-auto">
+                        <!-- Row 1 -->
+                        <button onclick="window.goToBrand('Nike')" class="brand-btn rounded-xl group">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" class="invert group-hover:invert-0" alt="Nike">
+                        </button>
+                        <button onclick="window.goToBrand('Adidas')" class="brand-btn rounded-xl group">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" class="invert group-hover:invert-0" alt="Adidas">
+                        </button>
+                        <button onclick="window.goToBrand('Puma')" class="brand-btn rounded-xl group">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/8/88/Puma_Logo.png" class="invert group-hover:invert-0" alt="Puma">
+                        </button>
+                        <button onclick="window.goToBrand('NB')" class="brand-btn rounded-xl group">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/New_Balance_logo.svg" class="invert group-hover:invert-0" alt="NB">
+                        </button>
+                        <button onclick="window.goToBrand('Asics')" class="brand-btn rounded-xl group">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Asics_Logo.svg" class="invert group-hover:invert-0" alt="Asics">
+                        </button>
+                        <button onclick="window.goToBrand('Converse')" class="brand-btn rounded-xl group">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Converse_logo.svg" class="invert group-hover:invert-0" alt="Converse">
+                        </button>
 
-            <div class="location-section">
-                <h3>Lokasi Toko Kami</h3>
-                <p style="color:var(--text-gray); font-size:0.9rem; font-weight:600; margin-top:5px;">
-                    DEPAN TUGU SALAK Jln. Merdeka - Kantin, Padang Sidimpuan, Sumatera Utara
-                </p>
-                <div class="map-container">
-                    <iframe src="https://maps.google.com/maps?q=1.3759020665545012, 99.27329924966573&hl=id&z=15&output=embed" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                </div>
-            </div>
-        </section>
+                        <!-- Row 2 -->
+                        <button onclick="window.goToBrand('Onitsuka')" class="brand-btn rounded-xl group">
+                            <span class="font-bold text-[10px] tracking-widest uppercase">Onitsuka</span>
+                        </button>
+                        <button onclick="window.goToBrand('On Cloud')" class="brand-btn rounded-xl group">
+                            <span class="font-bold text-[10px] tracking-widest uppercase">On Cloud</span>
+                        </button>
+                        <button onclick="window.goToBrand('Hoka')" class="brand-btn rounded-xl group">
+                            <span class="font-bold text-[10px] tracking-widest uppercase">HOKA</span>
+                        </button>
+                        <button onclick="window.goToBrand('Salomon')" class="brand-btn rounded-xl group">
+                            <span class="font-bold text-[10px] tracking-widest uppercase">Salomon</span>
+                        </button>
+                        <button onclick="window.goToBrand('Ortus')" class="brand-btn rounded-xl group">
+                            <span class="font-bold text-[10px] tracking-widest uppercase text-red-500">Ortus</span>
+                        </button>
+                        <button onclick="window.goToBrand('910')" class="brand-btn rounded-xl group">
+                            <span class="font-bold text-[10px] tracking-widest uppercase">910</span>
+                        </button>
 
-        <!-- KATALOG -->
-        <section id="page-catalog" class="page-view">
-            <div class="catalog-container">
-                <div class="controls">
-                    <div class="search-container">
-                        <i class="fa-solid fa-search"></i>
-                        <input type="text" id="searchInput" class="search-input" placeholder="Cari barang..." onkeyup="searchProducts()">
+                        <!-- Row 3 -->
+                        <button onclick="window.goToBrand('Skechers')" class="brand-btn rounded-xl group">
+                            <span class="font-bold text-[10px] tracking-widest uppercase">Skechers</span>
+                        </button>
+                        <button onclick="window.goToBrand('Specs')" class="brand-btn rounded-xl group">
+                            <span class="font-bold text-[10px] tracking-widest uppercase">Specs</span>
+                        </button>
+                        <button onclick="window.goToBrand('Le Coq')" class="brand-btn rounded-xl group">
+                            <span class="font-bold text-[10px] tracking-widest uppercase">Le Coq</span>
+                        </button>
+                        <button onclick="window.goToBrand('Saucony')" class="brand-btn rounded-xl group">
+                            <span class="font-bold text-[10px] tracking-widest uppercase">Saucony</span>
+                        </button>
+                        <button onclick="window.goToBrand('Under Armor')" class="brand-btn rounded-xl group">
+                            <span class="font-bold text-[10px] tracking-widest uppercase">UA</span>
+                        </button>
+                        <button onclick="window.goToBrand('No Brand')" class="brand-btn rounded-xl group">
+                            <span class="font-bold text-[10px] tracking-widest uppercase opacity-50">Lainnya</span>
+                        </button>
                     </div>
-                    <div class="filter-group">
-                        <button class="btn-filter active" onclick="setFilter('all')">SEMUA</button>
-                        <button class="btn-filter" onclick="setFilter('running')">RUNNING</button>
-                        <button class="btn-filter" onclick="setFilter('casual')">CASUAL</button>
-                        <button class="btn-filter" onclick="setFilter('futsal')">FUTSAL</button>
-                        <button class="btn-filter" onclick="setFilter('kaos')">KAOS</button>
-                        <button class="btn-filter" onclick="setFilter('jamtangan')">JAM TANGAN</button>
-                    </div>
+                    
+                    <button onclick="window.showPage('catalog')" class="bg-red-600 hover:bg-red-700 text-white px-10 py-4 rounded-full font-bold text-lg shadow-xl transition-all transform hover:scale-105 active:scale-95">
+                        LIHAT SEMUA KATALOG <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </button>
                 </div>
-                <div id="loadingKatalog" style="text-align:center; padding: 50px;">
-                    <i class="fa-solid fa-spinner fa-spin fa-2xl" style="color:var(--primary)"></i>
-                    <p style="margin-top:15px;">Memuat koleksi produk...</p>
-                </div>
-                <div class="products-grid" id="productGrid"></div>
             </div>
-        </section>
 
-        <!-- ADMIN PANEL -->
-        <section id="page-admin" class="page-view">
-            <div class="admin-view">
-                <h2 style="text-align:center; margin-bottom:25px;">Panel Kelola Toko</h2>
-                <div class="admin-card">
-                    <h4>Tambah Barang Baru</h4>
-                    <div class="form-row">
-                        <div class="form-group"><label>Nama Barang</label><input type="text" id="admin-name" placeholder="Adidas Ultra Boost"></div>
-                        <div class="form-group">
-                            <label>Kategori</label>
-                            <select id="admin-category">
-                                <option value="running">Running</option>
-                                <option value="casual">Casual</option>
-                                <option value="futsal">Futsal</option>
-                                <option value="kaos">Kaos</option>
-                                <option value="jamtangan">Jam Tangan</option>
-                            </select>
+            <!-- Map Section -->
+            <div class="max-w-7xl mx-auto px-6 -mt-12 relative z-20 pb-20">
+                <div class="bg-white rounded-3xl p-6 shadow-2xl flex flex-col md:flex-row gap-8">
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-bold mb-2">Kunjungi Store Kami</h3>
+                        <p class="text-slate-500 text-sm mb-4"><i class="fa-solid fa-location-dot text-red-600 mr-2"></i>DEPAN TUGU SALAK, Padang Sidimpuan, Sumatera Utara</p>
+                        <div class="h-64 md:h-full bg-slate-100 rounded-2xl overflow-hidden shadow-inner border border-slate-200">
+                            <iframe src="https://maps.google.com/maps?q=1.3759020665545012, 99.27329924966573&hl=id&z=15&output=embed" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                         </div>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group"><label>Harga</label><input type="number" id="admin-price" placeholder="350000"></div>
-                        <div class="form-group">
-                            <label>Tipe Harga</label>
-                            <select id="admin-original">
-                                <option value="true">Harga Situs Resmi</option>
-                                <option value="false">Bisa Nego</option>
-                            </select>
+                    <div class="md:w-1/3 flex flex-col justify-center">
+                        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                            <h4 class="font-bold mb-4 flex items-center"><i class="fa-solid fa-clock text-blue-600 mr-2"></i>Jam Operasional</h4>
+                            <div class="space-y-2 text-sm">
+                                <p class="flex justify-between"><span>Senin - Sabtu</span> <span>11:00 - 22:30</span></p>
+                                <p class="flex justify-between"><span>Minggu</span> <span>13:00 - 22:30</span></p>
+                            </div>
+                            <hr class="my-4">
+                            <p class="text-xs text-slate-400 italic">"Langkah Nyaman dimulai dari Yusuf Store 25"</p>
                         </div>
                     </div>
-                    <div class="form-group" style="margin-bottom:15px;"><label>Link Foto</label><input type="text" id="admin-img" placeholder="sepatu6.jpg"></div>
-                    <button class="btn-add" onclick="addProductToCloud()">Simpan ke Cloud <i class="fa-solid fa-cloud-arrow-up"></i></button>
                 </div>
             </div>
         </section>
 
-        <!-- HALAMAN LAIN -->
-        <section id="page-ongkir" class="page-view">
-            <div class="ongkir-container">
-                <h2 style="text-align:center; margin-bottom:20px;">Cek Ongkos Kirim</h2>
-                <div class="ongkir-card">
-                    <div class="form-group"><label>Asal: Padang Sidimpuan</label></div>
-                    <div class="form-group"><label>Kota Tujuan</label><input type="text" id="dest-city" placeholder="Nama Kota/Kecamatan..."></div>
-                    <div class="form-group"><label>Kurir</label><select id="courier-type"><option value="JNE">JNE</option><option value="J&T">J&T</option><option value="Sicepat">Sicepat</option></select></div>
-                    <button class="btn-cek" onclick="handleCekOngkir()">Tanya Admin via WA</button>
+        <!-- CATALOG PAGE -->
+        <section id="page-catalog" class="page-view hidden py-10 px-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col md:flex-row gap-6 mb-10 items-center justify-between">
+                    <div class="relative w-full md:w-80">
+                        <i class="fa-solid fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                        <input type="text" id="searchInput" onkeyup="window.searchProducts()" placeholder="Cari brand atau tipe..." class="w-full pl-12 pr-4 py-3 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm transition-all">
+                    </div>
+                    
+                    <div class="flex gap-2 overflow-x-auto w-full md:w-auto pb-2 filter-group no-scrollbar">
+                        <button onclick="window.setFilter('all')" class="filter-btn active bg-blue-900 text-white px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap">SEMUA</button>
+                        <button onclick="window.setFilter('running')" class="filter-btn bg-white border border-slate-200 px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap">RUNNING</button>
+                        <button onclick="window.setFilter('casual')" class="filter-btn bg-white border border-slate-200 px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap">CASUAL</button>
+                        <button onclick="window.setFilter('futsal')" class="filter-btn bg-white border border-slate-200 px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap">FUTSAL</button>
+                        <button onclick="window.setFilter('kaos')" class="filter-btn bg-white border border-slate-200 px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap">APPAREL</button>
+                    </div>
+                </div>
+
+                <div id="loadingKatalog" class="text-center py-20">
+                    <i class="fa-solid fa-spinner fa-spin text-4xl text-blue-900 mb-4"></i>
+                    <p class="font-medium">Memuat koleksi original...</p>
+                </div>
+
+                <div id="productGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-8">
+                    <!-- Products will be injected here -->
                 </div>
             </div>
         </section>
 
-        <section id="page-info" class="page-view">
-            <div class="info-container">
-                <div class="size-guide-header"><h2>Panduan Ukuran Sepatu</h2></div>
-                <div class="size-table-wrapper">
-                    <table class="size-table">
-                        <thead><tr><th>EU</th><th>UK</th><th>US</th><th>CM (Panjang Kaki)</th></tr></thead>
-                        <tbody>
-                            <tr><td>39</td><td>6</td><td>7</td><td>24.5</td></tr>
-                            <tr><td>40</td><td>6.5</td><td>7.5</td><td>25.0</td></tr>
-                            <tr><td>41</td><td>7</td><td>8</td><td>25.5</td></tr>
-                            <tr><td>42</td><td>8</td><td>9</td><td>26.5</td></tr>
-                            <tr><td>43</td><td>9</td><td>10</td><td>27.5</td></tr>
-                            <tr><td>44</td><td>9.5</td><td>10.5</td><td>28.0</td></tr>
+        <!-- ONGKIR PAGE -->
+        <section id="page-ongkir" class="page-view hidden py-20 px-6 max-w-2xl mx-auto">
+            <div class="bg-white rounded-3xl p-8 shadow-2xl border border-slate-100">
+                <div class="text-center mb-10">
+                    <div class="w-20 h-20 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
+                        <i class="fa-solid fa-box-open"></i>
+                    </div>
+                    <h2 class="text-3xl font-black text-blue-900">Cek Ongkos Kirim</h2>
+                    <p class="text-slate-500">Kalkulasi biaya pengiriman dari Padang Sidimpuan</p>
+                </div>
+                
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-400 mb-2">Asal Pengiriman</label>
+                        <input type="text" value="Padang Sidimpuan (Store)" disabled class="w-full p-4 rounded-xl bg-slate-50 border border-slate-100 text-slate-500 font-medium">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-400 mb-2">Kota Tujuan</label>
+                        <input type="text" id="dest-city" placeholder="Contoh: Medan, Jakarta, atau Sibolga" class="w-full p-4 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-400 mb-2">Pilih Kurir</label>
+                        <select id="courier-type" class="w-full p-4 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none bg-white">
+                            <option value="JNE">JNE (Reguler/YES)</option>
+                            <option value="J&T">J&T Express</option>
+                            <option value="Sicepat">SiCepat</option>
+                            <option value="Kargo">Kargo (Untuk Grosir)</option>
+                        </select>
+                    </div>
+                    <button onclick="window.handleCekOngkir()" class="w-full bg-[#25D366] text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-green-600 transition shadow-lg">
+                        <i class="fa-brands fa-whatsapp text-xl"></i> TANYA ADMIN ONGKIR
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SIZE GUIDE PAGE -->
+        <section id="page-info" class="page-view hidden py-20 px-6 max-w-4xl mx-auto">
+            <div class="bg-white rounded-3xl p-8 shadow-2xl border border-slate-100">
+                <h2 class="text-3xl font-black text-blue-900 mb-8 text-center uppercase tracking-tighter">Size Guide Table</h2>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-blue-900 text-white">
+                                <th class="p-4 rounded-tl-xl font-bold">EU</th>
+                                <th class="p-4 font-bold">UK</th>
+                                <th class="p-4 font-bold">US</th>
+                                <th class="p-4 rounded-tr-xl font-bold">CM (Panjang Kaki)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm">
+                            <tr class="border-b bg-slate-50"><td class="p-4 font-bold text-red-600">39</td><td class="p-4">6</td><td class="p-4">7</td><td class="p-4">24.5 cm</td></tr>
+                            <tr class="border-b"><td class="p-4 font-bold text-red-600">40</td><td class="p-4">6.5</td><td class="p-4">7.5</td><td class="p-4">25.0 cm</td></tr>
+                            <tr class="border-b bg-slate-50"><td class="p-4 font-bold text-red-600">41</td><td class="p-4">7</td><td class="p-4">8</td><td class="p-4">25.5 cm</td></tr>
+                            <tr class="border-b"><td class="p-4 font-bold text-red-600">42</td><td class="p-4">8</td><td class="p-4">9</td><td class="p-4">26.5 cm</td></tr>
+                            <tr class="border-b bg-slate-50"><td class="p-4 font-bold text-red-600">43</td><td class="p-4">9</td><td class="p-4">10</td><td class="p-4">27.5 cm</td></tr>
+                            <tr class="border-b"><td class="p-4 font-bold text-red-600">44</td><td class="p-4">9.5</td><td class="p-4">10.5</td><td class="p-4">28.0 cm</td></tr>
                         </tbody>
                     </table>
+                </div>
+                <div class="mt-8 p-4 bg-yellow-50 rounded-xl border border-yellow-100">
+                    <p class="text-xs text-yellow-800 leading-relaxed">
+                        <i class="fa-solid fa-circle-info mr-1"></i> <strong>Tips:</strong> Untuk sepatu lari (running), disarankan menambah 0.5 - 1 cm dari panjang kaki asli Anda agar jempol tidak mentok saat digunakan berlari.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ADMIN PAGE -->
+        <section id="page-admin" class="page-view hidden py-20 px-6 max-w-2xl mx-auto">
+            <div class="bg-white rounded-3xl p-8 shadow-2xl border-4 border-dashed border-slate-200">
+                <h2 class="text-2xl font-black mb-8 text-center text-red-600"><i class="fa-solid fa-user-shield mr-2"></i>ADMIN PANEL</h2>
+                <div class="space-y-4">
+                    <div class="grid grid-cols-2 gap-4">
+                        <input type="text" id="admin-name" placeholder="Nama Barang" class="p-4 rounded-xl border bg-slate-50 focus:ring-2 focus:ring-red-500 outline-none">
+                        <select id="admin-category" class="p-4 rounded-xl border bg-slate-50 outline-none">
+                            <option value="running">Running</option>
+                            <option value="casual">Casual</option>
+                            <option value="futsal">Futsal</option>
+                            <option value="kaos">Apparel</option>
+                        </select>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <input type="number" id="admin-price" placeholder="Harga (Contoh: 350000)" class="p-4 rounded-xl border bg-slate-50 focus:ring-2 focus:ring-red-500 outline-none">
+                        <select id="admin-original" class="p-4 rounded-xl border bg-slate-50 outline-none">
+                            <option value="true">Harga Fix (Sesuai Web)</option>
+                            <option value="false">Harga Nego (Promo)</option>
+                        </select>
+                    </div>
+                    <input type="text" id="admin-img" placeholder="URL Gambar (Direct Link)" class="w-full p-4 rounded-xl border bg-slate-50 focus:ring-2 focus:ring-red-500 outline-none">
+                    <button onclick="window.addProductToCloud()" class="w-full bg-red-600 text-white py-4 rounded-xl font-bold hover:bg-red-700 shadow-lg transition-colors">
+                        PUBLIKASIKAN KE KATALOG <i class="fa-solid fa-cloud-arrow-up ml-2"></i>
+                    </button>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4>Yusuf Store 25</h4>
-                <div class="footer-socials">
-                    <a href="https://instagram.com/yusufstore_25" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://wa.me/6281375861195" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+    <footer class="bg-[#1D3557] text-white pt-20 pb-10 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div>
+                <h4 class="text-xl font-bold mb-6">Yusuf Store 25</h4>
+                <p class="text-slate-400 text-sm leading-loose">Destinasi utama pencari sepatu original di Padang Sidimpuan. Kami berkomitmen menyediakan produk 100% otentik dengan harga bersaing dan pelayanan ramah.</p>
+                <div class="flex gap-4 mt-6">
+                    <a href="https://instagram.com/yusufstore_25" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-red-500 transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://wa.me/6281375861195" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-green-500 transition"><i class="fa-brands fa-whatsapp"></i></a>
                 </div>
             </div>
-            <div class="footer-col">
-                <h4>Link Cepat</h4>
-                <ul><li onclick="showPage('home')">Beranda</li><li onclick="showPage('catalog')">Katalog</li></ul>
+            <div>
+                <h4 class="text-xl font-bold mb-6">Navigasi</h4>
+                <ul class="space-y-3 text-slate-400 text-sm">
+                    <li><button onclick="window.showPage('home')">Beranda</button></li>
+                    <li><button onclick="window.showPage('catalog')">Katalog Produk</button></li>
+                    <li><button onclick="window.showPage('ongkir')">Kalkulasi Ongkir</button></li>
+                    <li><button onclick="window.showPage('info')">Size Guide</button></li>
+                </ul>
             </div>
-            <div class="footer-col">
-                <h4>Hubungi Kami</h4>
-                <p>DEPAN TUGU SALAK, Padang Sidimpuan.</p>
-                <div class="payment-methods">
-                    <span class="pay-badge">BCA</span><span class="pay-badge">BNI</span><span class="pay-badge">BRI</span><span class="pay-badge">Mandiri</span>
+            <div>
+                <h4 class="text-xl font-bold mb-6">Metode Pembayaran</h4>
+                <div class="flex flex-wrap gap-2 mb-8">
+                    <span class="px-3 py-1 bg-white text-blue-900 rounded font-bold text-[10px]">BCA</span>
+                    <span class="px-3 py-1 bg-white text-orange-600 rounded font-bold text-[10px]">BNI</span>
+                    <span class="px-3 py-1 bg-white text-blue-700 rounded font-bold text-[10px]">BRI</span>
+                    <span class="px-3 py-1 bg-white text-blue-500 rounded font-bold text-[10px]">MANDIRI</span>
+                    <span class="px-3 py-1 bg-white text-slate-900 rounded font-bold text-[10px]">COD</span>
                 </div>
-                <button onclick="adminLogin()" style="background:none; border:1px solid #444; color:#666; font-size:0.7rem; padding:5px 10px; border-radius:4px; cursor:pointer; margin-top:15px;">Admin</button>
+                <button onclick="window.adminLogin()" class="text-[10px] text-slate-500 hover:text-white border border-slate-700 px-3 py-1 rounded">Admin Login</button>
             </div>
+        </div>
+        <div class="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/5 text-center">
+            <p class="text-slate-500 text-xs">&copy; 2025 Yusuf Store 25. All Rights Reserved. Built for Original Lovers.</p>
         </div>
     </footer>
 
-    <div id="imgModal" class="modal">
-        <span class="close-modal" onclick="closeModal()">&times;</span>
-        <img class="modal-content" id="modalImg">
+    <!-- Image Modal -->
+    <div id="imgModal" class="fixed inset-0 z-[100] bg-black/95 hidden items-center justify-center p-4" onclick="window.closeModal()">
+        <button class="absolute top-6 right-6 text-white text-4xl">&times;</button>
+        <img id="modalImg" src="" class="max-w-full max-h-[85vh] rounded-lg shadow-2xl scale-95 transition-transform">
     </div>
 
-    <!-- FIREBASE INTEGRATION -->
+    <!-- Firebase SDK & Logic -->
     <script type="module">
         import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js';
         import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js';
         import { getFirestore, collection, addDoc, onSnapshot, deleteDoc, doc, setDoc } from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js';
 
+        // Initialization
         const firebaseConfig = JSON.parse(__firebase_config);
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
@@ -458,56 +427,100 @@
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'yusuf-store-25';
 
         let user = null;
-        let productsCloud = [];
         let isAdmin = false;
+        let productsCloud = [];
         window.currentFilter = 'all';
 
-        // DATA BARU: Adidas Ultra Boost & Adidas Adizero
-        const fallbackProducts = [
-            { id: 'f1', name: "Adidas Ultra Boost Size 42", category: "running", price: 350000, sold: false, isOriginal: false, img: "sepatu6.jpg" },
-            { id: 'f2', name: "Adidas Adizero Pro 4 Size 39", category: "running", price: 380000, sold: false, isOriginal: false, img: "sepatu7.jpg" },
-            { id: 'f3', name: "Nike Pegasus 40", category: "running", price: 1500000, sold: false, isOriginal: true, img: "https://placehold.co/600x600/1d3557/fff?text=Nike" }
-        ];
+        // --- GLOBAL FUNCTIONS ---
 
-        const initAuth = async () => {
-            try {
-                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                    await signInWithCustomToken(auth, __initial_auth_token);
-                } else {
-                    await signInAnonymously(auth);
-                }
-            } catch (err) { console.error("Auth error:", err); }
+        window.showPage = (pageId) => {
+            document.querySelectorAll('.page-view').forEach(p => p.classList.add('hidden'));
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            
+            const activePage = document.getElementById(`page-${pageId}`);
+            if(activePage) activePage.classList.remove('hidden');
+            
+            const activeLink = document.getElementById(`link-${pageId}`);
+            if(activeLink) activeLink.classList.add('active');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         };
 
-        onAuthStateChanged(auth, (u) => {
-            user = u;
-            if (user) startProductListener();
-        });
+        window.toggleMobileMenu = () => {
+            const overlay = document.getElementById('mobile-overlay');
+            const icon = document.getElementById('menu-icon');
+            const isHidden = overlay.classList.contains('hidden');
+            
+            if(isHidden) {
+                overlay.classList.remove('hidden');
+                overlay.classList.add('flex');
+                icon.className = 'fa-solid fa-times';
+            } else {
+                overlay.classList.add('hidden');
+                overlay.classList.remove('flex');
+                icon.className = 'fa-solid fa-bars';
+            }
+        };
 
-        initAuth();
-
-        function startProductListener() {
-            if (!user) return;
-            const productCollection = collection(db, 'artifacts', appId, 'public', 'data', 'products');
-            onSnapshot(productCollection, (snapshot) => {
-                const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-                // Jika data Cloud kosong, gunakan data baru sebagai contoh
-                productsCloud = data.length > 0 ? data : fallbackProducts;
-                const loadingElem = document.getElementById('loadingKatalog');
-                if (loadingElem) loadingElem.style.display = 'none';
-                renderProducts(productsCloud);
-            }, (err) => {
-                console.error("Firestore error:", err);
-                renderProducts(fallbackProducts);
+        window.setFilter = (cat) => {
+            window.currentFilter = cat;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                const btnText = btn.innerText.toLowerCase();
+                if(btnText === cat || (cat === 'all' && btnText === 'semua')) {
+                    btn.className = 'filter-btn active bg-blue-900 text-white px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap';
+                } else {
+                    btn.className = 'filter-btn bg-white border border-slate-200 px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap';
+                }
             });
-        }
+            renderProducts(productsCloud);
+        };
+
+        window.searchProducts = () => renderProducts(productsCloud);
+
+        window.goToBrand = (brand) => {
+            window.showPage('catalog');
+            const searchInput = document.getElementById('searchInput');
+            if(searchInput) {
+                searchInput.value = brand;
+                renderProducts(productsCloud);
+            }
+        };
+
+        window.handleCekOngkir = () => {
+            const dest = document.getElementById('dest-city').value;
+            const courier = document.getElementById('courier-type').value;
+            if(!dest) return alert("Tuliskan kota tujuan pengiriman.");
+            const msg = `Halo Yusuf Store 25, saya mau cek ongkir ke ${dest} menggunakan kurir ${courier}. Barang yang saya incar di katalog adalah: `;
+            window.open(`https://wa.me/6281375861195?text=${encodeURIComponent(msg)}`, '_blank');
+        };
+
+        window.openModal = (src) => {
+            const modal = document.getElementById('imgModal');
+            const modalImg = document.getElementById('modalImg');
+            modalImg.src = src;
+            modal.classList.remove('hidden');
+            modal.classList.add('modal-active');
+            setTimeout(() => modalImg.style.transform = 'scale(1)', 10);
+        };
+
+        window.closeModal = () => {
+            const modal = document.getElementById('imgModal');
+            document.getElementById('modalImg').style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('modal-active');
+            }, 200);
+        };
 
         window.adminLogin = () => {
-            if(prompt("Masukkan PIN Admin:") === "2525") {
+            const pin = prompt("🔐 Masukkan PIN Otoritas Admin:");
+            if(pin === "2525") {
                 isAdmin = true;
-                alert("Mode Admin Aktif!");
-                showPage('admin');
-            } else { alert("PIN Salah!"); }
+                alert("🔓 Selamat Datang Yusuf! Mode Admin Aktif.");
+                window.showPage('admin');
+            } else {
+                alert("❌ Akses Ditolak!");
+            }
         };
 
         window.addProductToCloud = async () => {
@@ -518,111 +531,110 @@
             const isOrig = document.getElementById('admin-original').value === "true";
             const img = document.getElementById('admin-img').value;
 
-            if(!name || !price || !img) return alert("Isi semua data!");
+            if(!name || !price || !img) return alert("⚠️ Mohon lengkapi semua data!");
 
             try {
                 await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'products'), {
-                    name, category: cat, price, isOriginal: isOrig, img, sold: false, createdAt: Date.now()
+                    name, category: cat, price, isOriginal: isOrig, img, sold: false, timestamp: Date.now()
                 });
-                alert("Berhasil!");
-                showPage('catalog');
-            } catch (e) { alert("Gagal!"); }
+                alert("✅ Produk berhasil ditambahkan!");
+                window.showPage('catalog');
+                document.getElementById('admin-name').value = '';
+                document.getElementById('admin-price').value = '';
+                document.getElementById('admin-img').value = '';
+            } catch (e) {
+                alert("❌ Gagal menyimpan. Periksa koneksi.");
+            }
         };
 
         window.deleteProduct = async (id) => {
             if(!isAdmin || !user) return;
-            if(confirm("Hapus barang?")) {
+            if(confirm("Hapus permanen barang ini dari katalog?")) {
                 await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'products', id));
             }
         };
 
-        window.toggleSold = async (id, currentStatus) => {
+        window.toggleSoldStatus = async (id, currentStatus) => {
             if(!isAdmin || !user) return;
             await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'products', id), {
                 sold: !currentStatus
             }, { merge: true });
         };
 
-        function renderProducts(data) {
+        // --- CORE LOGIC ---
+
+        const renderProducts = (data) => {
             const grid = document.getElementById('productGrid');
             if(!grid) return;
-            
+
             const queryVal = (document.getElementById('searchInput')?.value || "").toLowerCase();
-            const filterVal = window.currentFilter || 'all';
-            
+            const filterVal = window.currentFilter;
+
             const filtered = data.filter(p => {
                 const matchCat = filterVal === 'all' || p.category === filterVal;
                 const matchSearch = p.name.toLowerCase().includes(queryVal);
                 return matchCat && matchSearch;
             });
 
-            grid.innerHTML = filtered.map(p => {
-                let info = p.isOriginal ? "Harga Situs Resmi" : "Harga masih bisa nego chat admin";
-                return `
-                <div class="product-card ${p.sold ? 'is-sold' : ''}">
-                    ${isAdmin ? `<button class="btn-delete" onclick="deleteProduct('${p.id}')">Hapus</button>` : ''}
-                    ${isAdmin ? `<button class="btn-ms" onclick="toggleSold('${p.id}', ${p.sold})">S/A</button>` : ''}
-                    <div class="img-box" onclick="openModal('${p.img}')">
-                        <img src="${p.img}" alt="${p.name}" onerror="this.src='https://placehold.co/400x400?text=Gambar+Error'">
-                        ${p.sold ? '<span class="badge-sold">SOLDOUT</span>' : ''}
+            grid.innerHTML = filtered.length > 0 ? filtered.map(p => `
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-sm relative border border-slate-100 flex flex-col ${p.sold ? 'is-sold' : ''}">
+                    ${isAdmin ? `
+                        <div class="absolute top-2 left-2 z-20 flex gap-1">
+                            <button onclick="window.deleteProduct('${p.id}')" class="bg-black/70 text-white w-7 h-7 rounded-full text-[10px] flex items-center justify-center"><i class="fa-solid fa-trash"></i></button>
+                            <button onclick="window.toggleSoldStatus('${p.id}', ${p.sold})" class="bg-orange-500 text-white w-7 h-7 rounded-full text-[10px] flex items-center justify-center"><i class="fa-solid fa-tag"></i></button>
+                        </div>
+                    ` : ''}
+                    
+                    <div class="relative aspect-square bg-slate-100 overflow-hidden cursor-zoom-in" onclick="window.openModal('${p.img}')">
+                        <img src="${p.img}" class="w-full h-full object-cover" alt="${p.name}" onerror="this.src='https://placehold.co/400x400?text=Sepatu+Original'">
+                        ${p.sold ? '<div class="absolute inset-0 bg-black/40 flex items-center justify-center"><span class="bg-red-600 text-white px-3 py-1 rounded text-[10px] font-black italic">SOLD OUT</span></div>' : ''}
                     </div>
-                    <div class="p-info">
-                        <h3 class="p-name">${p.name}</h3>
-                        <p class="p-price">Rp ${p.price.toLocaleString('id-ID')}</p>
-                        ${!p.sold ? `<span class="p-pricing-info">${info}</span>` : '<span class="p-pricing-info" style="visibility:hidden">.</span>'}
-                        <a href="${p.sold ? '#' : 'https://wa.me/6281375861195?text=Halo Yusuf Store 25, saya tertarik dengan ' + p.name}" 
-                           target="_blank" class="btn-wa ${p.sold ? 'disabled' : ''}">
-                            ${p.sold ? 'SOLDOUT' : 'BELI VIA WA'}
+
+                    <div class="p-3 md:p-4 flex flex-col flex-grow">
+                        <h3 class="font-bold text-xs md:text-sm line-clamp-2 mb-1 h-10 leading-snug">${p.name}</h3>
+                        <p class="text-red-600 font-black text-sm md:text-base mb-1">Rp ${p.price.toLocaleString('id-ID')}</p>
+                        <p class="text-[9px] text-green-600 font-semibold mb-4 italic">
+                            ${p.sold ? '-' : (p.isOriginal ? '<i class="fa-solid fa-check-circle"></i> Harga Situs Resmi' : '<i class="fa-solid fa-tags"></i> Promo - Bisa Nego')}
+                        </p>
+                        
+                        <a href="${p.sold ? '#' : 'https://wa.me/6281375861195?text=' + encodeURIComponent('Halo Yusuf Store 25, saya ingin membeli ' + p.name)}" 
+                           target="_blank" 
+                           class="mt-auto w-full py-2 rounded-lg text-center text-[10px] md:text-xs font-bold transition ${p.sold ? 'bg-slate-200 text-slate-400 cursor-not-allowed' : 'bg-[#25D366] text-white hover:bg-green-600 shadow-md'}">
+                            ${p.sold ? 'TERJUAL' : 'ORDER VIA WA'}
                         </a>
                     </div>
                 </div>
-                `;
-            }).join('');
-        }
-
-        window.showPage = (pageId) => {
-            document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
-            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-            document.getElementById(`page-${pageId}`).classList.add('active');
-            document.getElementById(`link-${pageId}`)?.classList.add('active');
-            if (pageId === 'catalog') renderProducts(productsCloud);
-            window.scrollTo(0, 0);
+            `).join('') : '<div class="col-span-full py-20 text-center text-slate-400 font-medium">Produk tidak ditemukan...</div>';
         };
 
-        window.setFilter = (cat) => {
-            window.currentFilter = cat;
-            document.querySelectorAll('.btn-filter').forEach(b => {
-                const btnText = b.innerText.toLowerCase();
-                b.classList.toggle('active', btnText === cat || (cat === 'all' && btnText === 'semua'));
+        const startListener = () => {
+            if(!user) return;
+            const prodColl = collection(db, 'artifacts', appId, 'public', 'data', 'products');
+            onSnapshot(prodColl, (snap) => {
+                productsCloud = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+                productsCloud.sort((a,b) => (b.timestamp || 0) - (a.timestamp || 0));
+                
+                const loader = document.getElementById('loadingKatalog');
+                if(loader) loader.style.display = 'none';
+                renderProducts(productsCloud);
             });
-            renderProducts(productsCloud);
         };
 
-        window.searchProducts = () => { renderProducts(productsCloud); };
-        window.goToBrand = (brand) => {
-            showPage('catalog');
-            document.getElementById('searchInput').value = brand;
-            renderProducts(productsCloud);
-        };
-
-        window.openModal = (src) => {
-            const modal = document.getElementById('imgModal');
-            const modalImg = document.getElementById('modalImg');
-            if (modal && modalImg) {
-                modalImg.src = src;
-                modal.style.display = "flex";
+        const initAuth = async () => {
+            if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                await signInWithCustomToken(auth, __initial_auth_token);
+            } else {
+                await signInAnonymously(auth);
             }
         };
-        window.closeModal = () => { if (document.getElementById('imgModal')) document.getElementById('imgModal').style.display = "none"; };
-        window.onclick = (e) => { if (e.target == document.getElementById('imgModal')) closeModal(); };
 
-        window.handleCekOngkir = () => {
-            const dest = document.getElementById('dest-city').value;
-            const courier = document.getElementById('courier-type').value;
-            if(!dest) return alert("Masukkan kota tujuan.");
-            const msg = `Halo Yusuf Store 25, cek ongkir:\n📍 Dari: Padang Sidimpuan\n🚩 Tujuan: ${dest}\n📦 Kurir: ${courier}`;
-            window.open(`https://wa.me/6281375861195?text=${encodeURIComponent(msg)}`, '_blank');
-        };
+        onAuthStateChanged(auth, (u) => {
+            user = u;
+            if(user) startListener();
+        });
+
+        initAuth();
+        window.showPage('home');
     </script>
 </body>
 </html>
