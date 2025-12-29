@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yusuf_Store 25 | Sepatu & Apparel Original</title>
+    
+    <!-- SEO & Fonts -->
+    <meta name="description" content="Pusat sepatu original lengkap di Padang Sidimpuan.">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        :root {
+            --primary: #E63946;
+            --secondary: #1D3557;
+            --bg-light: #F8FAFC;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            scroll-behavior: smooth;
+        }
+
+        .nav-link.active {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .page-view {
+            display: none;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        .page-view.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .brand-btn {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .brand-btn:hover {
+            background: white;
+            color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        
+        /* Menjamin area navigasi tidak menutupi konten di bawahnya secara berlebihan */
+        nav { pointer-events: auto !important; }
+        .page-view { pointer-events: auto !important; }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <!-- Top Bar -->
+    <div class="bg-[#1D3557] text-white py-2 px-6 text-[10px] md:text-xs flex justify-between items-center sticky top-0 z-[100]">
+        <span><i class="fa-regular fa-clock mr-1"></i> 11.00 - 22.30 WIB</span>
+        <span class="hidden sm:inline"><i class="fa-solid fa-truck-fast mr-1"></i> Melayani Seluruh Indonesia</span>
+        <div class="flex gap-4">
+            <a href="https://instagram.com/yusufstore_25" target="_blank" class="hover:text-red-400"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://wa.me/6281375861195" target="_blank" class="hover:text-green-400"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-[32px] md:top-[36px] z-[90] py-3 px-6">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="window.showPage('home')">
+                <img src="https://placehold.co/100x100/E63946/FFFFFF?text=YS25" class="w-10 h-10 rounded-full border-2 border-red-500" alt="Logo">
+                <span class="font-bold text-lg text-[#1D3557] tracking-tight">Yusuf Store 25</span>
+            </div>
+
+            <!-- Desktop Menu -->
+            <ul class="hidden md:flex gap-8 font-semibold text-sm">
+                <li><button type="button" onclick="window.showPage('home')" id="link-home" class="nav-link active pb-1 outline-none">Beranda</button></li>
+                <li><button type="button" onclick="window.showPage('catalog')" id="link-catalog" class="nav-link pb-1 outline-none">Katalog</button></li>
+                <li><button type="button" onclick="window.showPage('ongkir')" id="link-ongkir" class="nav-link pb-1 outline-none">Cek Ongkir</button></li>
+                <li><button type="button" onclick="window.showPage('info')" id="link-info" class="nav-link pb-1 outline-none">Size Guide</button></li>
+            </ul>
+
+            <!-- Mobile Hamburger Toggle -->
+            <button type="button" class="md:hidden text-2xl outline-none" onclick="window.toggleMobileMenu()">
+                <i id="menu-icon" class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white border-t shadow-xl flex-col p-6 gap-4 font-bold md:hidden">
+            <button type="button" onclick="window.showPage('home'); window.toggleMobileMenu()" class="text-left py-2 border-b outline-none">Beranda</button>
+            <button type="button" onclick="window.showPage('catalog'); window.toggleMobileMenu()" class="text-left py-2 border-b outline-none">Katalog</button>
+            <button type="button" onclick="window.showPage('ongkir'); window.toggleMobileMenu()" class="text-left py-2 border-b outline-none">Cek Ongkir</button>
+            <button type="button" onclick="window.showPage('info'); window.toggleMobileMenu()" class="text-left py-2 outline-none">Size Guide</button>
+        </div>
+    </nav>
+
+    <main id="main-content" class="relative z-10">
+        <!-- HOME PAGE -->
+        <section id="page-home" class="page-view active">
+            <div class="bg-[#1D3557] text-white pt-16 pb-24 px-6 text-center">
+                <div class="max-w-4xl mx-auto">
+                    <img src="https://placehold.co/200x200/E63946/FFFFFF?text=YS25" class="w-24 h-24 rounded-full mx-auto border-4 border-white/20 mb-6 shadow-2xl" alt="Main Logo">
+                    <h1 class="text-4xl md:text-6xl font-black mb-2 uppercase">Yusuf Store 25</h1>
+                    <p class="text-red-400 font-medium mb-12 italic text-lg">"Langkah Nyaman, Gaya Terkini"</p>
+                    
+                    <!-- 18 BRAND GRID -->
+                    <div class="grid grid-cols-3 md:grid-cols-6 gap-3 mb-12">
+                        <button type="button" onclick="window.goToBrand('Nike')" class="brand-btn p-4 rounded-xl text-xs font-bold outline-none">NIKE</button>
+                        <button type="button" onclick="window.goToBrand('Adidas')" class="brand-btn p-4 rounded-xl text-xs font-bold outline-none">ADIDAS</button>
+                        <button type="button" onclick="window.goToBrand('Puma')" class="brand-btn p-4 rounded-xl text-xs font-bold outline-none">PUMA</button>
+                        <button type="button" onclick="window.goToBrand('NB')" class="brand-btn p-4 rounded-xl text-xs font-bold outline-none">NB</button>
+                        <button type="button" onclick="window.goToBrand('Asics')" class="brand-btn p-4 rounded-xl text-xs font-bold outline-none">ASICS</button>
+                        <button type="button" onclick="window.goToBrand('Converse')" class="brand-btn p-4 rounded-xl text-xs font-bold outline-none">CONVERSE</button>
+                        <button type="button" onclick="window.goToBrand('Onitsuka')" class="brand-btn p-4 rounded-xl text-xs font-bold outline-none">ONITSUKA</button>
+                        <button type="button" onclick="window.goToBrand('On Cloud')" class="brand-btn p-4 rounded-xl text-xs font-bold outline-none">ON CLOUD</button>
+                        <button type="button" onclick="window.goToBrand('Hoka')" class="brand-btn p-4 rounded-xl text-xs font-bold outline-none">HOKA</button>
+                        <button type="button" onclick="window.goToBrand('Salomon')" class="brand-btn p-4 rounded-xl text-xs font-bold outline-none">SALOMON</button>
+                        <button type="button" onclick="window.goToBrand('Ortus')" class="brand-btn p-4 rounded-xl text-xs font-bold outline-none">ORTUS</button>
+                        <button type="button" onclick="window.goToBrand('910')" class="brand-btn p-4 rounded-xl text-xs font-bold outline-none">910</button>
+                        <button type="button" onclick="window.goToBrand('Skechers')" class="brand-btn p-4 rounded-xl text-xs font-bold outline-none">SKECHERS</button>
+                        <button type="button" onclick="window.goToBrand('Specs')" class="brand-btn p-4 rounded-xl text-xs font-bold outline-none">SPECS</button>
+                        <button type="button" onclick="window.goToBrand('Le Coq')" class="brand-btn p-4 rounded-xl text-xs font-bold outline-none">LE COQ</button>
+                        <button type="button" onclick="window.goToBrand('Saucony')" class="brand-btn p-4 rounded-xl text-xs font-bold outline-none">SAUCONY</button>
+                        <button type="button" onclick="window.goToBrand('UA')" class="brand-btn p-4 rounded-xl text-xs font-bold outline-none">UA</button>
+                        <button type="button" onclick="window.goToBrand('Lainnya')" class="brand-btn p-4 rounded-xl text-xs font-bold outline-none">LAINNYA</button>
+                    </div>
+                    
+                    <button type="button" onclick="window.showPage('catalog')" class="bg-red-600 hover:bg-red-700 text-white px-10 py-4 rounded-full font-bold text-lg shadow-xl transition-all active:scale-95 outline-none">
+                        LIHAT SEMUA KATALOG <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Map & Location -->
+            <div class="max-w-6xl mx-auto px-6 -mt-10 pb-20">
+                <div class="bg-white rounded-3xl p-6 shadow-2xl border flex flex-col md:flex-row gap-8">
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-bold mb-2 text-[#1D3557]">Lokasi Store</h3>
+                        <p class="text-slate-500 text-sm mb-4 italic">DEPAN TUGU SALAK, Padang Sidimpuan.</p>
+                        <div class="h-64 md:h-80 bg-slate-100 rounded-2xl overflow-hidden shadow-inner relative">
+                            <iframe src="https://maps.google.com/maps?q=1.3759020665545012, 99.27329924966573&hl=id&z=15&output=embed" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CATALOG PAGE -->
+        <section id="page-catalog" class="page-view py-10 px-6 max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row gap-4 mb-8 items-center">
+                <div class="relative w-full md:w-80">
+                    <i class="fa-solid fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                    <input type="text" id="searchInput" onkeyup="window.searchProducts()" placeholder="Cari barang..." class="w-full pl-12 pr-4 py-3 rounded-2xl border border-slate-200 outline-none focus:ring-2 focus:ring-red-400">
+                </div>
+                <div class="flex gap-2 overflow-x-auto w-full md:w-auto pb-2 no-scrollbar">
+                    <button type="button" onclick="window.setFilter('all')" class="filter-btn active bg-blue-900 text-white px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap outline-none">SEMUA</button>
+                    <button type="button" onclick="window.setFilter('running')" class="filter-btn bg-white border px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap outline-none">RUNNING</button>
+                    <button type="button" onclick="window.setFilter('casual')" class="filter-btn bg-white border px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap outline-none">CASUAL</button>
+                    <button type="button" onclick="window.setFilter('futsal')" class="filter-btn bg-white border px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap outline-none">FUTSAL</button>
+                </div>
+            </div>
+
+            <div id="loadingKatalog" class="text-center py-20">
+                <i class="fa-solid fa-spinner fa-spin text-3xl text-red-600 mb-2"></i>
+                <p>Memuat Katalog...</p>
+            </div>
+
+            <div id="productGrid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
+                <!-- Products dynamically injected -->
+            </div>
+        </section>
+
+        <!-- ONGKIR PAGE -->
+        <section id="page-ongkir" class="page-view py-20 px-6 max-w-xl mx-auto">
+            <div class="bg-white rounded-3xl p-8 shadow-2xl border">
+                <h2 class="text-2xl font-black text-center mb-8 uppercase tracking-tighter text-[#1D3557]">Cek Ongkos Kirim</h2>
+                <div class="space-y-4">
+                    <input type="text" id="dest-city" placeholder="Kota Tujuan" class="w-full p-4 rounded-xl border outline-none">
+                    <select id="courier-type" class="w-full p-4 rounded-xl border bg-white outline-none">
+                        <option value="JNE">JNE</option>
+                        <option value="J&T">J&T</option>
+                        <option value="Sicepat">Sicepat</option>
+                    </select>
+                    <button type="button" onclick="window.handleCekOngkir()" class="w-full bg-green-500 text-white py-4 rounded-xl font-bold shadow-lg hover:bg-green-600 outline-none">
+                        <i class="fa-brands fa-whatsapp mr-2"></i> TANYA ADMIN VIA WA
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SIZE GUIDE PAGE -->
+        <section id="page-info" class="page-view py-10 px-6 max-w-4xl mx-auto">
+            <div class="bg-white rounded-3xl p-8 shadow-2xl overflow-hidden border">
+                <h2 class="text-2xl font-bold mb-6 text-center text-[#1D3557]">Panduan Ukuran (EU / CM)</h2>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead><tr class="bg-slate-100"><th class="p-4">EU</th><th class="p-4">UK</th><th class="p-4">US</th><th class="p-4">CM</th></tr></thead>
+                        <tbody>
+                            <tr class="border-b"><td class="p-4 font-bold">39</td><td class="p-4">6</td><td class="p-4">7</td><td class="p-4">24.5</td></tr>
+                            <tr class="border-b"><td class="p-4 font-bold">40</td><td class="p-4">6.5</td><td class="p-4">7.5</td><td class="p-4">25.0</td></tr>
+                            <tr class="border-b"><td class="p-4 font-bold">41</td><td class="p-4">7</td><td class="p-4">8</td><td class="p-4">25.5</td></tr>
+                            <tr class="border-b"><td class="p-4 font-bold">42</td><td class="p-4">8</td><td class="p-4">9</td><td class="p-4">26.5</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ADMIN PANEL -->
+        <section id="page-admin" class="page-view py-10 px-6 max-w-2xl mx-auto">
+            <div class="bg-white rounded-3xl p-8 shadow-2xl border-2 border-dashed border-slate-300">
+                <h2 class="text-xl font-bold mb-6 text-red-600 text-center uppercase">Panel Kelola Barang</h2>
+                <div class="space-y-4">
+                    <input type="text" id="admin-name" placeholder="Nama Barang" class="w-full p-4 rounded-xl border bg-slate-50">
+                    <div class="grid grid-cols-2 gap-4">
+                        <select id="admin-category" class="p-4 rounded-xl border bg-slate-50">
+                            <option value="running">Running</option>
+                            <option value="casual">Casual</option>
+                            <option value="futsal">Futsal</option>
+                        </select>
+                        <input type="number" id="admin-price" placeholder="Harga" class="p-4 rounded-xl border bg-slate-50">
+                    </div>
+                    <input type="text" id="admin-img" placeholder="URL Foto (Direct Link)" class="w-full p-4 rounded-xl border bg-slate-50">
+                    <button type="button" onclick="window.addProductToCloud()" class="w-full bg-red-600 text-white py-4 rounded-xl font-bold shadow-xl outline-none">
+                        SIMPAN KE CLOUD <i class="fa-solid fa-cloud-arrow-up ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#1D3557] text-white pt-16 pb-8 px-6 text-center relative z-20">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-10 text-left">
+            <div>
+                <h4 class="font-bold text-lg mb-4 text-white">Yusuf Store 25</h4>
+                <p class="text-slate-400 text-sm italic leading-loose">Pusat sepatu original terlengkap di Padang Sidimpuan. Kami menjamin keaslian produk dan kenyamanan pelanggan.</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-4 text-white">Quick Links</h4>
+                <ul class="text-slate-400 space-y-2 text-sm">
+                    <li><button type="button" onclick="window.showPage('home')" class="outline-none hover:text-white">Beranda</button></li>
+                    <li><button type="button" onclick="window.showPage('catalog')" class="outline-none hover:text-white">Katalog</button></li>
+                    <li><button type="button" onclick="window.showPage('ongkir')" class="outline-none hover:text-white">Ongkir</button></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-4 text-white">Admin</h4>
+                <button type="button" onclick="window.adminLogin()" class="text-xs text-slate-500 border border-slate-700 px-4 py-1 rounded hover:text-white transition outline-none">Masuk Panel</button>
+            </div>
+        </div>
+        <p class="mt-16 text-[10px] text-slate-500 border-t border-slate-800 pt-8">&copy; 2025 Yusuf Store 25. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Firebase System -->
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js';
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js';
+        import { getFirestore, collection, addDoc, onSnapshot, deleteDoc, doc, setDoc } from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js';
+
+        // --- DEFINISI FUNGSI GLOBAL ---
+        // Mendefinisikan fungsi segera ke objek window agar tombol HTML bisa memanggilnya
+        window.showPage = function(pageId) {
+            console.log("Navigating to:", pageId);
+            document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            
+            const targetPage = document.getElementById(`page-${pageId}`);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+            
+            const link = document.getElementById(`link-${pageId}`);
+            if(link) link.classList.add('active');
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+        window.toggleMobileMenu = function() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            if(!menu) return;
+            
+            if(menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                menu.classList.add('flex');
+                if(icon) icon.className = 'fa-solid fa-xmark';
+            } else {
+                menu.classList.add('hidden');
+                menu.classList.remove('flex');
+                if(icon) icon.className = 'fa-solid fa-bars';
+            }
+        };
+
+        window.setFilter = function(cat) {
+            window.currentFilter = cat;
+            document.querySelectorAll('.filter-btn').forEach(b => {
+                const text = b.innerText.toLowerCase();
+                if(text === cat || (cat === 'all' && text === 'semua')) {
+                    b.className = 'filter-btn bg-blue-900 text-white px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap outline-none';
+                } else {
+                    b.className = 'filter-btn bg-white border px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap outline-none';
+                }
+            });
+            if(typeof renderProducts === 'function') renderProducts(window.productsCloud || []);
+        };
+
+        window.searchProducts = function() {
+            if(typeof renderProducts === 'function') renderProducts(window.productsCloud || []);
+        };
+
+        window.goToBrand = function(brand) {
+            window.showPage('catalog');
+            const input = document.getElementById('searchInput');
+            if(input) {
+                input.value = brand;
+                window.searchProducts();
+            }
+        };
+
+        window.handleCekOngkir = function() {
+            const city = document.getElementById('dest-city').value;
+            const kurir = document.getElementById('courier-type').value;
+            if(!city) return alert("Masukkan kota tujuan!");
+            const msg = `Halo Admin Yusuf Store 25, cek ongkir ke ${city} via ${kurir} dong.`;
+            window.open(`https://wa.me/6281375861195?text=${encodeURIComponent(msg)}`, '_blank');
+        };
+
+        window.adminLogin = function() {
+            const pin = prompt("Masukan PIN Admin:");
+            if(pin === "2525") {
+                window.isAdmin = true;
+                alert("Mode Admin Aktif!");
+                window.showPage('admin');
+                if(typeof renderProducts === 'function') renderProducts(window.productsCloud || []);
+            } else {
+                alert("PIN Salah!");
+            }
+        };
+
+        // Inisialisasi Firebase dengan pengaman (try-catch)
+        try {
+            const firebaseConfig = JSON.parse(__firebase_config);
+            const app = initializeApp(firebaseConfig);
+            const auth = getAuth(app);
+            const db = getFirestore(app);
+            const appId = typeof __app_id !== 'undefined' ? __app_id : 'yusuf-store-25';
+
+            let user = null;
+            window.isAdmin = false;
+            window.productsCloud = [];
+            window.currentFilter = 'all';
+
+            // Fungsi Admin ke Cloud
+            window.addProductToCloud = async function() {
+                if(!window.isAdmin || !user) return alert("Hanya admin yang bisa akses!");
+                const name = document.getElementById('admin-name').value;
+                const price = parseInt(document.getElementById('admin-price').value);
+                const cat = document.getElementById('admin-category').value;
+                const img = document.getElementById('admin-img').value;
+
+                if(!name || !price || !img) return alert("Mohon lengkapi data!");
+
+                try {
+                    await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'products'), {
+                        name, price, category: cat, img, sold: false, timestamp: Date.now()
+                    });
+                    alert("Produk disimpan!");
+                    document.getElementById('admin-name').value = '';
+                    document.getElementById('admin-price').value = '';
+                    document.getElementById('admin-img').value = '';
+                    window.showPage('catalog');
+                } catch (e) { alert("Error saat menyimpan: " + e.message); }
+            };
+
+            window.deleteProduct = async function(id) {
+                if(!window.isAdmin || !user) return;
+                if(confirm("Hapus barang?")) {
+                    await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'products', id));
+                }
+            };
+
+            window.toggleSold = async function(id, status) {
+                if(!window.isAdmin || !user) return;
+                await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'products', id), { sold: !status }, { merge: true });
+            };
+
+            // Rendering System
+            window.renderProducts = function(data) {
+                const grid = document.getElementById('productGrid');
+                if(!grid) return;
+
+                const search = (document.getElementById('searchInput')?.value || "").toLowerCase();
+                const filter = window.currentFilter;
+
+                const filtered = data.filter(p => {
+                    const mCat = filter === 'all' || p.category === filter;
+                    const mSearch = p.name.toLowerCase().includes(search);
+                    return mCat && mSearch;
+                });
+
+                grid.innerHTML = filtered.length > 0 ? filtered.map(p => `
+                    <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 flex flex-col relative pointer-events-auto">
+                        ${window.isAdmin ? `<div class="absolute top-2 left-2 z-50 flex gap-1">
+                            <button onclick="window.deleteProduct('${p.id}')" class="bg-black/60 text-white p-1 rounded text-[10px]"><i class="fa-solid fa-trash"></i></button>
+                            <button onclick="window.toggleSold('${p.id}', ${p.sold})" class="bg-orange-500 text-white p-1 rounded text-[10px]"><i class="fa-solid fa-tag"></i></button>
+                        </div>` : ''}
+                        
+                        <div class="aspect-square bg-slate-50 relative overflow-hidden">
+                            <img src="${p.img}" class="w-full h-full object-cover ${p.sold ? 'grayscale opacity-50' : ''}" onerror="this.src='https://placehold.co/400x400?text=Produk'">
+                            ${p.sold ? '<div class="absolute inset-0 flex items-center justify-center font-black text-red-600 bg-white/30 backdrop-blur-[2px] text-xs">SOLD OUT</div>' : ''}
+                        </div>
+                        
+                        <div class="p-3 flex flex-col flex-grow">
+                            <h3 class="font-bold text-[10px] md:text-xs line-clamp-2 h-8 leading-tight mb-1 uppercase">${p.name}</h3>
+                            <p class="text-red-600 font-black text-xs md:text-sm mb-3">Rp ${p.price.toLocaleString('id-ID')}</p>
+                            
+                            <a href="${p.sold ? '#' : 'https://wa.me/6281375861195?text=Min, beli ' + encodeURIComponent(p.name)}" target="_blank" 
+                               class="mt-auto w-full py-2 rounded-lg text-[10px] font-bold text-center ${p.sold ? 'bg-slate-100 text-slate-400 pointer-events-none' : 'bg-green-500 text-white shadow-md active:scale-95 transition-all'}">
+                                ${p.sold ? 'HABIS' : 'ORDER WA'}
+                            </a>
+                        </div>
+                    </div>
+                `).join('') : '<div class="col-span-full py-10 text-center text-slate-400 text-sm italic">Produk tidak ditemukan...</div>';
+            };
+
+            // Auth & Snapshots
+            const initAuth = async () => {
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    await signInWithCustomToken(auth, __initial_auth_token);
+                } else {
+                    await signInAnonymously(auth);
+                }
+            };
+
+            onAuthStateChanged(auth, (u) => {
+                user = u;
+                if(user) {
+                    const prodColl = collection(db, 'artifacts', appId, 'public', 'data', 'products');
+                    onSnapshot(prodColl, (snap) => {
+                        window.productsCloud = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+                        window.productsCloud.sort((a,b) => (b.timestamp || 0) - (a.timestamp || 0));
+                        
+                        const loader = document.getElementById('loadingKatalog');
+                        if(loader) loader.style.display = 'none';
+                        window.renderProducts(window.productsCloud);
+                    }, (err) => console.error("Firestore error:", err));
+                }
+            });
+
+            initAuth();
+        } catch (error) {
+            console.error("Critical System Error:", error);
+            // Tombol tetap berfungsi meskipun Firebase gagal
+            const loader = document.getElementById('loadingKatalog');
+            if(loader) loader.innerHTML = "<p class='text-red-500 text-xs italic'>Database offline. Navigasi tetap aktif.</p>";
+        }
+    </script>
+</body>
+</html>
