@@ -103,7 +103,6 @@
                 <a href="#" onclick="showSection('home-section'); return false;" class="nav-link text-gray-300 hover:text-accent transition">Beranda</a>
                 <a href="#" onclick="showSection('catalog'); return false;" class="nav-link text-gray-300 hover:text-accent transition">Katalog</a>
                 <a href="#" onclick="showSection('testimonials'); return false;" class="nav-link text-gray-300 hover:text-accent transition">Testimoni</a>
-                <a href="#" onclick="showSection('gallery'); return false;" class="nav-link text-gray-300 hover:text-accent transition">Galeri</a>
                 <a href="#" onclick="showSection('sizeguide'); return false;" class="nav-link text-gray-300 hover:text-accent transition">Size Guide</a>
             </div>
 
@@ -133,7 +132,6 @@
                 <li><a href="#" class="block hover:text-accent" onclick="showSection('home-section'); toggleMenu(); return false;">Beranda</a></li>
                 <li><a href="#" class="block hover:text-accent" onclick="showSection('catalog'); toggleMenu(); return false;">Katalog</a></li>
                 <li><a href="#" class="block hover:text-accent" onclick="showSection('testimonials'); toggleMenu(); return false;">Testimoni</a></li>
-                <li><a href="#" class="block hover:text-accent" onclick="showSection('gallery'); toggleMenu(); return false;">Galeri</a></li>
                 <li><a href="#" class="block hover:text-accent" onclick="showSection('sizeguide'); toggleMenu(); return false;">Size Guide</a></li>
                 <li><a href="#shipping-location-section" class="block hover:text-accent" onclick="showSection('shipping-location-section'); toggleMenu(); return false;">Cek Ongkir & Lokasi</a></li>
             </ul>
@@ -192,8 +190,8 @@
         <!-- Catalog Section -->
         <section id="catalog" class="page-section hidden py-10 min-h-screen">
             <div class="container mx-auto px-4">
-                <!-- Filter Bar -->
-                <div class="flex flex-col md:flex-row justify-between items-center mb-8 bg-zinc-900 border border-zinc-800 p-4 rounded-xl gap-4 sticky top-20 z-40 shadow-xl">
+                <!-- Filter Bar (UPDATED: Relative on mobile, Sticky on Desktop) -->
+                <div class="flex flex-col md:flex-row justify-between items-center mb-8 bg-zinc-900 border border-zinc-800 p-4 rounded-xl gap-4 relative md:sticky md:top-24 z-40 shadow-xl">
                     <div class="flex items-center gap-2">
                         <i class="fas fa-filter text-accent"></i>
                         <h2 class="text-lg font-bold text-white uppercase tracking-wider">Katalog</h2>
@@ -281,7 +279,7 @@
             </div>
         </section>
 
-        <!-- Galeri Pembeli Section (BARU) -->
+        <!-- Galeri Pembeli Section -->
         <section id="gallery" class="page-section hidden py-16 container mx-auto px-4 bg-black">
             <div class="text-center mb-12">
                 <h2 class="text-2xl font-bold text-white mb-2 uppercase tracking-widest">Galeri Pembeli</h2>
@@ -1816,7 +1814,7 @@
             if (category === 'all') {
                 renderProducts(products);
             } else {
-                const filtered = products.filter(p => p.category === category);
+                const filtered = products.filter(p => p.category === currentCategory);
                 renderProducts(filtered);
             }
         }
