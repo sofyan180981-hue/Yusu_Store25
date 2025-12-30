@@ -3,543 +3,753 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yusuf_Store 25 | Sepatu & Apparel Original</title>
-    
-    <!-- SEO & Fonts -->
-    <meta name="description" content="Pusat sepatu original lengkap di Padang Sidimpuan.">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Yusuf Store 25 - Pusat Sepatu Padang Sidimpuan</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#1a1a1a',
+                        accent: '#e11d48', // Rose red for accent
+                        secondary: '#f3f4f6',
+                        darkblue: '#0f172a',
+                        deepblue: '#172554'
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        :root {
-            --primary: #E63946;
-            --secondary: #1D3557;
-            --bg-light: #F8FAFC;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-light);
-            scroll-behavior: smooth;
-        }
-
-        .nav-link.active {
-            color: var(--primary);
-            border-bottom: 2px solid var(--primary);
-        }
-
-        .page-view {
-            display: none;
-            animation: fadeIn 0.3s ease-in-out;
-        }
-        .page-view.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .brand-btn {
+        html { scroll-behavior: smooth; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        /* Glassmorphism Effect */
+        .glass {
             background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.2s;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
         }
-        .brand-btn:hover {
-            background: white;
-            color: var(--secondary);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
-        }
-
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        
-        nav { pointer-events: auto !important; }
-        .page-view { pointer-events: auto !important; }
-
-        .admin-label {
-            display: block;
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--secondary);
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-        }
+        .brand-logo:hover { transform: scale(1.05); border-color: #e11d48; }
+        .product-card { transition: all 0.3s ease; }
+        .product-card:hover { transform: translateY(-5px); shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3); }
+        /* Modal Styles */
+        #imageModal { backdrop-filter: blur(5px); }
+        .nav-link.active { color: #e11d48; font-weight: 700; }
     </style>
 </head>
-<body class="text-slate-800">
+<!-- Mengubah Body menjadi Gradasi Biru Elegan -->
+<body class="bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-gray-100 font-sans pt-16 md:pt-20 min-h-screen">
 
-    <!-- Top Bar -->
-    <div class="bg-[#1D3557] text-white py-2 px-6 text-[10px] md:text-xs flex justify-between items-center sticky top-0 z-[100]">
-        <span><i class="fa-regular fa-clock mr-1"></i> 11.00 - 22.30 WIB</span>
-        <span class="hidden sm:inline"><i class="fa-solid fa-truck-fast mr-1"></i> Melayani Pengiriman Seluruh Indonesia</span>
-        <div class="flex gap-4">
-            <a href="https://instagram.com/yusufstore_25" target="_blank" class="hover:text-red-400"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://wa.me/6281375861195" target="_blank" class="hover:text-green-400"><i class="fa-brands fa-whatsapp"></i></a>
-        </div>
-    </div>
+    <!-- Navbar (Tetap Putih agar bersih) -->
+    <nav class="bg-white/95 backdrop-blur shadow-md fixed w-full z-50 top-0 text-gray-800">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-2" onclick="showSection('home-section'); resetFilter(); return false;">
+                <!-- LOGO NAVIGASI (Menggunakan file yang diupload) -->
+                <img src="1000108714.jpg" alt="Logo Yusuf Store 25" class="h-10 w-10 md:h-12 md:w-12 object-cover rounded-full shadow-md border border-gray-200">
+                
+                <div class="hidden md:block">
+                    <h1 class="font-bold text-xl leading-none">Yusuf Store 25</h1>
+                    <p class="text-xs text-gray-500">Padang Sidimpuan</p>
+                </div>
+            </a>
 
-    <!-- Navigation -->
-    <nav class="bg-white shadow-md sticky top-[32px] md:top-[36px] z-[90] py-3 px-6">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="flex items-center gap-3 cursor-pointer" onclick="window.showPage('home')">
-                <img src="https://placehold.co/100x100/E63946/FFFFFF?text=YS25" class="w-10 h-10 rounded-full border-2 border-red-500" alt="Logo">
-                <span class="font-bold text-lg text-[#1D3557] tracking-tight">Yusuf Store 25</span>
+            <!-- Desktop Navigation Links -->
+            <div class="hidden md:flex items-center space-x-6 ml-6 font-medium">
+                <a href="#" onclick="showSection('home-section'); return false;" class="nav-link active hover:text-accent transition">Beranda</a>
+                <a href="#" onclick="showSection('catalog'); return false;" class="nav-link hover:text-accent transition">Katalog</a>
+                <a href="#" onclick="showSection('sizeguide'); return false;" class="nav-link hover:text-accent transition">Size Guide</a>
             </div>
 
-            <!-- Desktop Menu -->
-            <ul class="hidden md:flex gap-8 font-semibold text-sm">
-                <li><button type="button" onclick="window.showPage('home')" id="link-home" class="nav-link active pb-1 outline-none">Beranda</button></li>
-                <li><button type="button" onclick="window.showPage('catalog')" id="link-catalog" class="nav-link pb-1 outline-none">Katalog</button></li>
-                <li><button type="button" onclick="window.showPage('ongkir')" id="link-ongkir" class="nav-link pb-1 outline-none">Cek Ongkir</button></li>
-                <li><button type="button" onclick="window.showPage('info')" id="link-info" class="nav-link pb-1 outline-none">Size Guide</button></li>
-            </ul>
+            <!-- Search Bar (Desktop) -->
+            <div class="hidden md:flex flex-1 mx-4 justify-end relative">
+                <input type="text" id="desktopSearch" placeholder="Cari sepatu..." class="w-48 lg:w-64 border border-gray-300 rounded-full py-1.5 px-4 text-sm text-gray-800 focus:outline-none focus:border-accent bg-gray-50" onkeyup="searchProduct(this.value); showSection('catalog');">
+                <button class="absolute right-3 top-2 text-gray-400">
+                    <i class="fas fa-search text-sm"></i>
+                </button>
+            </div>
 
-            <button type="button" class="md:hidden text-2xl outline-none" onclick="window.toggleMobileMenu()">
-                <i id="menu-icon" class="fa-solid fa-bars"></i>
-            </button>
+            <!-- Menu & Mobile Toggle -->
+            <div class="flex items-center gap-4">
+                <a href="https://www.instagram.com/yusufstore_25?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="text-pink-600 text-2xl hover:text-pink-800 transition">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <button class="md:hidden text-2xl text-primary" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
 
-        <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white border-t shadow-xl flex-col p-6 gap-4 font-bold md:hidden">
-            <button type="button" onclick="window.showPage('home'); window.toggleMobileMenu()" class="text-left py-2 border-b outline-none">Beranda</button>
-            <button type="button" onclick="window.showPage('catalog'); window.toggleMobileMenu()" class="text-left py-2 border-b outline-none">Katalog</button>
-            <button type="button" onclick="window.showPage('ongkir'); window.toggleMobileMenu()" class="text-left py-2 border-b outline-none">Cek Ongkir</button>
-            <button type="button" onclick="window.showPage('info'); window.toggleMobileMenu()" class="text-left py-2 outline-none">Size Guide</button>
+        <!-- Mobile Menu & Search -->
+        <div id="mobileMenu" class="hidden bg-white border-t p-4 md:hidden text-gray-800">
+            <input type="text" placeholder="Cari barang..." class="w-full border p-2 rounded mb-4 bg-gray-50" onkeyup="searchProduct(this.value); showSection('catalog'); toggleMenu();">
+            <ul class="space-y-3 font-semibold">
+                <li><a href="#" class="block hover:text-accent" onclick="showSection('home-section'); toggleMenu(); return false;">Beranda</a></li>
+                <li><a href="#" class="block hover:text-accent" onclick="showSection('catalog'); toggleMenu(); return false;">Katalog</a></li>
+                <li><a href="#" class="block hover:text-accent" onclick="showSection('sizeguide'); toggleMenu(); return false;">Size Guide</a></li>
+                <li><a href="#shipping-location-section" class="block hover:text-accent" onclick="showSection('shipping-location-section'); toggleMenu(); return false;">Cek Ongkir & Lokasi</a></li>
+            </ul>
         </div>
     </nav>
 
-    <main id="main-content" class="relative z-10">
-        <!-- HOME PAGE -->
-        <section id="page-home" class="page-view active">
-            <div class="bg-[#1D3557] text-white pt-16 pb-24 px-6 text-center">
-                <div class="max-w-6xl mx-auto">
-                    <img src="https://placehold.co/200x200/E63946/FFFFFF?text=YS25" class="w-24 h-24 rounded-full mx-auto border-4 border-white/20 mb-6 shadow-2xl" alt="Main Logo">
-                    <h1 class="text-4xl md:text-6xl font-black mb-2 uppercase">Yusuf Store 25</h1>
-                    <p class="text-red-400 font-medium mb-12 italic text-lg">"Langkah Nyaman, Gaya Terkini"</p>
-                    
-                    <!-- 18 BRAND GRID -->
-                    <div class="grid grid-cols-3 md:grid-cols-6 gap-3 md:gap-5 mb-16">
-                        <button type="button" onclick="window.goToBrand('Nike')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none">NIKE</button>
-                        <button type="button" onclick="window.goToBrand('Adidas')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none">ADIDAS</button>
-                        <button type="button" onclick="window.goToBrand('Puma')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none">PUMA</button>
-                        <button type="button" onclick="window.goToBrand('NB')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none">NB</button>
-                        <button type="button" onclick="window.goToBrand('Asics')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none">ASICS</button>
-                        <button type="button" onclick="window.goToBrand('Converse')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none">CONVERSE</button>
-                        <button type="button" onclick="window.goToBrand('Onitsuka')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none">ONITSUKA</button>
-                        <button type="button" onclick="window.goToBrand('On Cloud')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none">ON CLOUD</button>
-                        <button type="button" onclick="window.goToBrand('Hoka')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none">HOKA</button>
-                        <button type="button" onclick="window.goToBrand('Salomon')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none">SALOMON</button>
-                        <button type="button" onclick="window.goToBrand('Ortus')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none">ORTUS</button>
-                        <button type="button" onclick="window.goToBrand('910')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none">910</button>
-                        <button type="button" onclick="window.goToBrand('Skechers')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none">SKECHERS</button>
-                        <button type="button" onclick="window.goToBrand('Specs')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none">SPECS</button>
-                        <button type="button" onclick="window.goToBrand('Le Coq')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none">LE COQ</button>
-                        <button type="button" onclick="window.goToBrand('Saucony')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none">SAUCONY</button>
-                        <button type="button" onclick="window.goToBrand('UA')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none">UA</button>
-                        <button type="button" onclick="window.goToBrand('Lainnya')" class="brand-btn p-4 md:p-8 rounded-2xl text-xs md:text-sm font-bold outline-none">LAINNYA</button>
-                    </div>
-                    
-                    <button type="button" onclick="window.showPage('catalog')" class="bg-red-600 hover:bg-red-700 text-white px-10 py-4 rounded-full font-bold text-lg shadow-xl transition-all active:scale-95 outline-none">
-                        LIHAT SEMUA KATALOG <i class="fa-solid fa-arrow-right ml-2"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Map & Location -->
-            <div class="max-w-6xl mx-auto px-6 -mt-10 pb-20">
-                <div class="bg-white rounded-3xl p-6 shadow-2xl border flex flex-col md:flex-row gap-8">
-                    <div class="flex-1">
-                        <h3 class="text-2xl font-bold mb-2 text-[#1D3557]">Lokasi Store</h3>
-                        <p class="text-slate-500 text-sm mb-4 italic">DEPAN TUGU SALAK, Padang Sidimpuan.</p>
-                        <div class="h-64 md:h-80 bg-slate-100 rounded-2xl overflow-hidden shadow-inner relative">
-                            <iframe src="https://maps.google.com/maps?q=1.3759020665545012, 99.27329924966573&hl=id&z=15&output=embed" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CATALOG PAGE -->
-        <section id="page-catalog" class="page-view py-10 px-6 max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row gap-4 mb-8 items-center">
-                <div class="relative w-full md:w-80">
-                    <i class="fa-solid fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                    <input type="text" id="searchInput" onkeyup="window.searchProducts()" placeholder="Cari barang..." class="w-full pl-12 pr-4 py-3 rounded-2xl border border-slate-200 outline-none focus:ring-2 focus:ring-red-400">
-                </div>
-                <div class="flex gap-2 overflow-x-auto w-full md:w-auto pb-2 no-scrollbar">
-                    <button type="button" onclick="window.setFilter('all')" class="filter-btn active bg-blue-900 text-white px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap outline-none">SEMUA</button>
-                    <button type="button" onclick="window.setFilter('running')" class="filter-btn bg-white border px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap outline-none">RUNNING</button>
-                    <button type="button" onclick="window.setFilter('casual')" class="filter-btn bg-white border px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap outline-none">CASUAL</button>
-                    <button type="button" onclick="window.setFilter('futsal')" class="filter-btn bg-white border px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap outline-none">FUTSAL</button>
-                    <button type="button" onclick="window.setFilter('kaos')" class="filter-btn bg-white border px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap outline-none">KAOS</button>
-                    <button type="button" onclick="window.setFilter('jamtangan')" class="filter-btn bg-white border px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap outline-none">JAM TANGAN</button>
-                </div>
-            </div>
-
-            <div id="loadingKatalog" class="text-center py-20">
-                <i class="fa-solid fa-spinner fa-spin text-3xl text-red-600 mb-2"></i>
-                <p>Memuat Katalog...</p>
-            </div>
-
-            <div id="productGrid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
-                <!-- Products -->
-            </div>
-        </section>
-
-        <!-- ONGKIR PAGE -->
-        <section id="page-ongkir" class="page-view py-20 px-6 max-w-xl mx-auto">
-            <div class="bg-white rounded-3xl p-8 shadow-2xl border">
-                <h2 class="text-2xl font-black text-center mb-8 uppercase text-[#1D3557]">Cek Ongkos Kirim</h2>
-                <div class="space-y-4">
-                    <input type="text" id="dest-city" placeholder="Kota Tujuan" class="w-full p-4 rounded-xl border outline-none">
-                    <select id="courier-type" class="w-full p-4 rounded-xl border bg-white outline-none">
-                        <option value="JNE">JNE</option>
-                        <option value="J&T">J&T</option>
-                        <option value="Sicepat">Sicepat</option>
-                    </select>
-                    <button type="button" onclick="window.handleCekOngkir()" class="w-full bg-green-500 text-white py-4 rounded-xl font-bold shadow-lg hover:bg-green-600">
-                        <i class="fa-brands fa-whatsapp mr-2"></i> TANYA ADMIN VIA WA
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- SIZE GUIDE PAGE -->
-        <section id="page-info" class="page-view py-10 px-6 max-w-4xl mx-auto">
-            <div class="bg-white rounded-3xl p-8 shadow-2xl overflow-hidden border">
-                <h2 class="text-2xl font-bold mb-6 text-center text-[#1D3557]">Panduan Ukuran (EU / CM)</h2>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse">
-                        <thead><tr class="bg-slate-100"><th class="p-4">EU</th><th class="p-4">UK</th><th class="p-4">US</th><th class="p-4">CM</th></tr></thead>
-                        <tbody>
-                            <tr class="border-b"><td class="p-4 font-bold text-red-600">39</td><td class="p-4">6</td><td class="p-4">7</td><td class="p-4">24.5</td></tr>
-                            <tr class="border-b"><td class="p-4 font-bold text-red-600">40</td><td class="p-4">6.5</td><td class="p-4">7.5</td><td class="p-4">25.0</td></tr>
-                            <tr class="border-b"><td class="p-4 font-bold text-red-600">41</td><td class="p-4">7</td><td class="p-4">8</td><td class="p-4">25.5</td></tr>
-                            <tr class="border-b"><td class="p-4 font-bold text-red-600">42</td><td class="p-4">8</td><td class="p-4">9</td><td class="p-4">26.5</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-
-        <!-- ADMIN PANEL -->
-        <section id="page-admin" class="page-view py-10 px-6 max-w-2xl mx-auto">
-            <div class="bg-white rounded-3xl p-8 shadow-2xl border-2 border-dashed border-slate-300">
-                <h2 class="text-xl font-bold mb-6 text-red-600 text-center uppercase tracking-tight">Panel Kelola Barang</h2>
+    <!-- Main Content Container -->
+    <main id="main-content">
+        <!-- Home Section (Banner & Brands) -->
+        <div id="home-section" class="page-section">
+            <!-- Hero Banner -->
+            <section class="relative h-[300px] md:h-[400px] w-full overflow-hidden bg-black shadow-2xl">
+                <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?q=80&w=2070&auto=format&fit=crop" alt="Esthetic Shoes" class="w-full h-full object-cover opacity-50">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div> <!-- Overlay Gradient -->
                 
-                <div class="space-y-6">
-                    <div>
-                        <label class="admin-label">Nama Barang</label>
-                        <input type="text" id="admin-name" placeholder="Contoh: Adidas Ultra Boost" class="w-full p-4 rounded-xl border bg-slate-50 outline-none focus:ring-2 focus:ring-red-500">
-                    </div>
+                <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white p-4">
                     
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label class="admin-label">Kategori</label>
-                            <select id="admin-category" class="w-full p-4 rounded-xl border bg-slate-50 outline-none focus:ring-2 focus:ring-red-500">
-                                <option value="running">Running</option>
-                                <option value="casual">Casual</option>
-                                <option value="futsal">Futsal</option>
-                                <option value="kaos">Kaos</option>
-                                <option value="jamtangan">Jam Tangan</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="admin-label">Harga (Angka saja)</label>
-                            <input type="number" id="admin-price" placeholder="Contoh: 350000" class="w-full p-4 rounded-xl border bg-slate-50 outline-none focus:ring-2 focus:ring-red-500">
-                        </div>
-                    </div>
+                    <!-- LOGO TOKO (Menggunakan file yang diupload) -->
+                    <img src="1000108714.jpg" alt="Logo Yusuf Store 25" class="w-24 h-24 md:w-32 md:h-32 mb-4 drop-shadow-[0_0_15px_rgba(255,255,255,0.5)] rounded-full border-2 border-white/50 object-cover">
 
-                    <div>
-                        <label class="admin-label">Tipe Harga</label>
-                        <select id="admin-original" class="w-full p-4 rounded-xl border bg-slate-50 outline-none focus:ring-2 focus:ring-red-500">
-                            <option value="true">Harga Fix (Web Resmi)</option>
-                            <option value="false">Bisa Nego (Harga Promo)</option>
-                        </select>
+                    <div class="border-2 md:border-4 border-white p-2 md:p-4 mb-2 bg-white/10 backdrop-blur-sm rounded-lg">
+                        <h2 class="text-2xl md:text-4xl font-bold tracking-widest uppercase">Yusuf Store 25</h2>
                     </div>
-
-                    <div>
-                        <label class="admin-label">Link Foto Barang (.jpg/.png)</label>
-                        <input type="text" id="admin-img" placeholder="https://i.postimg.cc/..." class="w-full p-4 rounded-xl border bg-slate-50 outline-none focus:ring-2 focus:ring-red-500">
-                    </div>
-
-                    <!-- Kirim 'this' agar referensi tombol jelas -->
-                    <button type="button" onclick="window.addProductToCloud(this)" class="w-full bg-red-600 text-white py-4 rounded-xl font-bold shadow-xl outline-none hover:bg-red-700 active:scale-95 transition-all">
-                        SIMPAN KE CLOUD <i class="fa-solid fa-cloud-arrow-up ml-2"></i>
+                    <p class="text-sm md:text-xl font-light italic mb-6 text-blue-100">"Langkah Pasti, Gaya Terkini"</p>
+                    <button onclick="showSection('catalog')" class="bg-gradient-to-r from-accent to-pink-600 hover:from-red-600 hover:to-accent text-white font-bold py-3 px-8 rounded-full transition duration-300 text-sm md:text-base shadow-lg transform hover:scale-105 border border-white/20">
+                        Belanja Sekarang
                     </button>
-                    <p id="auth-status" class="text-[10px] text-center text-slate-400 italic">Mengecek koneksi database...</p>
+                </div>
+            </section>
+
+            <!-- Brand Grid (Logo Filter) -->
+            <section class="py-12 container mx-auto px-4">
+                <div class="text-center mb-10">
+                    <span class="inline-block bg-white/10 backdrop-blur px-8 py-3 rounded-full shadow-lg border border-white/20">
+                        <h3 class="font-bold text-xl md:text-2xl text-blue-100 tracking-wide">
+                            <i class="fas fa-tags mr-2 text-accent"></i>Pilih Brand Favorit
+                        </h3>
+                    </span>
+                </div>
+                
+                <div class="grid grid-cols-3 md:grid-cols-6 gap-3 md:gap-4" id="brandContainer">
+                    <!-- Brand logos generated by JS -->
+                </div>
+            </section>
+        </div>
+
+        <!-- Catalog Section -->
+        <section id="catalog" class="page-section hidden py-10 min-h-screen">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col md:flex-row justify-between items-center mb-8 bg-white/5 p-4 rounded-xl backdrop-blur-sm border border-white/10">
+                    <h2 class="text-2xl font-bold mb-4 md:mb-0 text-white"><i class="fas fa-layer-group text-accent"></i> Katalog Produk</h2>
+                    
+                    <!-- Category Filter Tabs -->
+                    <div class="flex flex-wrap justify-center gap-2">
+                        <button onclick="filterCategory('all')" class="cat-btn active bg-accent text-white px-4 py-1 rounded-full text-sm hover:bg-pink-700 transition shadow-lg">Semua</button>
+                        <button onclick="filterCategory('Running')" class="cat-btn bg-white/10 text-white border border-white/20 px-4 py-1 rounded-full text-sm hover:bg-white/20 transition">Running</button>
+                        <button onclick="filterCategory('Casual')" class="cat-btn bg-white/10 text-white border border-white/20 px-4 py-1 rounded-full text-sm hover:bg-white/20 transition">Casual</button>
+                        <button onclick="filterCategory('Futsal')" class="cat-btn bg-white/10 text-white border border-white/20 px-4 py-1 rounded-full text-sm hover:bg-white/20 transition">Futsal</button>
+                        <button onclick="filterCategory('Kaos')" class="cat-btn bg-white/10 text-white border border-white/20 px-4 py-1 rounded-full text-sm hover:bg-white/20 transition">Kaos</button>
+                        <button onclick="filterCategory('Jam Tangan')" class="cat-btn bg-white/10 text-white border border-white/20 px-4 py-1 rounded-full text-sm hover:bg-white/20 transition">Jam Tangan</button>
+                    </div>
+                </div>
+
+                <!-- Info Bar -->
+                <div class="bg-blue-900/40 border-l-4 border-blue-400 p-4 mb-6 rounded text-sm text-blue-100 backdrop-blur">
+                    <p><i class="fas fa-truck"></i> Siap kirim ke seluruh Indonesia dengan packing aman!</p>
+                </div>
+
+                <!-- Product Grid -->
+                <div id="productGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                    <!-- Products will be injected here -->
+                </div>
+                
+                <!-- Empty State -->
+                <div id="emptyState" class="hidden text-center py-20 text-white/50">
+                    <i class="fas fa-box-open text-6xl mb-4"></i>
+                    <p>Barang tidak ditemukan.</p>
                 </div>
             </div>
         </section>
-    </main>
 
-    <footer class="bg-[#1D3557] text-white pt-16 pb-8 px-6 text-center relative z-20">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-10 text-left">
-            <div>
-                <h4 class="font-bold text-lg mb-4 text-white">Yusuf Store 25</h4>
-                <p class="text-slate-400 text-sm italic leading-loose">Pusat sepatu original terlengkap di Padang Sidimpuan. Kami menjamin keaslian produk dan kenyamanan pelanggan.</p>
+        <!-- Size Guide -->
+        <section id="sizeguide" class="page-section hidden py-12 min-h-screen">
+            <div class="container mx-auto px-4 max-w-4xl">
+                <!-- Card Container Putih agar tabel terbaca -->
+                <div class="bg-white rounded-2xl shadow-xl p-6 md:p-10 text-gray-800">
+                    <h2 class="text-2xl font-bold text-center mb-8 text-slate-900">Panduan Ukuran (Size Guide)</h2>
+                    <div class="overflow-x-auto rounded-lg border border-gray-200">
+                        <table class="min-w-full text-sm md:text-base">
+                            <thead>
+                                <tr class="bg-slate-900 text-white">
+                                    <th class="py-3 px-4 border-r border-slate-700">EUR</th>
+                                    <th class="py-3 px-4 border-r border-slate-700">US (Men)</th>
+                                    <th class="py-3 px-4 border-r border-slate-700">UK</th>
+                                    <th class="py-3 px-4">CM (Panjang Kaki)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center text-gray-700 bg-white">
+                                <tr class="border-b"><td class="py-2">39</td><td>6.5</td><td>6</td><td>24.5 cm</td></tr>
+                                <tr class="border-b bg-gray-50"><td class="py-2">40</td><td>7</td><td>6.5</td><td>25 cm</td></tr>
+                                <tr class="border-b"><td class="py-2">41</td><td>8</td><td>7.5</td><td>26 cm</td></tr>
+                                <tr class="border-b bg-gray-50"><td class="py-2">42</td><td>8.5</td><td>8</td><td>26.5 cm</td></tr>
+                                <tr class="border-b"><td class="py-2">43</td><td>9.5</td><td>9</td><td>27.5 cm</td></tr>
+                                <tr class="border-b bg-gray-50"><td class="py-2">44</td><td>10</td><td>9.5</td><td>28 cm</td></tr>
+                                <tr class="border-b"><td class="py-2">45</td><td>11</td><td>10.5</td><td>29 cm</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-xs text-center mt-4 text-gray-500">*Ukuran dapat berbeda sedikit tergantung merek. Konsultasikan dengan admin.</p>
+                </div>
             </div>
-            <div>
-                <h4 class="font-bold text-lg mb-4 text-white">Quick Links</h4>
-                <ul class="text-slate-400 space-y-2 text-sm">
-                    <li><button type="button" onclick="window.showPage('home')" class="hover:text-white">Beranda</button></li>
-                    <li><button type="button" onclick="window.showPage('catalog')" class="hover:text-white">Katalog</button></li>
-                    <li><button type="button" onclick="window.showPage('ongkir')" class="hover:text-white">Ongkir</button></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-bold text-lg mb-4 text-white">Admin</h4>
-                <button type="button" onclick="window.adminLogin()" class="text-xs text-slate-500 border border-slate-700 px-4 py-1 rounded hover:text-white transition outline-none">Masuk Panel</button>
+        </section>
+
+        <!-- Cek Ongkir & Location Split -->
+        <div id="shipping-location-section" class="page-section hidden py-10 min-h-screen">
+            <div class="container mx-auto px-4 grid md:grid-cols-3 gap-8">
+                
+                <!-- Cek Ongkir UI -->
+                <section id="ongkir" class="bg-white p-6 rounded-2xl shadow-xl md:col-span-2 text-gray-800">
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2 text-slate-900">
+                        <i class="fas fa-shipping-fast text-accent"></i> Cek Estimasi Ongkir
+                    </h3>
+                    <form id="shippingForm" onsubmit="checkShipping(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Kecamatan Tujuan</label>
+                            <input type="text" id="destination" required placeholder="Contoh: Padang Sidimpuan Utara" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:border-accent outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Berat (Gram)</label>
+                            <input type="number" value="1000" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 bg-gray-100" readonly>
+                            <span class="text-xs text-gray-500">Standar 1 pasang sepatu + box</span>
+                        </div>
+                        <button type="submit" class="w-full bg-slate-900 text-white py-3 rounded-lg hover:bg-accent transition font-bold shadow-lg">
+                            Cek Ongkir
+                        </button>
+                    </form>
+                    <div id="shippingResult" class="hidden mt-4 p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-sm">
+                        <p class="font-bold text-yellow-800 mb-1"><i class="fas fa-info-circle"></i> Info Pengiriman:</p>
+                        <p>Untuk tarif akurat real-time JNE/J&T/SiCepat ke <span id="destResult" class="font-bold"></span>, silakan klik tombol WhatsApp admin di bawah.</p>
+                    </div>
+                </section>
+
+                <!-- Map Location -->
+                <section id="location" class="bg-white p-6 rounded-2xl shadow-xl md:col-span-1 text-gray-800">
+                    <h3 class="text-lg font-bold mb-4 flex items-center gap-2 text-slate-900">
+                        <i class="fas fa-map-marker-alt text-accent"></i> Lokasi Toko
+                    </h3>
+                    <p class="mb-3 text-sm text-gray-600 bg-gray-100 p-2 rounded"><i class="fas fa-building mr-1"></i> Jln. Merdeka-Kantin, Kota Padang Sidimpuan, Sumatera Utara</p>
+                    <div class="w-full h-48 bg-gray-300 rounded-lg overflow-hidden shadow-inner">
+                        <iframe 
+                            width="100%" 
+                            height="100%" 
+                            frameborder="0" 
+                            style="border:0" 
+                            src="https://maps.google.com/maps?q=1.3759020665545012,99.27329924966573&z=17&output=embed" allowfullscreen>
+                        </iframe>
+                    </div>
+                    <a href="https://maps.google.com/?q=1.3759020665545012,99.27329924966573" target="_blank" class="block text-center mt-3 text-white bg-blue-600 hover:bg-blue-700 py-2 rounded-lg text-sm transition">Buka di Google Maps App</a>
+                </section>
+
             </div>
         </div>
-        <p class="mt-16 text-[10px] text-slate-500 border-t border-slate-800 pt-8">&copy; 2025 Yusuf Store 25. All Rights Reserved.</p>
+    </main>
+
+    <!-- Payment Methods Footer -->
+    <div class="bg-white border-t py-8 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <h4 class="text-gray-500 text-sm font-semibold mb-4 uppercase tracking-wider">Metode Pembayaran Lengkap</h4>
+            <div class="flex flex-wrap justify-center items-center gap-4 md:gap-8 opacity-70 grayscale hover:grayscale-0 transition duration-500">
+                <div class="flex items-center gap-1 font-bold text-blue-800"><i class="fas fa-university"></i> BCA</div>
+                <div class="flex items-center gap-1 font-bold text-blue-600"><i class="fas fa-university"></i> BRI</div>
+                <!-- Menambahkan BNI -->
+                <div class="flex items-center gap-1 font-bold text-teal-600"><i class="fas fa-university"></i> BNI</div>
+                <div class="flex items-center gap-1 font-bold text-yellow-600"><i class="fas fa-university"></i> MANDIRI</div>
+                <div class="flex items-center gap-1 font-bold text-blue-500"><i class="fas fa-wallet"></i> DANA</div>
+                <div class="flex items-center gap-1 font-bold text-purple-600"><i class="fas fa-wallet"></i> OVO</div>
+                <div class="flex items-center gap-1 font-bold text-blue-400"><i class="fas fa-wallet"></i> GOPAY</div>
+                <div class="flex items-center gap-1 font-bold text-orange-500"><i class="fas fa-shopping-bag"></i> ShopeePay</div>
+                <div class="flex items-center gap-1 font-bold text-black"><i class="fas fa-qrcode"></i> QRIS</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12 border-t border-gray-800">
+        <div class="container mx-auto px-4 grid md:grid-cols-3 gap-8">
+            <div>
+                <h3 class="font-bold text-2xl mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">Yusuf Store 25</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Pusat sepatu terlengkap dan terpercaya di Padang Sidimpuan. Kualitas terbaik dengan harga bersahabat.</p>
+                <div class="mt-6 flex gap-4">
+                    <a href="https://www.instagram.com/yusufstore_25?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-pink-600 transition text-white border border-gray-700 hover:border-pink-500"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/6281375861195" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-green-600 transition text-white border border-gray-700 hover:border-green-500"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div>
+                <h3 class="font-bold text-lg mb-4 text-white">Kontak Kami</h3>
+                <ul class="text-gray-400 text-sm space-y-3">
+                    <li class="flex items-center gap-3"><i class="fab fa-whatsapp text-green-500"></i> 0813-7586-1195</li>
+                    <li class="flex items-start gap-3"><i class="fas fa-map-pin text-red-500 mt-1"></i> Jln. Merdeka-Kantin, Padang Sidimpuan</li>
+                    <li class="flex items-center gap-3"><i class="far fa-envelope text-blue-500"></i> yusufstore25@gmail.com</li>
+                </ul>
+            </div>
+            
+            <!-- BAGIAN INI DIGANTI DARI JAM OPERASIONAL MENJADI MAPS -->
+            <div>
+                <h3 class="font-bold text-lg mb-4 text-white">Lokasi Toko</h3>
+                <div class="w-full h-32 bg-gray-800 rounded-lg overflow-hidden border border-gray-700 shadow-lg relative group">
+                    <iframe 
+                        width="100%" 
+                        height="100%" 
+                        frameborder="0" 
+                        style="border:0" 
+                        src="https://maps.google.com/maps?q=1.3759020665545012,99.27329924966573&z=16&output=embed" allowfullscreen>
+                    </iframe>
+                    <!-- Overlay agar bisa diklik -->
+                    <a href="https://maps.google.com/?q=1.3759020665545012,99.27329924966573" target="_blank" class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition"></a>
+                </div>
+                <a href="https://maps.google.com/?q=1.3759020665545012,99.27329924966573" target="_blank" class="text-xs text-blue-400 hover:text-blue-300 mt-2 inline-flex items-center gap-1 transition">
+                    <i class="fas fa-external-link-alt"></i> Buka di Google Maps
+                </a>
+            </div>
+        </div>
+        <div class="text-center mt-12 pt-6 border-t border-gray-900 text-xs text-gray-600">
+            &copy; 2025 Yusuf Store 25. All Rights Reserved. <br>
+            <a href="#" onclick="adminLogin(event)" class="text-gray-700 hover:text-white mt-2 inline-block transition">Area Admin</a>
+        </div>
     </footer>
 
-    <script type="module">
-        import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js';
-        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js';
-        import { getFirestore, collection, addDoc, onSnapshot, deleteDoc, doc, setDoc } from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js';
-
-        let auth, db, user;
-        window.isAdmin = false;
-        window.productsCloud = [];
-        window.currentFilter = 'all';
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'yusuf-store-25';
-
-        // Fungsi pembantu untuk memastikan autentikasi siap sebelum operasi database
-        const ensureAuth = async () => {
-            if (auth && auth.currentUser) return auth.currentUser;
-            const statusElem = document.getElementById('auth-status');
-            if(statusElem) statusElem.innerText = "Menghubungkan ke database...";
-            
-            try {
-                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                    await signInWithCustomToken(auth, __initial_auth_token);
-                } else {
-                    await signInAnonymously(auth);
-                }
-                return auth.currentUser;
-            } catch (e) {
-                console.error("Auth error:", e);
-                return null;
-            }
-        };
-
-        // --- GLOBAL FUNCTIONS ---
-        window.showPage = function(pageId) {
-            document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
-            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-            const targetPage = document.getElementById(`page-${pageId}`);
-            if (targetPage) targetPage.classList.add('active');
-            const link = document.getElementById(`link-${pageId}`);
-            if(link) link.classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        };
-
-        window.toggleMobileMenu = function() {
-            const menu = document.getElementById('mobile-menu');
-            const icon = document.getElementById('menu-icon');
-            if(!menu) return;
-            if(menu.classList.contains('hidden')) {
-                menu.classList.remove('hidden');
-                menu.classList.add('flex');
-                if(icon) icon.className = 'fa-solid fa-xmark';
-            } else {
-                menu.classList.add('hidden');
-                menu.classList.remove('flex');
-                if(icon) icon.className = 'fa-solid fa-bars';
-            }
-        };
-
-        window.adminLogin = function() {
-            const pin = prompt("Masukan PIN Admin:");
-            if(pin === "2525") {
-                window.isAdmin = true;
-                alert("🔓 Mode Admin Aktif!");
-                window.showPage('admin');
-                window.renderProducts(window.productsCloud);
-            } else {
-                alert("❌ PIN Salah!");
-            }
-        };
-
-        // Memperbaiki parameter 'btn' untuk menangkap elemen tombol
-        window.addProductToCloud = async function(btn) {
-            if(!window.isAdmin) return alert("⚠️ Anda harus masuk sebagai Admin terlebih dahulu!");
-            
-            // Mencoba autentikasi ulang jika belum siap
-            const activeUser = await ensureAuth();
-            if(!activeUser) return alert("⚠️ Koneksi database gagal. Silahkan muat ulang (Refresh) halaman Anda.");
-
-            const name = document.getElementById('admin-name').value.trim();
-            const priceVal = document.getElementById('admin-price').value;
-            const cat = document.getElementById('admin-category').value;
-            const isOriginal = document.getElementById('admin-original').value === "true";
-            const img = document.getElementById('admin-img').value.trim();
-
-            if(!name || !priceVal || !img) return alert("⚠️ Harap isi Nama, Harga, dan Link Foto!");
-
-            try {
-                if(btn) {
-                    btn.disabled = true;
-                    btn.innerText = "SEDANG MENYIMPAN...";
-                }
-
-                await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'products'), {
-                    name, 
-                    price: parseInt(priceVal), 
-                    category: cat,
-                    isOriginal, 
-                    img, 
-                    sold: false, 
-                    timestamp: Date.now()
-                });
-
-                alert("✅ Produk Berhasil Disimpan ke Katalog!");
-                
-                // Reset form
-                document.getElementById('admin-name').value = '';
-                document.getElementById('admin-price').value = '';
-                document.getElementById('admin-img').value = '';
-                
-                window.showPage('catalog');
-            } catch (e) { 
-                alert("❌ Gagal menyimpan: " + e.message); 
-                console.error("Firestore error:", e);
-            } finally {
-                if(btn) {
-                    btn.disabled = false;
-                    btn.innerText = "SIMPAN KE CLOUD";
-                }
-            }
-        };
-
-        window.deleteProduct = async function(id) {
-            if(!window.isAdmin) return;
-            if(confirm("Hapus barang ini secara permanen?")) {
-                await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'products', id));
-            }
-        };
-
-        window.toggleSold = async function(id, status) {
-            if(!window.isAdmin) return;
-            await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'products', id), { sold: !status }, { merge: true });
-        };
-
-        window.setFilter = function(cat) {
-            window.currentFilter = cat;
-            document.querySelectorAll('.filter-btn').forEach(b => {
-                const text = b.innerText.toLowerCase().replace(/\s/g, '');
-                if(text === cat || (cat === 'all' && text === 'semua')) {
-                    b.className = 'filter-btn active bg-blue-900 text-white px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap outline-none';
-                } else {
-                    b.className = 'filter-btn bg-white border px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap outline-none';
-                }
-            });
-            window.renderProducts(window.productsCloud);
-        };
-
-        window.searchProducts = function() {
-            window.renderProducts(window.productsCloud);
-        };
-
-        window.goToBrand = function(brand) {
-            window.showPage('catalog');
-            const input = document.getElementById('searchInput');
-            if(input) {
-                input.value = brand;
-                window.searchProducts();
-            }
-        };
-
-        window.handleCekOngkir = function() {
-            const city = document.getElementById('dest-city').value;
-            const kurir = document.getElementById('courier-type').value;
-            if(!city) return alert("Masukkan kota tujuan!");
-            const msg = `Halo Admin Yusuf Store 25, cek ongkir ke ${city} via ${kurir} dong.`;
-            window.open(`https://wa.me/6281375861195?text=${encodeURIComponent(msg)}`, '_blank');
-        };
-
-        window.renderProducts = function(data) {
-            const grid = document.getElementById('productGrid');
-            if(!grid) return;
-            const search = (document.getElementById('searchInput')?.value || "").toLowerCase();
-            const filter = window.currentFilter;
-            const filtered = data.filter(p => {
-                const mCat = filter === 'all' || p.category === filter;
-                const mSearch = p.name.toLowerCase().includes(search);
-                return mCat && mSearch;
-            });
-
-            grid.innerHTML = filtered.length > 0 ? filtered.map(p => {
-                const priceInfo = p.isOriginal ? 
-                    '<span class="text-[8px] text-blue-600 font-bold uppercase"><i class="fa-solid fa-check-double mr-1"></i>Harga Fix</span>' : 
-                    '<span class="text-[8px] text-green-600 font-bold uppercase"><i class="fa-solid fa-tags mr-1"></i>Bisa Nego</span>';
-                
-                return `
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 flex flex-col relative">
-                    ${window.isAdmin ? `<div class="absolute top-2 left-2 z-50 flex gap-1">
-                        <button onclick="window.deleteProduct('${p.id}')" class="bg-black/60 text-white w-6 h-6 rounded flex items-center justify-center"><i class="fa-solid fa-trash text-[10px]"></i></button>
-                        <button onclick="window.toggleSold('${p.id}', ${p.sold})" class="bg-orange-500 text-white w-6 h-6 rounded flex items-center justify-center"><i class="fa-solid fa-tag text-[10px]"></i></button>
-                    </div>` : ''}
-                    <div class="aspect-square bg-slate-50 relative overflow-hidden">
-                        <img src="${p.img}" class="w-full h-full object-cover ${p.sold ? 'grayscale opacity-50' : ''}" onerror="this.src='https://placehold.co/400x400?text=Produk'">
-                        ${p.sold ? '<div class="absolute inset-0 flex items-center justify-center font-black text-red-600 bg-white/30 backdrop-blur-[2px] text-xs">SOLD OUT</div>' : ''}
+    <!-- Image Modal (Detail View) -->
+    <div id="imageModal" class="fixed inset-0 z-[60] hidden flex items-center justify-center bg-black/90 p-4" onclick="closeModal()">
+        <div class="relative bg-white rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl" onclick="event.stopPropagation()">
+            <button onclick="closeModal()" class="absolute top-2 right-2 bg-black/10 hover:bg-black/20 rounded-full p-2 w-8 h-8 flex items-center justify-center z-10 transition">✕</button>
+            <div class="flex flex-col md:flex-row">
+                <div class="w-full md:w-1/2 bg-gray-100 flex items-center justify-center p-4">
+                    <img id="modalImg" src="" alt="Detail" class="object-cover w-full h-auto rounded shadow-sm">
+                </div>
+                <div class="p-8 w-full md:w-1/2 flex flex-col justify-between text-gray-800">
+                    <div>
+                        <span id="modalBrand" class="text-xs font-bold text-accent uppercase tracking-widest border border-accent/20 px-2 py-1 rounded">Brand</span>
+                        <h3 id="modalName" class="text-2xl font-bold mb-2 mt-3 leading-tight">Nama Produk</h3>
+                        <p id="modalCat" class="text-sm text-gray-500 mb-6 bg-gray-100 inline-block px-2 py-1 rounded">Kategori</p>
+                        <div class="text-3xl font-bold text-slate-900 mb-2" id="modalPrice">Rp 0</div>
+                        <p id="modalNego" class="text-xs text-green-600 italic mb-6">Harga masih bisa nego chat admin</p>
                     </div>
-                    <div class="p-3 flex flex-col flex-grow">
-                        <h3 class="font-bold text-[10px] md:text-xs line-clamp-2 h-8 leading-tight mb-1 uppercase">${p.name}</h3>
-                        <p class="text-red-600 font-black text-xs md:text-sm">Rp ${p.price.toLocaleString('id-ID')}</p>
-                        <div class="mb-3 h-3 flex items-center">${!p.sold ? priceInfo : ''}</div>
-                        <a href="${p.sold ? '#' : 'https://wa.me/6281375861195?text=Min, beli ' + encodeURIComponent(p.name)}" target="_blank" 
-                           class="mt-auto w-full py-2 rounded-lg text-[10px] font-bold text-center ${p.sold ? 'bg-slate-100 text-slate-400 pointer-events-none' : 'bg-green-500 text-white shadow-md active:scale-95 transition-all'}">
-                                ${p.sold ? 'HABIS' : 'ORDER WA'}
-                        </a>
+                    <a id="modalWaBtn" href="#" target="_blank" class="block w-full text-center bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-xl transition shadow-lg transform hover:scale-105">
+                        <i class="fab fa-whatsapp mr-1"></i> Beli Sekarang
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADMIN PANEL MODAL -->
+    <div id="adminModal" class="fixed inset-0 z-[70] hidden flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm">
+        <div class="bg-white rounded-xl shadow-2xl max-w-lg w-full p-6 relative overflow-y-auto max-h-[90vh] text-gray-800">
+            <button onclick="closeAdmin()" class="absolute top-4 right-4 text-gray-400 hover:text-red-500 text-xl">✕</button>
+            
+            <h2 class="text-2xl font-bold text-slate-900 mb-1">Tambah Barang Baru</h2>
+            <p class="text-xs text-gray-500 mb-6 border-b pb-2">Isi data untuk generate kode produk.</p>
+
+            <form id="addProductForm" onsubmit="generateProductCode(event)" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700">Nama Barang</label>
+                    <input type="text" id="addName" required class="w-full border p-2 rounded focus:border-accent outline-none" placeholder="Contoh: Nike Air Jordan">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700">Brand</label>
+                        <select id="addBrand" class="w-full border p-2 rounded focus:border-accent outline-none">
+                            <option value="Nike">Nike</option>
+                            <option value="Adidas">Adidas</option>
+                            <option value="Puma">Puma</option>
+                            <option value="New Balance">New Balance</option>
+                            <option value="Asics">Asics</option>
+                            <option value="Hoka">Hoka</option>
+                            <option value="Ortuseight">Ortuseight</option>
+                            <option value="Specs">Specs</option>
+                            <option value="No Brand">No Brand</option>
+                        </select>
                     </div>
-                </div>`}).join('') : '<div class="col-span-full py-10 text-center text-slate-400 text-sm italic">Belum ada koleksi di kategori ini...</div>';
-        };
-
-        // --- INIT ---
-        try {
-            const firebaseConfig = JSON.parse(__firebase_config);
-            const app = initializeApp(firebaseConfig);
-            auth = getAuth(app);
-            db = getFirestore(app);
-
-            const initAuth = async () => {
-                await ensureAuth();
-            };
-
-            onAuthStateChanged(auth, (u) => {
-                user = u;
-                const statusElem = document.getElementById('auth-status');
-                if(statusElem) statusElem.innerText = u ? "✅ Database Terkoneksi" : "❌ Gagal Terkoneksi";
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700">Kategori</label>
+                        <select id="addCategory" class="w-full border p-2 rounded focus:border-accent outline-none">
+                            <option value="Running">Running</option>
+                            <option value="Casual">Casual</option>
+                            <option value="Futsal">Futsal</option>
+                            <option value="Kaos">Kaos</option>
+                            <option value="Jam Tangan">Jam Tangan</option>
+                        </select>
+                    </div>
+                </div>
                 
-                if(u) {
-                    onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'products'), (snap) => {
-                        window.productsCloud = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-                        window.productsCloud.sort((a,b) => (b.timestamp || 0) - (a.timestamp || 0));
-                        const loader = document.getElementById('loadingKatalog');
-                        if(loader) loader.style.display = 'none';
-                        window.renderProducts(window.productsCloud);
-                    }, (err) => {
-                        console.error("Snapshot error:", err);
-                    });
-                }
-            });
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex items-center gap-2 bg-blue-50 p-3 rounded border border-blue-100">
+                        <input type="checkbox" id="addIsOriginal" class="w-5 h-5 text-accent focus:ring-accent border-gray-300 rounded">
+                        <label for="addIsOriginal" class="text-sm font-semibold text-gray-700 select-none cursor-pointer">100% Original</label>
+                    </div>
+                    <div class="flex items-center gap-2 bg-red-50 p-3 rounded border border-red-100">
+                        <input type="checkbox" id="addIsSold" class="w-5 h-5 text-red-600 focus:ring-red-500 border-gray-300 rounded">
+                        <label for="addIsSold" class="text-sm font-semibold text-gray-700 select-none cursor-pointer">Sudah Terjual (Sold)</label>
+                    </div>
+                </div>
 
-            initAuth();
-        } catch (error) {
-            console.error("Initialization Error:", error);
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700">Harga (Rp)</label>
+                    <input type="number" id="addPrice" required class="w-full border p-2 rounded focus:border-accent outline-none" placeholder="Contoh: 500000">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700">Link Foto (URL)</label>
+                    <input type="text" id="addImg" required class="w-full border p-2 rounded focus:border-accent outline-none" placeholder="Link gambar dari Google/Unsplash">
+                    <p class="text-[10px] text-gray-400 mt-1">*Klik kanan foto di Google > Copy Image Address</p>
+                </div>
+
+                <button type="submit" class="w-full bg-slate-900 hover:bg-black text-white font-bold py-3 rounded shadow-lg transition">
+                    <i class="fas fa-magic mr-2"></i> Buat Kode Produk
+                </button>
+            </form>
+
+            <div id="codeResultArea" class="hidden mt-6 bg-gray-100 p-4 rounded border border-gray-300">
+                <p class="text-sm font-bold text-green-700 mb-2">✅ Kode Berhasil Dibuat!</p>
+                <p class="text-xs text-gray-600 mb-2">Salin kode di bawah ini dan tempelkan ke dalam file <b>index.html</b> pada bagian <code>const products = [...]</code></p>
+                <textarea id="generatedCode" rows="4" class="w-full bg-black text-green-400 font-mono text-xs p-2 rounded" readonly></textarea>
+                <button onclick="copyToClipboard()" class="mt-2 bg-gray-800 text-white text-xs py-1 px-3 rounded hover:bg-black">Copy Code</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        const brands = [
+            { name: "Adidas", logo: "logo_adidas.jpg" },
+            { name: "Nike", logo: "logo_nike.jpg" },
+            { name: "Onitsuka", logo: "logo_Onitsuka.jpg" },
+            { name: "New Balance", logo: "logo_nb.jpg" },
+            { name: "On Cloud", logo: "logo_oncloud.jpg" },
+            { name: "Puma", logo: "puma.jpg" },
+            { name: "Ortuseight", logo: "logo_ortus.jpg" },
+            { name: "910 Nineten", logo: "logo_910.jpg" },
+            { name: "Skechers", logo: "logo_Skechers.jpg" },
+            { name: "Hoka", logo: "logo_hoka.jpg" },
+            { name: "Asics", logo: "logo_Asics.jpg" },
+            { name: "Specs", logo: "logo_specs.jpg" },
+            { name: "Le Coq", logo: "lecoq.jpg" },
+            { name: "Converse", logo: "converse.jpg" }, 
+            { name: "Saucony", logo: "saucony.jpg" },
+            { name: "Under Armour", logo: "logo_ua.jpg" },
+            { name: "Salomon", logo: "salomon.jpg" }, 
+            { name: "No Brand", logo: "nobrand.jpg" }
+        ];
+
+        const products = [
+            // ... existing products ...
+            { id: 10, name: "Specs Accelerator", brand: "Specs", category: "Futsal", price: 420000, img: "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?w=500&auto=format&fit=crop", sold: false, isOriginal: false },
+            { id: 11, name: "Asics Gel Kayano", brand: "Asics", category: "Running", price: 2850000, img: "https://images.unsplash.com/photo-1560769629-975e13f0c470?w=500&auto=format&fit=crop", sold: true, isOriginal: true },
+            { id: 13, name: "Adidas Ultra Boost Size 42", brand: "Adidas", category: "Running", price: 350000, img: "sepatu6.jpg", sold: false, isOriginal: false },
+            { id: 14, name: "Adidas Adizero Pro 4 Size 39", brand: "Adidas", category: "Running", price: 380000, img: "sepatu7.jpg", sold: false, isOriginal: false },
+        ];
+
+        function adminLogin(e) {
+            e.preventDefault();
+            const password = prompt("Masukkan Password Admin:");
+            if (password === "admin123") {
+                document.getElementById('adminModal').classList.remove('hidden');
+            } else if (password !== null) {
+                alert("Password salah!");
+            }
         }
+
+        function closeAdmin() {
+            document.getElementById('adminModal').classList.add('hidden');
+            document.getElementById('codeResultArea').classList.add('hidden');
+            document.getElementById('addProductForm').reset();
+        }
+
+        function generateProductCode(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('addName').value;
+            const brand = document.getElementById('addBrand').value;
+            const category = document.getElementById('addCategory').value;
+            const price = document.getElementById('addPrice').value;
+            const img = document.getElementById('addImg').value;
+            const isOriginal = document.getElementById('addIsOriginal').checked;
+            const isSold = document.getElementById('addIsSold').checked;
+            
+            const newId = Math.floor(Math.random() * 10000) + 100;
+
+            const codeString = `{ id: ${newId}, name: "${name}", brand: "${brand}", category: "${category}", price: ${price}, img: "${img}", sold: ${isSold}, isOriginal: ${isOriginal} },`;
+
+            document.getElementById('codeResultArea').classList.remove('hidden');
+            document.getElementById('generatedCode').value = codeString;
+
+            const newProduct = { 
+                id: newId, 
+                name: name, 
+                brand: brand, 
+                category: category, 
+                price: parseInt(price), 
+                img: img, 
+                sold: isSold,
+                isOriginal: isOriginal
+            };
+            products.unshift(newProduct);
+            renderProducts(products); 
+            showSection('catalog'); 
+            
+            alert("Barang ditampilkan sementara! JANGAN LUPA salin kode di bawah form untuk disimpan permanen.");
+        }
+
+        function copyToClipboard() {
+            const copyText = document.getElementById("generatedCode");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); 
+            navigator.clipboard.writeText(copyText.value);
+            alert("Kode berhasil disalin! Tempelkan (Paste) di file index.html pada bagian daftar produk.");
+        }
+
+        const formatRupiah = (number) => {
+            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(number);
+        }
+
+        function renderBrands() {
+            const container = document.getElementById('brandContainer');
+            
+            const colors = [
+                'bg-red-50 border-red-200 text-red-800',
+                'bg-blue-50 border-blue-200 text-blue-800',
+                'bg-green-50 border-green-200 text-green-800',
+                'bg-amber-50 border-amber-200 text-amber-800',
+                'bg-purple-50 border-purple-200 text-purple-800',
+                'bg-pink-50 border-pink-200 text-pink-800',
+                'bg-indigo-50 border-indigo-200 text-indigo-800',
+                'bg-orange-50 border-orange-200 text-orange-800',
+                'bg-teal-50 border-teal-200 text-teal-800',
+                'bg-cyan-50 border-cyan-200 text-cyan-800',
+                'bg-rose-50 border-rose-200 text-rose-800',
+                'bg-slate-100 border-slate-200 text-slate-800'
+            ];
+
+            container.innerHTML = brands.map((brandObj, index) => {
+                const colorTheme = colors[index % colors.length];
+                
+                // Jika logo tersedia, tampilkan gambar. Jika tidak, tampilkan teks dengan latar warna
+                if (brandObj.logo) {
+                    return `
+                        <div onclick="filterByBrand('${brandObj.name}')" class="brand-logo cursor-pointer bg-white p-2 rounded-lg flex items-center justify-center h-20 shadow-lg transition-all duration-300 group hover:bg-white hover:border-accent hover:shadow-2xl hover:-translate-y-1">
+                            <img src="${brandObj.logo}" alt="${brandObj.name}" class="max-h-full max-w-full object-contain">
+                        </div>
+                    `;
+                } else {
+                    return `
+                        <div onclick="filterByBrand('${brandObj.name}')" class="brand-logo cursor-pointer border ${colorTheme} p-3 rounded-lg flex flex-col items-center justify-center h-20 shadow-lg transition-all duration-300 group hover:bg-white hover:border-accent hover:shadow-2xl hover:-translate-y-1">
+                            <span class="font-bold text-xs md:text-sm text-center group-hover:text-accent transition-colors">${brandObj.name}</span>
+                        </div>
+                    `;
+                }
+            }).join('');
+        }
+
+        function renderProducts(data) {
+            const grid = document.getElementById('productGrid');
+            const empty = document.getElementById('emptyState');
+            
+            grid.innerHTML = '';
+            
+            if (data.length === 0) {
+                empty.classList.remove('hidden');
+                return;
+            } else {
+                empty.classList.add('hidden');
+            }
+
+            data.forEach(product => {
+                const imgStyle = product.sold ? 'grayscale opacity-75' : '';
+                const contentStyle = product.sold ? 'opacity-60' : '';
+
+                const btnAction = product.sold 
+                    ? `<button disabled class="w-full bg-gray-400 text-white py-2 rounded font-bold cursor-not-allowed text-sm">TERJUAL / SOLD</button>`
+                    : `<a href="https://wa.me/6281375861195?text=Halo Yusuf Store 25, saya mau beli ${product.name} Brand ${product.brand} apakah masih ada?" target="_blank" class="block w-full text-center bg-green-600 hover:bg-green-700 text-white py-2 rounded font-bold text-sm transition"><i class="fab fa-whatsapp"></i> Beli via WA</a>`;
+                
+                let negoTextHTML = '';
+                if (!product.sold) {
+                    if (product.isOriginal) {
+                        negoTextHTML = '<p class="text-[10px] text-blue-600 font-semibold mt-1"><i class="fas fa-check-circle"></i> Harga Situs Resmi</p>';
+                    } else {
+                        negoTextHTML = '<p class="text-[10px] text-green-600 italic mt-1">Harga masih bisa nego chat admin</p>';
+                    }
+                }
+
+                const card = `
+                    <div class="product-card bg-white rounded-lg shadow-lg border border-gray-100 overflow-hidden relative group">
+                        <div class="relative group cursor-pointer" onclick="openModal(${product.id})">
+                            <img src="${product.img}" alt="${product.name}" class="w-full h-40 md:h-56 object-cover ${imgStyle}">
+                            
+                            ${product.sold ? '<div class="absolute top-2 right-2 bg-red-600 text-white text-xs px-2 py-1 rounded font-bold shadow-md z-20">SOLD OUT</div>' : ''}
+                            
+                            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition flex items-center justify-center z-10">
+                                <span class="opacity-0 group-hover:opacity-100 bg-white text-black text-xs px-3 py-1 rounded-full shadow-lg transform scale-90 group-hover:scale-100 transition"><i class="fas fa-search-plus"></i> Detail</span>
+                            </div>
+                        </div>
+                        
+                        <div class="p-3 md:p-4 ${contentStyle} text-gray-800">
+                            <div class="flex justify-between items-start">
+                                <p class="text-xs text-gray-500 uppercase font-semibold">${product.brand}</p>
+                                ${product.isOriginal && !product.sold ? '<span class="text-[10px] bg-blue-100 text-blue-800 px-1 rounded font-bold">ORI</span>' : ''}
+                            </div>
+                            <h3 class="font-bold text-sm md:text-base text-gray-900 truncate leading-tight mb-1">${product.name}</h3>
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-accent font-bold text-sm md:text-lg">${formatRupiah(product.price)}</span>
+                            </div>
+                            ${negoTextHTML}
+                            <div class="mt-3">
+                                ${btnAction}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += card;
+            });
+        }
+
+        let currentCategory = 'all';
+
+        function filterCategory(category) {
+            currentCategory = category;
+            
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.remove('bg-accent', 'text-white', 'shadow-lg');
+                btn.classList.add('bg-white/10', 'text-white', 'border', 'border-white/20');
+            });
+            
+            if(event && event.target) {
+                event.target.classList.remove('bg-white/10', 'text-white', 'border', 'border-white/20');
+                event.target.classList.add('bg-accent', 'text-white', 'shadow-lg');
+            }
+
+            if (category === 'all') {
+                renderProducts(products);
+            } else {
+                const filtered = products.filter(p => p.category === category);
+                renderProducts(filtered);
+            }
+        }
+
+        function filterByBrand(brandName) {
+            showSection('catalog');
+            const filtered = products.filter(p => p.brand === brandName);
+            renderProducts(filtered);
+            
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.remove('bg-accent', 'text-white', 'shadow-lg');
+                btn.classList.add('bg-white/10', 'text-white', 'border', 'border-white/20');
+            });
+        }
+
+        function resetFilter() {
+            filterCategory('all');
+            document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('bg-accent', 'text-white', 'shadow-lg'));
+            const allBtn = document.querySelector('.cat-btn[onclick="filterCategory(\'all\')"]');
+            if(allBtn) {
+                allBtn.classList.add('bg-accent', 'text-white', 'shadow-lg');
+                allBtn.classList.remove('bg-white/10', 'text-white', 'border', 'border-white/20');
+            }
+        }
+
+        function searchProduct(query) {
+            const lowerQ = query.toLowerCase();
+            const filtered = products.filter(p => 
+                p.name.toLowerCase().includes(lowerQ) || 
+                p.brand.toLowerCase().includes(lowerQ) ||
+                p.category.toLowerCase().includes(lowerQ)
+            );
+            renderProducts(filtered);
+        }
+
+        function showSection(sectionId) {
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.add('hidden');
+            });
+
+            const selectedSection = document.getElementById(sectionId);
+            if (selectedSection) {
+                selectedSection.classList.remove('hidden');
+            }
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (sectionId === 'home-section' && link.textContent === 'Beranda') link.classList.add('active');
+                if (sectionId === 'catalog' && link.textContent === 'Katalog') link.classList.add('active');
+                if (sectionId === 'sizeguide' && link.textContent === 'Size Guide') link.classList.add('active');
+            });
+
+            window.scrollTo(0, 0);
+        }
+        
+        function openModal(id) {
+            const product = products.find(p => p.id === id);
+            if(!product) return;
+
+            document.getElementById('modalImg').src = product.img;
+            document.getElementById('modalName').innerText = product.name;
+            document.getElementById('modalBrand').innerText = product.brand;
+            document.getElementById('modalCat').innerText = product.category;
+            document.getElementById('modalPrice').innerText = formatRupiah(product.price);
+            
+            const btn = document.getElementById('modalWaBtn');
+            const nego = document.getElementById('modalNego');
+
+            nego.className = "text-xs italic mb-6";
+
+            if (product.sold) {
+                btn.classList.add('hidden');
+                nego.innerText = "Barang ini sudah terjual.";
+                nego.classList.add('text-red-500', 'font-bold');
+            } else {
+                btn.classList.remove('hidden');
+                
+                if (product.isOriginal) {
+                    nego.innerText = "Harga Situs Resmi (Original)";
+                    nego.classList.add('text-blue-600', 'font-semibold');
+                    btn.href = `https://wa.me/6281375861195?text=Halo Admin, saya mau order barang ORIGINAL: ${product.name}. Apakah ready?`;
+                } else {
+                    nego.innerText = "Harga masih bisa nego chat admin";
+                    nego.classList.add('text-green-600');
+                    btn.href = `https://wa.me/6281375861195?text=Halo Admin, saya tertarik dengan ${product.name}, apakah bisa nego?`;
+                }
+            }
+
+            document.getElementById('imageModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').classList.add('hidden');
+        }
+
+        function toggleMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+
+        function checkShipping(e) {
+            e.preventDefault();
+            const dest = document.getElementById('destination').value;
+            if(!dest) return;
+
+            document.getElementById('shippingResult').classList.remove('hidden');
+            document.getElementById('destResult').innerText = dest;
+        }
+
+        window.onload = () => {
+            renderBrands();
+            renderProducts(products);
+            showSection('home-section');
+        }
+
     </script>
 </body>
 </html>
