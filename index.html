@@ -145,8 +145,9 @@
                     </div>
                     
                     <!-- Slogan Baru -->
-                    <div class="text-xs md:text-xl font-light italic mb-6 text-blue-100 flex flex-col gap-1 items-center">
-                        <p>"Biarkan gayamu bicara! Mode yang cocok untuk setiap langkah Anda"</p>
+                    <div class="text-sm md:text-xl font-light italic mb-6 text-blue-100 flex flex-col gap-1 items-center">
+                        <p>"Biarkan gayamu bicara!"</p>
+                        <p>"Mode yang cocok untuk setiap langkah Anda"</p>
                         <p class="font-medium text-white/90 mt-1">"Tampil percaya diri dengan sepatu Yusuf_Store25"</p>
                     </div>
 
@@ -220,19 +221,26 @@
             </div>
         </section>
 
-        <!-- Testimonials Section (BARU) -->
+        <!-- Testimonials Section -->
         <section id="testimonials" class="page-section hidden py-12 container mx-auto px-4">
             <div class="text-center mb-10">
                 <h2 class="text-2xl font-bold text-white mb-2">Kata Mereka</h2>
-                <div class="h-1 w-20 bg-accent mx-auto rounded"></div>
+                <div class="h-1 w-20 bg-accent mx-auto rounded mb-6"></div>
+                
+                <!-- TOMBOL TULIS ULASAN (BARU) -->
+                <button onclick="openTestiModal()" class="bg-white/10 hover:bg-white/20 text-white border border-white/30 px-6 py-2 rounded-full text-sm transition flex items-center gap-2 mx-auto">
+                    <i class="fas fa-pen"></i> Tulis Ulasan
+                </button>
             </div>
-            <div class="grid md:grid-cols-3 gap-6">
+
+            <!-- Container Grid Testimoni -->
+            <div id="testimoniGrid" class="grid md:grid-cols-3 gap-6">
                 <!-- Testimoni 1 -->
                 <div class="bg-white/5 border border-white/10 p-6 rounded-xl backdrop-blur-sm">
                     <div class="text-yellow-400 text-sm mb-3">★★★★★</div>
                     <p class="text-gray-300 italic text-sm mb-4">"Barang mendarat dengan aman di Medan. Kualitasnya oke banget untuk harga segini. Adminnya ramah poll!"</p>
                     <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-gray-600 flex items-center justify-center font-bold">R</div>
+                        <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=100&auto=format&fit=crop&q=60" alt="Rudi Hartono" class="w-10 h-10 rounded-full object-cover border-2 border-accent">
                         <div>
                             <p class="font-bold text-sm">Rudi Hartono</p>
                             <p class="text-xs text-gray-500">Medan</p>
@@ -244,7 +252,7 @@
                     <div class="text-yellow-400 text-sm mb-3">★★★★★</div>
                     <p class="text-gray-300 italic text-sm mb-4">"Suka banget sama sepatunya, pas di kaki. Pengiriman cepet, packing rapih. Next order lagi disini."</p>
                     <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-gray-600 flex items-center justify-center font-bold">S</div>
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=60" alt="Siti Aminah" class="w-10 h-10 rounded-full object-cover border-2 border-accent">
                         <div>
                             <p class="font-bold text-sm">Siti Aminah</p>
                             <p class="text-xs text-gray-500">Padang Sidimpuan</p>
@@ -256,15 +264,48 @@
                     <div class="text-yellow-400 text-sm mb-3">★★★★★</div>
                     <p class="text-gray-300 italic text-sm mb-4">"Awalnya ragu karena online, tapi pas sampe barangnya realpict. Thanks Yusuf Store!"</p>
                     <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-gray-600 flex items-center justify-center font-bold">B</div>
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=60" alt="Budi Santoso" class="w-10 h-10 rounded-full object-cover border-2 border-accent">
                         <div>
                             <p class="font-bold text-sm">Budi Santoso</p>
-                            <p class="text-xs text-gray-500">Siantar</p>
+                            <p class="text-xs text-gray-500">Jakarta</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- MODAL FORM TESTIMONI (BARU) -->
+        <div id="testimoniModal" class="fixed inset-0 z-[80] hidden flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm">
+            <div class="bg-white rounded-xl shadow-2xl max-w-md w-full p-6 relative">
+                <button onclick="closeTestiModal()" class="absolute top-4 right-4 text-gray-400 hover:text-red-500 text-xl">✕</button>
+                <h3 class="text-xl font-bold text-gray-800 mb-4">Kirim Ulasan Anda</h3>
+                <form onsubmit="submitTestimonial(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700">Nama Anda</label>
+                        <input type="text" id="testiName" required class="w-full border p-2 rounded focus:border-accent outline-none text-gray-800" placeholder="Nama Lengkap">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700">Kota</label>
+                        <input type="text" id="testiCity" required class="w-full border p-2 rounded focus:border-accent outline-none text-gray-800" placeholder="Contoh: Padang Sidimpuan">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700">Rating</label>
+                        <select id="testiRating" class="w-full border p-2 rounded focus:border-accent outline-none text-gray-800">
+                            <option value="5">★★★★★ (Sangat Puas)</option>
+                            <option value="4">★★★★ (Puas)</option>
+                            <option value="3">★★★ (Cukup)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700">Ulasan</label>
+                        <textarea id="testiReview" required rows="3" class="w-full border p-2 rounded focus:border-accent outline-none text-gray-800" placeholder="Ceritakan pengalaman belanja Anda..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 rounded shadow-lg transition">
+                        <i class="fab fa-whatsapp mr-2"></i> Kirim via WhatsApp
+                    </button>
+                </form>
+            </div>
+        </div>
 
         <!-- FAQ Section (DIPERKECIL) -->
         <section class="py-8 container mx-auto px-4">
@@ -577,810 +618,810 @@
         ];
 
         // Saya tambahkan originalPrice pada beberapa item untuk demo fitur diskon
-let products = [
-    {
-        "id": 1564,
-        "name": "Jam Cewek Silver",
-        "brand": "No Brand",
-        "category": "Jam Tangan",
-        "price": 130000,
-        "img": "jamtangan8.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 6232,
-        "name": "G-shock Casio",
-        "brand": "No Brand",
-        "category": "Jam Tangan",
-        "price": 120000,
-        "img": "jamtangan7.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 8141,
-        "name": "Jam Cewek Antroid 2 tali",
-        "brand": "No Brand",
-        "category": "Jam Tangan",
-        "price": 250000,
-        "img": "jamtangan6.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 4744,
-        "name": "Jam Cewek MK",
-        "brand": "No Brand",
-        "category": "Jam Tangan",
-        "price": 150000,
-        "img": "jamtangan5.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 6602,
-        "name": "Evans Jayden Ori",
-        "brand": "No Brand",
-        "category": "Jam Tangan",
-        "price": 230000,
-        "img": "jamtangan4.jpg",
-        "sold": false,
-        "isOriginal": true,
-        "originalPrice": 300000
-    },
-    {
-        "id": 6475,
-        "name": "Jam Cewek Cream",
-        "brand": "No Brand",
-        "category": "Jam Tangan",
-        "price": 140000,
-        "img": "jamtangan3.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 5111,
-        "name": "G-shock Kuning",
-        "brand": "No Brand",
-        "category": "Jam Tangan",
-        "price": 180000,
-        "img": "jamtangan2.jpg",
-        "sold": false,
-        "isOriginal": false,
-        "originalPrice": 230000
-    },
-    {
-        "id": 9639,
-        "name": "Swiss Army 9205",
-        "brand": "No Brand",
-        "category": "Jam Tangan",
-        "price": 320000,
-        "img": "jamtangan1.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 9957,
-        "name": "Kaos Puma Putih",
-        "brand": "Puma",
-        "category": "Kaos",
-        "price": 150000,
-        "img": "kaos13.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 3420,
-        "name": "Kaos Adidas panjang",
-        "brand": "Adidas",
-        "category": "Kaos",
-        "price": 180000,
-        "img": "kaos11.jpg",
-        "sold": true,
-        "isOriginal": false
-    },
-    {
-        "id": 6067,
-        "name": "Kaos Hijau Army",
-        "brand": "No Brand",
-        "category": "Kaos",
-        "price": 130000,
-        "img": "kaos12.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 3798,
-        "name": "Kaos TNF Abu",
-        "brand": "No Brand",
-        "category": "Kaos",
-        "price": 150000,
-        "img": "kaos10.jpg",
-        "sold": true,
-        "isOriginal": false
-    },
-    {
-        "id": 7078,
-        "name": "Kaos Puma Ferarri",
-        "brand": "Puma",
-        "category": "Kaos",
-        "price": 150000,
-        "img": "kaos9.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 3301,
-        "name": "Kaos Puma MLB",
-        "brand": "Puma",
-        "category": "Kaos",
-        "price": 150000,
-        "img": "kaos8.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 6023,
-        "name": "Kaos Adidas Cream",
-        "brand": "Adidas",
-        "category": "Kaos",
-        "price": 120000,
-        "img": "kaos7.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 5238,
-        "name": "Kaos Gucci",
-        "brand": "No Brand",
-        "category": "Kaos",
-        "price": 150000,
-        "img": "kaos6.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 1127,
-        "name": "Kaos Gucci",
-        "brand": "No Brand",
-        "category": "Kaos",
-        "price": 150000,
-        "img": "kaos5.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 7637,
-        "name": "Kaos Puma Ferrari",
-        "brand": "Puma",
-        "category": "Kaos",
-        "price": 150000,
-        "img": "kaos4.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 3042,
-        "name": "Kaos Under Armour",
-        "brand": "Under Armour",
-        "category": "Kaos",
-        "price": 150000,
-        "img": "kaos3.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 4291,
-        "name": "Kaos Nike Jordan",
-        "brand": "Nike",
-        "category": "Kaos",
-        "price": 150000,
-        "img": "kaos2.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 6708,
-        "name": "Kaos Puma",
-        "brand": "Puma",
-        "category": "Kaos",
-        "price": 100000,
-        "img": "kaos1.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 7930,
-        "name": "Adidas Colektor Size 41",
-        "brand": "Adidas",
-        "category": "Casual",
-        "price": 180000,
-        "img": "sepatu55.jpg",
-        "sold": false,
-        "isOriginal": false,
-        "originalPrice": 270000
-    },
-    {
-        "id": 108,
-        "name": "Onitsuka Tiger Size 40",
-        "brand": "Onitsuka",
-        "category": "Casual",
-        "price": 250000,
-        "img": "sepatu54.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 5823,
-        "name": "Nike Putih Size 36",
-        "brand": "Nike",
-        "category": "Casual",
-        "price": 230000,
-        "img": "sepatu53.jpg",
-        "sold": false,
-        "isOriginal": false,
-        "originalPrice": 270000
-    },
-    {
-        "id": 2717,
-        "name": "Puma Speetcat Size 37",
-        "brand": "Puma",
-        "category": "Casual",
-        "price": 300000,
-        "img": "sepatu52.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 6558,
-        "name": "Nike Putih Size 36",
-        "brand": "Nike",
-        "category": "Running",
-        "price": 240000,
-        "img": "sepatu51.jpg",
-        "sold": false,
-        "isOriginal": false,
-        "originalPrice": 270000
-    },
-    {
-        "id": 8784,
-        "name": "On Cloud Size 41",
-        "brand": "On Cloud",
-        "category": "Running",
-        "price": 200000,
-        "img": "sepatu59.jpg",
-        "sold": false,
-        "isOriginal": false,
-        "originalPrice": 300000
-    },
-    {
-        "id": 3934,
-        "name": "Hoka Full Black Size 42",
-        "brand": "Hoka",
-        "category": "Running",
-        "price": 320000,
-        "img": "sepatu50.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 335,
-        "name": "Converse Cewek Size 38",
-        "brand": "Converse",
-        "category": "Casual",
-        "price": 80000,
-        "img": "sepatu58.jpg",
-        "sold": false,
-        "isOriginal": false,
-        "originalPrice": 200000
-    },
-    {
-        "id": 9342,
-        "name": "Converse Cewek Size 37",
-        "brand": "Converse",
-        "category": "Casual",
-        "price": 200000,
-        "img": "sepatu57.jpg",
-        "sold": true,
-        "isOriginal": false
-    },
-    {
-        "id": 9227,
-        "name": "NIke Air Zoom Size 43",
-        "brand": "Nike",
-        "category": "Running",
-        "price": 300000,
-        "img": "sepatu43.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 7042,
-        "name": "Adidas Samba Size 39",
-        "brand": "Adidas",
-        "category": "Casual",
-        "price": 220000,
-        "img": "sepatu39.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 458,
-        "name": "Asics Tokyo Size 38",
-        "brand": "Asics",
-        "category": "Running",
-        "price": 280000,
-        "img": "sepatu14.jpg",
-        "sold": false,
-        "isOriginal": false,
-        "originalPrice": 320000
-    },
-    {
-        "id": 3322,
-        "name": "Nike Vomero Size 43",
-        "brand": "Nike",
-        "category": "Running",
-        "price": 300000,
-        "img": "sepatu46.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 5729,
-        "name": "Lacoste Size 42",
-        "brand": "No Brand",
-        "category": "Casual",
-        "price": 360000,
-        "img": "sepatu45.jpg",
-        "sold": false,
-        "isOriginal": false,
-        "originalPrice": 400000
-    },
-    {
-        "id": 1248,
-        "name": "Nike Alphafly 3 Size 43",
-        "brand": "Nike",
-        "category": "Running",
-        "price": 450000,
-        "img": "sepatu44.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 3626,
-        "name": "Adidas Samba Kuning Size 40",
-        "brand": "Adidas",
-        "category": "Casual",
-        "price": 200000,
-        "img": "sepatu49.jpg",
-        "sold": true,
-        "isOriginal": false
-    },
-    {
-        "id": 7888,
-        "name": "Nike Struktur 25 Size 43",
-        "brand": "Nike",
-        "category": "Running",
-        "price": 350000,
-        "img": "sepatu42.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 8842,
-        "name": "Saucony Size 43",
-        "brand": "Saucony",
-        "category": "Running",
-        "price": 350000,
-        "img": "sepatu41.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 796,
-        "name": "Nike Cewek Size 39",
-        "brand": "Nike",
-        "category": "Casual",
-        "price": 220000,
-        "img": "sepatu40.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 7085,
-        "name": "NB 1500 Size 40",
-        "brand": "New Balance",
-        "category": "Casual",
-        "price": 380000,
-        "img": "sepatu48.jpg",
-        "sold": true,
-        "isOriginal": false
-    },
-    {
-        "id": 8022,
-        "name": "NIke SB Dua Warna Size 41,43",
-        "brand": "Nike",
-        "category": "Casual",
-        "price": 250000,
-        "img": "sepatu38.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 2435,
-        "name": "NIke Futsal Size 37",
-        "brand": "Nike",
-        "category": "Futsal",
-        "price": 220000,
-        "img": "sepatu37.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 7899,
-        "name": "Asic Novablast 3 Size 39",
-        "brand": "Asics",
-        "category": "Running",
-        "price": 350000,
-        "img": "sepatu36.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 9844,
-        "name": "Adidas Futsal Size 38,39",
-        "brand": "Adidas",
-        "category": "Futsal",
-        "price": 160000,
-        "img": "sepatu35.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 8889,
-        "name": "Specs Stabilo Size 42",
-        "brand": "Specs",
-        "category": "Futsal",
-        "price": 200000,
-        "img": "sepatu34.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 7638,
-        "name": "Hugo Boss Size 41",
-        "brand": "No Brand",
-        "category": "Casual",
-        "price": 400000,
-        "img": "sepatu33.jpg",
-        "sold": true,
-        "isOriginal": false
-    },
-    {
-        "id": 2326,
-        "name": "Hoka Toska Size 38",
-        "brand": "Hoka",
-        "category": "Running",
-        "price": 320000,
-        "img": "sepatu31.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 361,
-        "name": "Hugo Boss Size 40",
-        "brand": "No Brand",
-        "category": "Casual",
-        "price": 400000,
-        "img": "sepatu30.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 7709,
-        "name": "NB 8010 Size 42",
-        "brand": "New Balance",
-        "category": "Running",
-        "price": 350000,
-        "img": "sepatu29.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 3295,
-        "name": "NB Elit Size 37",
-        "brand": "New Balance",
-        "category": "Running",
-        "price": 350000,
-        "img": "sepatu28.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 8750,
-        "name": "Ortuseight Original Size 40",
-        "brand": "Ortuseight",
-        "category": "Futsal",
-        "price": 299000,
-        "img": "sepatu27.jpg",
-        "sold": false,
-        "isOriginal": true
-    },
-    {
-        "id": 6917,
-        "name": "Under Armor Size 40",
-        "brand": "Under Armour",
-        "category": "Running",
-        "price": 400000,
-        "img": "sepatu26.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 4945,
-        "name": "Asics Dark Green Size 41",
-        "brand": "Asics",
-        "category": "Running",
-        "price": 300000,
-        "img": "sepatu25.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 7807,
-        "name": "Asics Biru Size 39",
-        "brand": "Asics",
-        "category": "Running",
-        "price": 300000,
-        "img": "sepatu24.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 6845,
-        "name": "Asics Abu Size 41",
-        "brand": "Asics",
-        "category": "Running",
-        "price": 300000,
-        "img": "sepatu23.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 6166,
-        "name": "Asics Magic Speed Size 43,45",
-        "brand": "Asics",
-        "category": "Running",
-        "price": 350000,
-        "img": "sepatu22.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 5354,
-        "name": "Adidas Samba Putih (Minus)  Size 39",
-        "brand": "Adidas",
-        "category": "Casual",
-        "price": 130000,
-        "img": "sepatu21.jpg",
-        "sold": false,
-        "isOriginal": false,
-        "originalPrice": 220000
-    },
-    {
-        "id": 4276,
-        "name": "Adidas Samba Jane Putih Size 39",
-        "brand": "Adidas",
-        "category": "Casual",
-        "price": 250000,
-        "img": "sepatu20.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 9392,
-        "name": "Adidas Samba Jane Size 38",
-        "brand": "Adidas",
-        "category": "Casual",
-        "price": 250000,
-        "img": "sepatu19.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 337,
-        "name": "Onitsuka Mexico 66 Size 38",
-        "brand": "Onitsuka",
-        "category": "Casual",
-        "price": 250000,
-        "img": "sepatu18.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 8907,
-        "name": "Onitsuka Blue Red Size 38",
-        "brand": "Onitsuka",
-        "category": "Casual",
-        "price": 250000,
-        "img": "sepatu17.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 6341,
-        "name": "Skechers Size 43",
-        "brand": "Skechers",
-        "category": "Running",
-        "price": 300000,
-        "img": "sepatu16.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 4006,
-        "name": "Puma Suede Size 40",
-        "brand": "Puma",
-        "category": "Casual",
-        "price": 300000,
-        "img": "sepatu15.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 2674,
-        "name": "Mizuno Size 41",
-        "brand": "No Brand",
-        "category": "Casual",
-        "price": 390000,
-        "img": "sepatu47.jpg",
-        "sold": true,
-        "isOriginal": false
-    },
-    {
-        "id": 3543,
-        "name": "Skechers Black Purple Size 36",
-        "brand": "Skechers",
-        "category": "Running",
-        "price": 300000,
-        "img": "sepatu13.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 2043,
-        "name": "910 Nineten Original Size 37",
-        "brand": "910 Nineten",
-        "category": "Running",
-        "price": 499000,
-        "img": "sepatu12.jpg",
-        "sold": false,
-        "isOriginal": true
-    },
-    {
-        "id": 2116,
-        "name": "Puma Nitro Size 43",
-        "brand": "Puma",
-        "category": "Running",
-        "price": 350000,
-        "img": "sepatu11.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 7091,
-        "name": "Hugo Boss Size 40",
-        "brand": "No Brand",
-        "category": "Casual",
-        "price": 400000,
-        "img": "sepatu10.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 5103,
-        "name": "Puma Nitro Size 42",
-        "brand": "Puma",
-        "category": "Running",
-        "price": 350000,
-        "img": "sepatu9.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 1562,
-        "name": "Adidas Ultra Boost Size 41",
-        "brand": "Adidas",
-        "category": "Running",
-        "price": 350000,
-        "img": "sepatu8.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 5713,
-        "name": "Adidas SL72 Size 39,40",
-        "brand": "Adidas",
-        "category": "Casual",
-        "price": 290000,
-        "img": "sepatu5.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 4135,
-        "name": "Asics Magic Speed Size 36",
-        "brand": "Asics",
-        "category": "Running",
-        "price": 350000,
-        "img": "sepatu4.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 5469,
-        "name": "Nike Pegasus Size 39",
-        "brand": "Nike",
-        "category": "Running",
-        "price": 300000,
-        "img": "sepatu3.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 5898,
-        "name": "Le Coq Size 40",
-        "brand": "Le Coq",
-        "category": "Casual",
-        "price": 300000,
-        "img": "sepatu2.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 15,
-        "name": "NB Elite Size 40",
-        "brand": "New Balance",
-        "category": "Running",
-        "price": 400000,
-        "img": "sepatu1.jpg",
-        "sold": true,
-        "isOriginal": false
-    },
-    {
-        "id": 6530,
-        "name": "Eiger Original NoBrand Size 40",
-        "brand": "No Brand",
-        "category": "Casual",
-        "price": 800000,
-        "originalPrice": 1000000,
-        "img": "sepatu32.jpg",
-        "sold": false,
-        "isOriginal": true
-    },
-    {
-        "id": 13,
-        "name": "Adidas Ultra Boost Size 42",
-        "brand": "Adidas",
-        "category": "Running",
-        "price": 350000,
-        "img": "sepatu6.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 14,
-        "name": "Adidas Adizero Pro 4 Size 39",
-        "brand": "Adidas",
-        "category": "Running",
-        "price": 380000,
-        "originalPrice": 450000,
-        "img": "sepatu7.jpg",
-        "sold": false,
-        "isOriginal": false
-    }
-];
+        let products = [
+            {
+                "id": 1564,
+                "name": "Jam Cewek Silver",
+                "brand": "No Brand",
+                "category": "Jam Tangan",
+                "price": 130000,
+                "img": "jamtangan8.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 6232,
+                "name": "G-shock Casio",
+                "brand": "No Brand",
+                "category": "Jam Tangan",
+                "price": 120000,
+                "img": "jamtangan7.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 8141,
+                "name": "Jam Cewek Antroid 2 tali",
+                "brand": "No Brand",
+                "category": "Jam Tangan",
+                "price": 250000,
+                "img": "jamtangan6.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 4744,
+                "name": "Jam Cewek MK",
+                "brand": "No Brand",
+                "category": "Jam Tangan",
+                "price": 150000,
+                "img": "jamtangan5.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 6602,
+                "name": "Evans Jayden Ori",
+                "brand": "No Brand",
+                "category": "Jam Tangan",
+                "price": 230000,
+                "img": "jamtangan4.jpg",
+                "sold": false,
+                "isOriginal": true,
+                "originalPrice": 300000
+            },
+            {
+                "id": 6475,
+                "name": "Jam Cewek Cream",
+                "brand": "No Brand",
+                "category": "Jam Tangan",
+                "price": 140000,
+                "img": "jamtangan3.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 5111,
+                "name": "G-shock Kuning",
+                "brand": "No Brand",
+                "category": "Jam Tangan",
+                "price": 180000,
+                "img": "jamtangan2.jpg",
+                "sold": false,
+                "isOriginal": false,
+                "originalPrice": 230000
+            },
+            {
+                "id": 9639,
+                "name": "Swiss Army 9205",
+                "brand": "No Brand",
+                "category": "Jam Tangan",
+                "price": 320000,
+                "img": "jamtangan1.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 9957,
+                "name": "Kaos Puma Putih",
+                "brand": "Puma",
+                "category": "Kaos",
+                "price": 150000,
+                "img": "kaos13.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 3420,
+                "name": "Kaos Adidas panjang",
+                "brand": "Adidas",
+                "category": "Kaos",
+                "price": 180000,
+                "img": "kaos11.jpg",
+                "sold": true,
+                "isOriginal": false
+            },
+            {
+                "id": 6067,
+                "name": "Kaos Hijau Army",
+                "brand": "No Brand",
+                "category": "Kaos",
+                "price": 130000,
+                "img": "kaos12.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 3798,
+                "name": "Kaos TNF Abu",
+                "brand": "No Brand",
+                "category": "Kaos",
+                "price": 150000,
+                "img": "kaos10.jpg",
+                "sold": true,
+                "isOriginal": false
+            },
+            {
+                "id": 7078,
+                "name": "Kaos Puma Ferarri",
+                "brand": "Puma",
+                "category": "Kaos",
+                "price": 150000,
+                "img": "kaos9.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 3301,
+                "name": "Kaos Puma MLB",
+                "brand": "Puma",
+                "category": "Kaos",
+                "price": 150000,
+                "img": "kaos8.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 6023,
+                "name": "Kaos Adidas Cream",
+                "brand": "Adidas",
+                "category": "Kaos",
+                "price": 120000,
+                "img": "kaos7.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 5238,
+                "name": "Kaos Gucci",
+                "brand": "No Brand",
+                "category": "Kaos",
+                "price": 150000,
+                "img": "kaos6.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 1127,
+                "name": "Kaos Gucci",
+                "brand": "No Brand",
+                "category": "Kaos",
+                "price": 150000,
+                "img": "kaos5.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 7637,
+                "name": "Kaos Puma Ferrari",
+                "brand": "Puma",
+                "category": "Kaos",
+                "price": 150000,
+                "img": "kaos4.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 3042,
+                "name": "Kaos Under Armour",
+                "brand": "Under Armour",
+                "category": "Kaos",
+                "price": 150000,
+                "img": "kaos3.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 4291,
+                "name": "Kaos Nike Jordan",
+                "brand": "Nike",
+                "category": "Kaos",
+                "price": 150000,
+                "img": "kaos2.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 6708,
+                "name": "Kaos Puma",
+                "brand": "Puma",
+                "category": "Kaos",
+                "price": 100000,
+                "img": "kaos1.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 7930,
+                "name": "Adidas Colektor Size 41",
+                "brand": "Adidas",
+                "category": "Casual",
+                "price": 180000,
+                "img": "sepatu55.jpg",
+                "sold": false,
+                "isOriginal": false,
+                "originalPrice": 270000
+            },
+            {
+                "id": 108,
+                "name": "Onitsuka Tiger Size 40",
+                "brand": "Onitsuka",
+                "category": "Casual",
+                "price": 250000,
+                "img": "sepatu54.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 5823,
+                "name": "Nike Putih Size 36",
+                "brand": "Nike",
+                "category": "Casual",
+                "price": 230000,
+                "img": "sepatu53.jpg",
+                "sold": false,
+                "isOriginal": false,
+                "originalPrice": 270000
+            },
+            {
+                "id": 2717,
+                "name": "Puma Speetcat Size 37",
+                "brand": "Puma",
+                "category": "Casual",
+                "price": 300000,
+                "img": "sepatu52.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 6558,
+                "name": "Nike Putih Size 36",
+                "brand": "Nike",
+                "category": "Running",
+                "price": 240000,
+                "img": "sepatu51.jpg",
+                "sold": false,
+                "isOriginal": false,
+                "originalPrice": 270000
+            },
+            {
+                "id": 8784,
+                "name": "On Cloud Size 41",
+                "brand": "On Cloud",
+                "category": "Running",
+                "price": 200000,
+                "img": "sepatu59.jpg",
+                "sold": false,
+                "isOriginal": false,
+                "originalPrice": 300000
+            },
+            {
+                "id": 3934,
+                "name": "Hoka Full Black Size 42",
+                "brand": "Hoka",
+                "category": "Running",
+                "price": 320000,
+                "img": "sepatu50.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 335,
+                "name": "Converse Cewek Size 38",
+                "brand": "Converse",
+                "category": "Casual",
+                "price": 80000,
+                "img": "sepatu58.jpg",
+                "sold": false,
+                "isOriginal": false,
+                "originalPrice": 200000
+            },
+            {
+                "id": 9342,
+                "name": "Converse Cewek Size 37",
+                "brand": "Converse",
+                "category": "Casual",
+                "price": 200000,
+                "img": "sepatu57.jpg",
+                "sold": true,
+                "isOriginal": false
+            },
+            {
+                "id": 9227,
+                "name": "NIke Air Zoom Size 43",
+                "brand": "Nike",
+                "category": "Running",
+                "price": 300000,
+                "img": "sepatu43.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 7042,
+                "name": "Adidas Samba Size 39",
+                "brand": "Adidas",
+                "category": "Casual",
+                "price": 220000,
+                "img": "sepatu39.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 458,
+                "name": "Asics Tokyo Size 38",
+                "brand": "Asics",
+                "category": "Running",
+                "price": 280000,
+                "img": "sepatu14.jpg",
+                "sold": false,
+                "isOriginal": false,
+                "originalPrice": 320000
+            },
+            {
+                "id": 3322,
+                "name": "Nike Vomero Size 43",
+                "brand": "Nike",
+                "category": "Running",
+                "price": 300000,
+                "img": "sepatu46.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 5729,
+                "name": "Lacoste Size 42",
+                "brand": "No Brand",
+                "category": "Casual",
+                "price": 360000,
+                "img": "sepatu45.jpg",
+                "sold": false,
+                "isOriginal": false,
+                "originalPrice": 400000
+            },
+            {
+                "id": 1248,
+                "name": "Nike Alphafly 3 Size 43",
+                "brand": "Nike",
+                "category": "Running",
+                "price": 450000,
+                "img": "sepatu44.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 3626,
+                "name": "Adidas Samba Kuning Size 40",
+                "brand": "Adidas",
+                "category": "Casual",
+                "price": 200000,
+                "img": "sepatu49.jpg",
+                "sold": true,
+                "isOriginal": false
+            },
+            {
+                "id": 7888,
+                "name": "Nike Struktur 25 Size 43",
+                "brand": "Nike",
+                "category": "Running",
+                "price": 350000,
+                "img": "sepatu42.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 8842,
+                "name": "Saucony Size 43",
+                "brand": "Saucony",
+                "category": "Running",
+                "price": 350000,
+                "img": "sepatu41.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 796,
+                "name": "Nike Cewek Size 39",
+                "brand": "Nike",
+                "category": "Casual",
+                "price": 220000,
+                "img": "sepatu40.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 7085,
+                "name": "NB 1500 Size 40",
+                "brand": "New Balance",
+                "category": "Casual",
+                "price": 380000,
+                "img": "sepatu48.jpg",
+                "sold": true,
+                "isOriginal": false
+            },
+            {
+                "id": 8022,
+                "name": "NIke SB Dua Warna Size 41,43",
+                "brand": "Nike",
+                "category": "Casual",
+                "price": 250000,
+                "img": "sepatu38.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 2435,
+                "name": "NIke Futsal Size 37",
+                "brand": "Nike",
+                "category": "Futsal",
+                "price": 220000,
+                "img": "sepatu37.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 7899,
+                "name": "Asic Novablast 3 Size 39",
+                "brand": "Asics",
+                "category": "Running",
+                "price": 350000,
+                "img": "sepatu36.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 9844,
+                "name": "Adidas Futsal Size 38,39",
+                "brand": "Adidas",
+                "category": "Futsal",
+                "price": 160000,
+                "img": "sepatu35.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 8889,
+                "name": "Specs Stabilo Size 42",
+                "brand": "Specs",
+                "category": "Futsal",
+                "price": 200000,
+                "img": "sepatu34.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 7638,
+                "name": "Hugo Boss Size 41",
+                "brand": "No Brand",
+                "category": "Casual",
+                "price": 400000,
+                "img": "sepatu33.jpg",
+                "sold": true,
+                "isOriginal": false
+            },
+            {
+                "id": 2326,
+                "name": "Hoka Toska Size 38",
+                "brand": "Hoka",
+                "category": "Running",
+                "price": 320000,
+                "img": "sepatu31.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 361,
+                "name": "Hugo Boss Size 40",
+                "brand": "No Brand",
+                "category": "Casual",
+                "price": 400000,
+                "img": "sepatu30.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 7709,
+                "name": "NB 8010 Size 42",
+                "brand": "New Balance",
+                "category": "Running",
+                "price": 350000,
+                "img": "sepatu29.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 3295,
+                "name": "NB Elit Size 37",
+                "brand": "New Balance",
+                "category": "Running",
+                "price": 350000,
+                "img": "sepatu28.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 8750,
+                "name": "Ortuseight Original Size 40",
+                "brand": "Ortuseight",
+                "category": "Futsal",
+                "price": 299000,
+                "img": "sepatu27.jpg",
+                "sold": false,
+                "isOriginal": true
+            },
+            {
+                "id": 6917,
+                "name": "Under Armor Size 40",
+                "brand": "Under Armour",
+                "category": "Running",
+                "price": 400000,
+                "img": "sepatu26.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 4945,
+                "name": "Asics Dark Green Size 41",
+                "brand": "Asics",
+                "category": "Running",
+                "price": 300000,
+                "img": "sepatu25.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 7807,
+                "name": "Asics Biru Size 39",
+                "brand": "Asics",
+                "category": "Running",
+                "price": 300000,
+                "img": "sepatu24.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 6845,
+                "name": "Asics Abu Size 41",
+                "brand": "Asics",
+                "category": "Running",
+                "price": 300000,
+                "img": "sepatu23.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 6166,
+                "name": "Asics Magic Speed Size 43,45",
+                "brand": "Asics",
+                "category": "Running",
+                "price": 350000,
+                "img": "sepatu22.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 5354,
+                "name": "Adidas Samba Putih (Minus)  Size 39",
+                "brand": "Adidas",
+                "category": "Casual",
+                "price": 130000,
+                "img": "sepatu21.jpg",
+                "sold": false,
+                "isOriginal": false,
+                "originalPrice": 220000
+            },
+            {
+                "id": 4276,
+                "name": "Adidas Samba Jane Putih Size 39",
+                "brand": "Adidas",
+                "category": "Casual",
+                "price": 250000,
+                "img": "sepatu20.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 9392,
+                "name": "Adidas Samba Jane Size 38",
+                "brand": "Adidas",
+                "category": "Casual",
+                "price": 250000,
+                "img": "sepatu19.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 337,
+                "name": "Onitsuka Mexico 66 Size 38",
+                "brand": "Onitsuka",
+                "category": "Casual",
+                "price": 250000,
+                "img": "sepatu18.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 8907,
+                "name": "Onitsuka Blue Red Size 38",
+                "brand": "Onitsuka",
+                "category": "Casual",
+                "price": 250000,
+                "img": "sepatu17.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 6341,
+                "name": "Skechers Size 43",
+                "brand": "Skechers",
+                "category": "Running",
+                "price": 300000,
+                "img": "sepatu16.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 4006,
+                "name": "Puma Suede Size 40",
+                "brand": "Puma",
+                "category": "Casual",
+                "price": 300000,
+                "img": "sepatu15.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 2674,
+                "name": "Mizuno Size 41",
+                "brand": "No Brand",
+                "category": "Casual",
+                "price": 390000,
+                "img": "sepatu47.jpg",
+                "sold": true,
+                "isOriginal": false
+            },
+            {
+                "id": 3543,
+                "name": "Skechers Black Purple Size 36",
+                "brand": "Skechers",
+                "category": "Running",
+                "price": 300000,
+                "img": "sepatu13.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 2043,
+                "name": "910 Nineten Original Size 37",
+                "brand": "910 Nineten",
+                "category": "Running",
+                "price": 499000,
+                "img": "sepatu12.jpg",
+                "sold": false,
+                "isOriginal": true
+            },
+            {
+                "id": 2116,
+                "name": "Puma Nitro Size 43",
+                "brand": "Puma",
+                "category": "Running",
+                "price": 350000,
+                "img": "sepatu11.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 7091,
+                "name": "Hugo Boss Size 40",
+                "brand": "No Brand",
+                "category": "Casual",
+                "price": 400000,
+                "img": "sepatu10.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 5103,
+                "name": "Puma Nitro Size 42",
+                "brand": "Puma",
+                "category": "Running",
+                "price": 350000,
+                "img": "sepatu9.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 1562,
+                "name": "Adidas Ultra Boost Size 41",
+                "brand": "Adidas",
+                "category": "Running",
+                "price": 350000,
+                "img": "sepatu8.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 5713,
+                "name": "Adidas SL72 Size 39,40",
+                "brand": "Adidas",
+                "category": "Casual",
+                "price": 290000,
+                "img": "sepatu5.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 4135,
+                "name": "Asics Magic Speed Size 36",
+                "brand": "Asics",
+                "category": "Running",
+                "price": 350000,
+                "img": "sepatu4.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 5469,
+                "name": "Nike Pegasus Size 39",
+                "brand": "Nike",
+                "category": "Running",
+                "price": 300000,
+                "img": "sepatu3.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 5898,
+                "name": "Le Coq Size 40",
+                "brand": "Le Coq",
+                "category": "Casual",
+                "price": 300000,
+                "img": "sepatu2.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 15,
+                "name": "NB Elite Size 40",
+                "brand": "New Balance",
+                "category": "Running",
+                "price": 400000,
+                "img": "sepatu1.jpg",
+                "sold": true,
+                "isOriginal": false
+            },
+            {
+                "id": 6530,
+                "name": "Eiger Original NoBrand Size 40",
+                "brand": "No Brand",
+                "category": "Casual",
+                "price": 800000,
+                "originalPrice": 1000000,
+                "img": "sepatu32.jpg",
+                "sold": false,
+                "isOriginal": true
+            },
+            {
+                "id": 13,
+                "name": "Adidas Ultra Boost Size 42",
+                "brand": "Adidas",
+                "category": "Running",
+                "price": 350000,
+                "img": "sepatu6.jpg",
+                "sold": false,
+                "isOriginal": false
+            },
+            {
+                "id": 14,
+                "name": "Adidas Adizero Pro 4 Size 39",
+                "brand": "Adidas",
+                "category": "Running",
+                "price": 380000,
+                "originalPrice": 450000,
+                "img": "sepatu7.jpg",
+                "sold": false,
+                "isOriginal": false
+            }
+        ];
 
         // --- FUNGSI ADMIN BARU ---
 
@@ -1809,6 +1850,64 @@ let products = [
 
         function closeModal() {
             document.getElementById('imageModal').classList.add('hidden');
+        }
+
+        // FUNGSI TESTIMONI BARU
+        function openTestiModal() {
+            document.getElementById('testimoniModal').classList.remove('hidden');
+        }
+
+        function closeTestiModal() {
+            document.getElementById('testimoniModal').classList.add('hidden');
+        }
+
+        function submitTestimonial(e) {
+            e.preventDefault();
+            const name = document.getElementById('testiName').value;
+            const city = document.getElementById('testiCity').value;
+            const rating = document.getElementById('testiRating').value;
+            const review = document.getElementById('testiReview').value;
+
+            // Buat bintang
+            let stars = "";
+            for(let i=0; i<rating; i++) stars += "★";
+
+            // Format Pesan WA
+            const waMessage = `Halo Admin Yusuf Store 25, saya ingin mengirim testimoni:%0A%0ANama: ${name}%0AKota: ${city}%0ARating: ${stars}%0AUlasan: "${review}"%0A%0AMohon ditampilkan di website ya! Terima kasih.`;
+
+            // Tampilkan sementara di layar pembeli (akan hilang saat refresh)
+            const grid = document.getElementById('testimoniGrid');
+            
+            // Cek apakah grid sudah ada (jika section hidden mungkin null saat di-query, tapi krn di dalam DOM seharusnya aman)
+            // Namun untuk amannya kita pastikan logic ini berjalan saat section aktif atau element exist.
+            if(grid) {
+                 const newCard = `
+                    <div class="bg-white/5 border border-white/10 p-6 rounded-xl backdrop-blur-sm animate-pulse">
+                        <div class="text-yellow-400 text-sm mb-3">${stars}</div>
+                        <p class="text-gray-300 italic text-sm mb-4">"${review}"</p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-gray-600 flex items-center justify-center font-bold text-white">${name.charAt(0)}</div>
+                            <div>
+                                <p class="font-bold text-sm text-white">${name}</p>
+                                <p class="text-xs text-gray-500">${city}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                // Tambahkan di awal grid
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = newCard;
+                grid.insertBefore(tempDiv.firstElementChild, grid.firstChild);
+            }
+
+            closeTestiModal();
+            
+            // Redirect ke WA
+            setTimeout(() => {
+                window.open(`https://wa.me/6281375861195?text=${waMessage}`, '_blank');
+            }, 1000);
+            
+            alert("Terima kasih! Ulasan Anda akan kami review via WhatsApp.");
         }
 
         function toggleMenu() {
