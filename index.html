@@ -1475,17 +1475,17 @@
                         <div class="flex flex-col">
                             <span class="text-[10px] text-gray-400 line-through">${formatRupiah(product.originalPrice)}</span>
                             <div class="flex items-center gap-2">
-                                <span class="text-accent font-bold text-sm md:text-lg">${formatRupiah(product.price)}</span>
+                                <span class="text-accent font-bold text-sm md:text-lg border border-accent px-2 py-1 rounded">${formatRupiah(product.price)}</span>
                                 <span class="text-[10px] bg-red-100 text-red-600 px-1 rounded font-bold">-${discount}%</span>
                             </div>
                         </div>
                     `;
                 } else {
-                    priceDisplay = `<span class="text-accent font-bold text-sm md:text-lg">${formatRupiah(product.price)}</span>`;
+                    priceDisplay = `<span class="text-accent font-bold text-sm md:text-lg border border-accent px-2 py-1 rounded">${formatRupiah(product.price)}</span>`;
                 }
 
                 const card = `
-                    <div class="product-card bg-white rounded-lg shadow-lg border border-gray-100 overflow-hidden relative group">
+                    <div class="product-card bg-zinc-900 rounded-lg shadow-lg border border-zinc-800 overflow-hidden relative group hover:border-accent transition duration-300">
                         <div class="relative group cursor-pointer" onclick="openModal(${product.id})">
                             <img src="${product.img}" alt="${product.name}" class="w-full h-40 md:h-56 object-cover ${imgStyle}">
                             
@@ -1496,13 +1496,13 @@
                             </div>
                         </div>
                         
-                        <div class="p-3 md:p-4 ${contentStyle} text-gray-800">
+                        <div class="p-3 md:p-4 ${contentStyle} text-gray-300">
                             <div class="flex justify-between items-start">
-                                <p class="text-xs text-gray-500 uppercase font-semibold">${product.brand}</p>
-                                ${product.isOriginal && !product.sold ? '<span class="text-[10px] bg-blue-100 text-blue-800 px-1 rounded font-bold">ORI</span>' : ''}
+                                <p class="text-xs text-gray-500 uppercase font-semibold tracking-wider">${product.brand}</p>
+                                ${product.isOriginal && !product.sold ? '<span class="text-[10px] bg-accent text-black px-2 py-0.5 rounded font-bold">ORI</span>' : ''}
                             </div>
-                            <h3 class="font-bold text-sm md:text-base text-gray-900 truncate leading-tight mb-1">${product.name}</h3>
-                            <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-bold text-sm md:text-base text-white truncate leading-tight mb-2">${product.name}</h3>
+                            <div class="flex items-center justify-between mb-3">
                                 ${priceDisplay}
                             </div>
                             ${negoTextHTML}
@@ -1535,7 +1535,7 @@
             if (category === 'all') {
                 renderProducts(products);
             } else {
-                const filtered = products.filter(p => p.category === category);
+                const filtered = products.filter(p => p.category === currentCategory);
                 renderProducts(filtered);
             }
         }
@@ -1586,13 +1586,13 @@
                 link.classList.remove('active');
                 if (sectionId === 'home-section' && link.textContent === 'Beranda') link.classList.add('active');
                 if (sectionId === 'catalog' && link.textContent === 'Katalog') link.classList.add('active');
-                if (sectionId === 'testimonials' && link.textContent === 'Testimoni') link.classList.add('active');
+                if (sectionId === 'testimonials' && link.textContent === 'Testimoni') link.classList.add('active'); // Update link active logic
                 if (sectionId === 'sizeguide' && link.textContent === 'Size Guide') link.classList.add('active');
             });
 
             window.scrollTo(0, 0);
         }
-
+        
         // Modal Logic (Zoom only)
         function openModal(id) {
             const product = products.find(p => p.id === id);
@@ -1602,11 +1602,13 @@
             imgElement.src = product.img;
             imgElement.alt = product.name;
             
+            // Animasi scale reset saat dibuka
             imgElement.classList.remove('scale-100');
             imgElement.classList.add('scale-95');
 
             document.getElementById('imageModal').classList.remove('hidden');
             
+            // Efek animasi zoom in halus
             setTimeout(() => {
                 imgElement.classList.remove('scale-95');
                 imgElement.classList.add('scale-100');
