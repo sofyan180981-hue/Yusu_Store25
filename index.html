@@ -8,8 +8,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Google Fonts (Menambahkan Russo One untuk Judul) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Russo+One&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
@@ -17,6 +17,7 @@
                 extend: {
                     fontFamily: {
                         sans: ['Poppins', 'sans-serif'],
+                        display: ['Russo One', 'sans-serif'], // Font baru untuk judul
                     },
                     colors: {
                         primary: '#000000',   // Hitam Pekat
@@ -93,7 +94,7 @@
                 <img src="1000108714.jpg" alt="Logo Yusuf Store 25" class="h-10 w-10 md:h-12 md:w-12 object-cover rounded-full border-2 border-transparent group-hover:border-accent transition duration-300">
                 
                 <div class="hidden md:block">
-                    <h1 class="font-extrabold text-xl leading-none text-white tracking-tight group-hover:text-accent transition">Yusuf Store 25</h1>
+                    <h1 class="font-display font-bold text-xl leading-none text-white tracking-wide group-hover:text-accent transition">Yusuf Store 25</h1>
                     <p class="text-xs text-gray-400 font-mono">Padang Sidimpuan</p>
                 </div>
             </a>
@@ -157,8 +158,11 @@
                 <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-4">
                     <img src="1000108714.jpg" alt="Logo Yusuf Store 25" class="w-24 h-24 md:w-32 md:h-32 mb-6 rounded-full border-4 border-accent shadow-[0_0_30px_rgba(204,255,0,0.3)] object-cover">
 
-                    <div class="bg-black/50 backdrop-blur-sm border border-white/10 px-6 py-2 rounded-full mb-4">
-                        <h2 class="text-xl md:text-3xl font-black tracking-[0.2em] uppercase text-white">Yusuf Store 25</h2>
+                    <!-- JUDUL TOKO DIPERBARUI FONTYA -->
+                    <div class="mb-4">
+                        <h2 class="text-3xl md:text-5xl font-display uppercase text-transparent bg-clip-text bg-gradient-to-r from-white via-accent to-white drop-shadow-[0_0_10px_rgba(204,255,0,0.5)] tracking-wider">
+                            Yusuf Store 25
+                        </h2>
                     </div>
                     
                     <div class="text-sm md:text-lg font-light text-gray-300 flex flex-col gap-1 items-center mb-8">
@@ -1838,8 +1842,8 @@
 
         function searchProduct(query) {
             const lowerQ = query.toLowerCase();
-            const filtered = products.filter(p => 
-                p.name.toLowerCase().includes(lowerQ) || 
+            const filtered = products.filter(p => 
+                p.name.toLowerCase().includes(lowerQ) || 
                 p.brand.toLowerCase().includes(lowerQ) ||
                 p.category.toLowerCase().includes(lowerQ)
             );
