@@ -190,6 +190,8 @@
                             <button onclick="filterCategory('Running')" class="cat-btn bg-white/10 text-white border border-white/20 px-3 py-1 rounded-full text-xs md:text-sm hover:bg-white/20 transition">Running</button>
                             <button onclick="filterCategory('Casual')" class="cat-btn bg-white/10 text-white border border-white/20 px-3 py-1 rounded-full text-xs md:text-sm hover:bg-white/20 transition">Casual</button>
                             <button onclick="filterCategory('Futsal')" class="cat-btn bg-white/10 text-white border border-white/20 px-3 py-1 rounded-full text-xs md:text-sm hover:bg-white/20 transition">Futsal</button>
+                            <button onclick="filterCategory('Kaos')" class="cat-btn bg-white/10 text-white border border-white/20 px-3 py-1 rounded-full text-xs md:text-sm hover:bg-white/20 transition">Kaos</button>
+                            <button onclick="filterCategory('Jam Tangan')" class="cat-btn bg-white/10 text-white border border-white/20 px-3 py-1 rounded-full text-xs md:text-sm hover:bg-white/20 transition">Jam Tangan</button>
                         </div>
                     </div>
                 </div>
@@ -251,7 +253,7 @@
                         <div class="w-10 h-10 rounded-full bg-gray-600 flex items-center justify-center font-bold">B</div>
                         <div>
                             <p class="font-bold text-sm">Budi Santoso</p>
-                            <p class="text-xs text-gray-500">Siantar</p>
+                            <p class="text-xs text-gray-500">Jakarta</p>
                         </div>
                     </div>
                 </div>
@@ -571,28 +573,38 @@
         // Saya tambahkan originalPrice pada beberapa item untuk demo fitur diskon
         let products = [
             {
-                "id": 1,
+                "id": 15,
+                "name": "NB Elite Size 40",
+                "brand": "New Balance",
+                "category": "Running",
+                "price": 400000,
+                "img": "sepatu1.jpg",
+                "sold": true,
+                "isOriginal": false
+            },
+            {
+                "id": 6530,
                 "name": "Eiger Original NoBrand Size 40",
                 "brand": "No Brand",
                 "category": "Casual",
                 "price": 800000,
                 "originalPrice": 1000000, // Contoh Diskon
-                "img": "sepatu32.jpg", 
+                "img": "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=500&auto=format&fit=crop", 
                 "sold": false,
                 "isOriginal": true
             },
             {
-                "id": 2,
-                "name": "Specs Stabilo Size 42",
+                "id": 10,
+                "name": "Specs Accelerator",
                 "brand": "Specs",
                 "category": "Futsal",
-                "price": 200000,
-                "img": "sepatu34.jpg",
-                "sold": false,
+                "price": 420000,
+                "img": "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?w=500&auto=format&fit=crop",
+                "sold": true,
                 "isOriginal": false
             },
             {
-                "id": 3,
+                "id": 11,
                 "name": "Asics Gel Kayano",
                 "brand": "Asics",
                 "category": "Running",
@@ -603,7 +615,7 @@
                 "isOriginal": true
             },
             {
-                "id": 4,
+                "id": 13,
                 "name": "Adidas Ultra Boost Size 42",
                 "brand": "Adidas",
                 "category": "Running",
@@ -613,7 +625,7 @@
                 "isOriginal": false
             },
             {
-                "id": 5,
+                "id": 14,
                 "name": "Adidas Adizero Pro 4 Size 39",
                 "brand": "Adidas",
                 "category": "Running",
