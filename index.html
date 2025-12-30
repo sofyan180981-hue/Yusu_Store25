@@ -250,10 +250,12 @@
                             height="100%" 
                             frameborder="0" 
                             style="border:0" 
-                            src="https://maps.google.com/maps?q=1.3759020665545012,99.27329924966573&z=17&output=embed" allowfullscreen>
+                            src="https://maps.google.com/maps?q=1.3759020665545012,99.27329924966573&z=16&output=embed" allowfullscreen>
                         </iframe>
                     </div>
-                    <a href="https://maps.google.com/?q=1.3759020665545012,99.27329924966573" target="_blank" class="block text-center mt-3 text-white bg-blue-600 hover:bg-blue-700 py-2 rounded-lg text-sm transition">Buka di Google Maps App</a>
+                    <a href="https://maps.google.com/?q=1.3759020665545012,99.27329924966573" target="_blank" class="text-xs text-blue-400 hover:text-blue-300 mt-2 inline-flex items-center gap-1 transition">
+                        <i class="fas fa-external-link-alt"></i> Buka di Google Maps
+                    </a>
                 </section>
 
             </div>
@@ -361,15 +363,7 @@
                         <div>
                             <label class="block text-sm font-semibold text-gray-700">Brand</label>
                             <select id="addBrand" class="w-full border p-2 rounded focus:border-accent outline-none">
-                                <option value="Nike">Nike</option>
-                                <option value="Adidas">Adidas</option>
-                                <option value="Puma">Puma</option>
-                                <option value="New Balance">New Balance</option>
-                                <option value="Asics">Asics</option>
-                                <option value="Hoka">Hoka</option>
-                                <option value="Ortuseight">Ortuseight</option>
-                                <option value="Specs">Specs</option>
-                                <option value="No Brand">No Brand</option>
+                                <!-- Opsi Brand akan diisi otomatis oleh JS -->
                             </select>
                         </div>
                         <div>
@@ -454,58 +448,10 @@
 
         // Ubah const menjadi let agar bisa dimodifikasi oleh admin panel
         let products = [
-           const products = [
-    {
-        "id": 6530,
-        "name": "Eiger Original NoBrand Size 40",
-        "brand": "No Brand",
-        "category": "Casual",
-        "price": 800000,
-        "img": "https://photos.google.com/album/AF1QipOLU8jD9IzBA8JWRpPTkq-aC5a4gkfWsRybb2Iv/photo/AF1QipOT3gsW9ivwtDNIytY1nZVM8FD4NiJzdJK0XAZh",
-        "sold": false,
-        "isOriginal": true
-    },
-    {
-        "id": 10,
-        "name": "Specs Accelerator",
-        "brand": "Specs",
-        "category": "Futsal",
-        "price": 420000,
-        "img": "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?w=500&auto=format&fit=crop",
-        "sold": true,
-        "isOriginal": false
-    },
-    {
-        "id": 11,
-        "name": "Asics Gel Kayano",
-        "brand": "Asics",
-        "category": "Running",
-        "price": 2850000,
-        "img": "https://images.unsplash.com/photo-1560769629-975e13f0c470?w=500&auto=format&fit=crop",
-        "sold": true,
-        "isOriginal": true
-    },
-    {
-        "id": 13,
-        "name": "Adidas Ultra Boost Size 42",
-        "brand": "Adidas",
-        "category": "Running",
-        "price": 350000,
-        "img": "sepatu6.jpg",
-        "sold": false,
-        "isOriginal": false
-    },
-    {
-        "id": 14,
-        "name": "Adidas Adizero Pro 4 Size 39",
-        "brand": "Adidas",
-        "category": "Running",
-        "price": 380000,
-        "img": "sepatu7.jpg",
-        "sold": false,
-        "isOriginal": false
-    }
-];
+            { id: 10, name: "Specs Accelerator", brand: "Specs", category: "Futsal", price: 420000, img: "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?w=500&auto=format&fit=crop", sold: false, isOriginal: false },
+            { id: 11, name: "Asics Gel Kayano", brand: "Asics", category: "Running", price: 2850000, img: "https://images.unsplash.com/photo-1560769629-975e13f0c470?w=500&auto=format&fit=crop", sold: true, isOriginal: true },
+            { id: 13, name: "Adidas Ultra Boost Size 42", brand: "Adidas", category: "Running", price: 350000, img: "sepatu6.jpg", sold: false, isOriginal: false },
+            { id: 14, name: "Adidas Adizero Pro 4 Size 39", brand: "Adidas", category: "Running", price: 380000, img: "sepatu7.jpg", sold: false, isOriginal: false },
         ];
 
         // --- FUNGSI ADMIN BARU ---
@@ -711,6 +657,15 @@
             }).join('');
         }
 
+        // FUNGSI POPULATE DROPDOWN BRAND DI ADMIN
+        function populateBrandOptions() {
+            const brandSelect = document.getElementById('addBrand');
+            if (brandSelect) {
+                // Hapus opsi lama jika ada (kecuali default jika diinginkan)
+                brandSelect.innerHTML = brands.map(b => `<option value="${b.name}">${b.name}</option>`).join('');
+            }
+        }
+
         function renderProducts(data) {
             const grid = document.getElementById('productGrid');
             const empty = document.getElementById('emptyState');
@@ -887,6 +842,7 @@
         }
 
         window.onload = () => {
+            populateBrandOptions(); // Menjalankan fungsi isi dropdown brand
             renderBrands();
             renderProducts(products);
             showSection('home-section');
@@ -894,5 +850,4 @@
 
     </script>
 </body>
-
 </html>
