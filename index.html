@@ -102,6 +102,7 @@
             <div class="hidden md:flex items-center space-x-8 text-sm font-bold tracking-wide uppercase">
                 <a href="#" onclick="showSection('home-section'); return false;" class="nav-link text-gray-300 hover:text-accent transition">Beranda</a>
                 <a href="#" onclick="showSection('catalog'); return false;" class="nav-link text-gray-300 hover:text-accent transition">Katalog</a>
+                <a href="#" onclick="showSection('gallery'); return false;" class="nav-link text-gray-300 hover:text-accent transition">Galeri</a>
                 <a href="#" onclick="showSection('testimonials'); return false;" class="nav-link text-gray-300 hover:text-accent transition">Testimoni</a>
                 <a href="#" onclick="showSection('sizeguide'); return false;" class="nav-link text-gray-300 hover:text-accent transition">Size Guide</a>
             </div>
@@ -131,6 +132,7 @@
             <ul class="space-y-4 font-bold uppercase text-sm tracking-wider">
                 <li><a href="#" class="block hover:text-accent" onclick="showSection('home-section'); toggleMenu(); return false;">Beranda</a></li>
                 <li><a href="#" class="block hover:text-accent" onclick="showSection('catalog'); toggleMenu(); return false;">Katalog</a></li>
+                <li><a href="#" class="block hover:text-accent" onclick="showSection('gallery'); toggleMenu(); return false;">Galeri</a></li>
                 <li><a href="#" class="block hover:text-accent" onclick="showSection('testimonials'); toggleMenu(); return false;">Testimoni</a></li>
                 <li><a href="#" class="block hover:text-accent" onclick="showSection('sizeguide'); toggleMenu(); return false;">Size Guide</a></li>
                 <li><a href="#shipping-location-section" class="block hover:text-accent" onclick="showSection('shipping-location-section'); toggleMenu(); return false;">Cek Ongkir & Lokasi</a></li>
@@ -231,6 +233,65 @@
             </div>
         </section>
 
+        <!-- Galeri Pembeli Section (KEMBALI ADA) -->
+        <section id="gallery" class="page-section hidden py-16 container mx-auto px-4 bg-black">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl font-bold text-white mb-2 uppercase tracking-widest">Galeri Pembeli</h2>
+                <div class="h-1 w-20 bg-accent mx-auto rounded"></div>
+                <p class="text-gray-400 text-xs mt-4">Momen keren mereka bersama Yusuf Store 25</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="relative group overflow-hidden rounded-lg aspect-square">
+                    <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400&auto=format&fit=crop&q=60" alt="Galeri Pembeli 1" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i class="fab fa-instagram text-accent text-2xl"></i>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-lg aspect-square">
+                    <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&auto=format&fit=crop&q=60" alt="Galeri Pembeli 2" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i class="fab fa-instagram text-accent text-2xl"></i>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-lg aspect-square">
+                    <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&auto=format&fit=crop&q=60" alt="Galeri Pembeli 3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i class="fab fa-instagram text-accent text-2xl"></i>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-lg aspect-square">
+                    <img src="https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?w=400&auto=format&fit=crop&q=60" alt="Galeri Pembeli 4" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i class="fab fa-instagram text-accent text-2xl"></i>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-lg aspect-square">
+                    <img src="https://images.unsplash.com/photo-1603808033192-082d6919d3e1?w=400&auto=format&fit=crop&q=60" alt="Galeri Pembeli 5" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i class="fab fa-instagram text-accent text-2xl"></i>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-lg aspect-square">
+                    <img src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=400&auto=format&fit=crop&q=60" alt="Galeri Pembeli 6" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i class="fab fa-instagram text-accent text-2xl"></i>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-lg aspect-square">
+                    <img src="https://images.unsplash.com/photo-1579338559194-a162d19bd842?w=400&auto=format&fit=crop&q=60" alt="Galeri Pembeli 7" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i class="fab fa-instagram text-accent text-2xl"></i>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-lg aspect-square">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&auto=format&fit=crop&q=60" alt="Galeri Pembeli 8" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i class="fab fa-instagram text-accent text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Testimonials Section -->
         <section id="testimonials" class="page-section hidden py-16 container mx-auto px-4 bg-zinc-900/30">
             <div class="text-center mb-12">
@@ -274,73 +335,6 @@
                             <p class="font-bold text-sm text-white">Budi Santoso</p>
                             <p class="text-xs text-gray-500 uppercase tracking-wide">Jakarta</p>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Galeri Pembeli Section -->
-        <section id="gallery" class="page-section hidden py-16 container mx-auto px-4 bg-black">
-            <div class="text-center mb-12">
-                <h2 class="text-2xl font-bold text-white mb-2 uppercase tracking-widest">Galeri Pembeli</h2>
-                <div class="h-1 w-20 bg-accent mx-auto rounded"></div>
-                <p class="text-gray-400 text-xs mt-4">Momen keren mereka bersama Yusuf Store 25</p>
-            </div>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <!-- Image Item 1 -->
-                <div class="relative group overflow-hidden rounded-lg aspect-square">
-                    <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400&auto=format&fit=crop&q=60" alt="Galeri Pembeli 1" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <i class="fab fa-instagram text-accent text-2xl"></i>
-                    </div>
-                </div>
-                <!-- Image Item 2 -->
-                <div class="relative group overflow-hidden rounded-lg aspect-square">
-                    <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&auto=format&fit=crop&q=60" alt="Galeri Pembeli 2" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <i class="fab fa-instagram text-accent text-2xl"></i>
-                    </div>
-                </div>
-                <!-- Image Item 3 -->
-                <div class="relative group overflow-hidden rounded-lg aspect-square">
-                    <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&auto=format&fit=crop&q=60" alt="Galeri Pembeli 3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <i class="fab fa-instagram text-accent text-2xl"></i>
-                    </div>
-                </div>
-                <!-- Image Item 4 -->
-                <div class="relative group overflow-hidden rounded-lg aspect-square">
-                    <img src="https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?w=400&auto=format&fit=crop&q=60" alt="Galeri Pembeli 4" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <i class="fab fa-instagram text-accent text-2xl"></i>
-                    </div>
-                </div>
-                <!-- Image Item 5 -->
-                <div class="relative group overflow-hidden rounded-lg aspect-square">
-                    <img src="https://images.unsplash.com/photo-1603808033192-082d6919d3e1?w=400&auto=format&fit=crop&q=60" alt="Galeri Pembeli 5" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <i class="fab fa-instagram text-accent text-2xl"></i>
-                    </div>
-                </div>
-                <!-- Image Item 6 -->
-                <div class="relative group overflow-hidden rounded-lg aspect-square">
-                    <img src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=400&auto=format&fit=crop&q=60" alt="Galeri Pembeli 6" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <i class="fab fa-instagram text-accent text-2xl"></i>
-                    </div>
-                </div>
-                <!-- Image Item 7 -->
-                <div class="relative group overflow-hidden rounded-lg aspect-square">
-                    <img src="https://images.unsplash.com/photo-1579338559194-a162d19bd842?w=400&auto=format&fit=crop&q=60" alt="Galeri Pembeli 7" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <i class="fab fa-instagram text-accent text-2xl"></i>
-                    </div>
-                </div>
-                <!-- Image Item 8 -->
-                <div class="relative group overflow-hidden rounded-lg aspect-square">
-                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&auto=format&fit=crop&q=60" alt="Galeri Pembeli 8" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <i class="fab fa-instagram text-accent text-2xl"></i>
                     </div>
                 </div>
             </div>
@@ -1643,6 +1637,7 @@
         function renderBrands() {
             const container = document.getElementById('brandContainer');
             
+            // Palette warna profesional (Warna pastel yang estetik)
             const colors = [
                 'bg-red-50 border-red-200 text-red-800',
                 'bg-blue-50 border-blue-200 text-blue-800',
@@ -1661,6 +1656,7 @@
             container.innerHTML = brands.map((brandObj, index) => {
                 const colorTheme = colors[index % colors.length];
                 
+                // Jika logo tersedia, tampilkan gambar. Jika tidak, tampilkan teks dengan latar warna
                 if (brandObj.logo) {
                     return `
                         <div onclick="filterByBrand('${brandObj.name}')" class="brand-logo cursor-pointer bg-white p-2 rounded-lg flex items-center justify-center h-20 shadow-lg transition-all duration-300 group hover:bg-white hover:border-accent hover:shadow-2xl hover:-translate-y-1">
@@ -1754,17 +1750,17 @@
                         <div class="flex flex-col">
                             <span class="text-[10px] text-gray-400 line-through">${formatRupiah(product.originalPrice)}</span>
                             <div class="flex items-center gap-2">
-                                <span class="text-accent font-bold text-sm md:text-lg">${formatRupiah(product.price)}</span>
+                                <span class="text-accent font-bold text-sm md:text-lg border border-accent px-2 py-1 rounded">${formatRupiah(product.price)}</span>
                                 <span class="text-[10px] bg-red-100 text-red-600 px-1 rounded font-bold">-${discount}%</span>
                             </div>
                         </div>
                     `;
                 } else {
-                    priceDisplay = `<span class="text-accent font-bold text-sm md:text-lg">${formatRupiah(product.price)}</span>`;
+                    priceDisplay = `<span class="text-accent font-bold text-sm md:text-lg border border-accent px-2 py-1 rounded">${formatRupiah(product.price)}</span>`;
                 }
 
                 const card = `
-                    <div class="product-card bg-white rounded-lg shadow-lg border border-gray-100 overflow-hidden relative group">
+                    <div class="product-card bg-zinc-900 rounded-lg shadow-lg border border-zinc-800 overflow-hidden relative group hover:border-accent transition duration-300">
                         <div class="relative group cursor-pointer" onclick="openModal(${product.id})">
                             <img src="${product.img}" alt="${product.name}" class="w-full h-40 md:h-56 object-cover ${imgStyle}">
                             
@@ -1775,13 +1771,13 @@
                             </div>
                         </div>
                         
-                        <div class="p-3 md:p-4 ${contentStyle} text-gray-800">
+                        <div class="p-3 md:p-4 ${contentStyle} text-gray-300">
                             <div class="flex justify-between items-start">
-                                <p class="text-xs text-gray-500 uppercase font-semibold">${product.brand}</p>
-                                ${product.isOriginal && !product.sold ? '<span class="text-[10px] bg-blue-100 text-blue-800 px-1 rounded font-bold">ORI</span>' : ''}
+                                <p class="text-xs text-gray-500 uppercase font-semibold tracking-wider">${product.brand}</p>
+                                ${product.isOriginal && !product.sold ? '<span class="text-[10px] bg-accent text-black px-2 py-0.5 rounded font-bold">ORI</span>' : ''}
                             </div>
-                            <h3 class="font-bold text-sm md:text-base text-gray-900 truncate leading-tight mb-1">${product.name}</h3>
-                            <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-bold text-sm md:text-base text-white truncate leading-tight mb-2">${product.name}</h3>
+                            <div class="flex items-center justify-between mb-3">
                                 ${priceDisplay}
                             </div>
                             ${negoTextHTML}
@@ -1850,6 +1846,7 @@
             renderProducts(filtered);
         }
 
+        // Section Navigation Logic
         function showSection(sectionId) {
             document.querySelectorAll('.page-section').forEach(section => {
                 section.classList.add('hidden');
